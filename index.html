@@ -497,12 +497,12 @@
     <a class="project-card" href="https://github.com/klinares/DOGE_Days_R_Over" target="_blank">
       <p class="project-number">05</p>
       <h2 class="project-title">DOGE Days R Over: Reddit Sentiment &amp; AI Stance Classification</h2>
-      <p class="project-desc">Full research pipeline analyzing public sentiment toward federal workforce reductions on Reddit. Scraped 12,553 comments across 19 subreddits via the Reddit API, hand-coded 400 for stance, benchmarked 13 supervised ML classifiers, and deployed LLaMA 3.2B and Gemma 3.12B for zero-shot classification — comparing inter-rater agreement via Cohen's κ.</p>
+      <p class="project-desc">Two-paper research pipeline analyzing public sentiment toward federal workforce reductions on Reddit. Paper 1: scraped 557 posts and 12,553 comments across 19 subreddits via the Reddit API, hand-coded 400 comments for stance (54% opposed, 28% favor, 18% neutral), and analyzed post/comment volume spikes around major DOGE news events. Paper 2: applied supervised ML classifiers (SVM, KNN) and deployed LLaMA 3.2B and Gemma 3.12B for zero-shot stance classification, comparing inter-model agreement via Cohen's κ.</p>
       <div class="project-tags">
         <span class="tag tag-r">R</span>
         <span class="tag tag-ml">NLP / Sentiment</span>
         <span class="tag tag-ai">LLM Zero-Shot</span>
-        <span class="tag tag-ml">XGBoost / RF</span>
+        <span class="tag tag-ml">SVM / KNN</span>
         <span class="tag tag-quarto">Quarto</span>
       </div>
       <span class="project-arrow">↗</span>
@@ -512,7 +512,7 @@
     <a class="project-card" href="https://github.com/klinares/Moneyball_FC" target="_blank">
       <p class="project-number">06</p>
       <h2 class="project-title">Moneyball FC: Multilevel Modeling of Player Market Value</h2>
-      <p class="project-desc">Multilevel regression analysis of professional soccer player market valuations, treating players as nested within clubs and leagues. Explores random intercepts and slopes for club-level effects on individual transfer value, demonstrating hierarchical modeling with crossed random effects and model comparison via likelihood ratio tests.</p>
+      <p class="project-desc">Multilevel regression analysis of professional soccer player market valuations, modeling players nested within clubs and leagues. Applies a hierarchical framework to decompose variance in transfer value across individual and club levels, demonstrating the utility of multilevel modeling for clustered observational data.</p>
       <div class="project-tags">
         <span class="tag tag-r">R</span>
         <span class="tag tag-stat">Multilevel / HLM</span>
@@ -589,19 +589,6 @@
         <span class="tag tag-survey">BRR / JRR / TSL</span>
         <span class="tag tag-survey">Optimal Allocation</span>
         <span class="tag tag-stat">Shiny</span>
-      </div>
-    </div>
-
-    <!-- UM-IHC -->
-    <div class="project-card private-card">
-      <p class="project-number">12</p>
-      <h2 class="project-title">UM-IHC Summer Research <span class="private-badge">private</span></h2>
-      <p class="project-desc">Code repository from a summer internship at the University of Maryland Institute for Health Computing. Work included applying Tourangeau's cognitive response process framework to evaluate AI-integrated patient-reported outcome measures (PROMs), presented at DC-AAPOR. Focused on measurement validity threats introduced by LLM-PROM integration across comprehension, retrieval, judgment, and response stages.</p>
-      <div class="project-tags">
-        <span class="tag tag-r">R</span>
-        <span class="tag tag-ai">LLM / PROMs</span>
-        <span class="tag tag-survey">Cognitive Interviewing</span>
-        <span class="tag tag-survey">Measurement Validity</span>
       </div>
     </div>
 
