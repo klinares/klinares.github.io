@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kevin Linares — Survey Methodologist & Data Scientist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f1f38;
+    --navy-mid: #1a3255;
+    --slate: #2d4a6e;
+    --steel: #4a7098;
+    --powder: #a8c4d8;
+    --cream: #f5f0e8;
+    --paper: #faf8f4;
+    --ink: #1c1c1c;
+    --muted: #6b6b6b;
+    --rule: #d4cfc4;
+    --accent: #c94f2a;
+    --accent-light: #f0e0d6;
+    --tag-r: #e8f0f5;
+    --tag-r-text: #1a3255;
+    --tag-stat: #eaf0ea;
+    --tag-stat-text: #1a3b1a;
+    --tag-ml: #f0ece8;
+    --tag-ml-text: #3d2b1a;
+    --tag-survey: #e8eef5;
+    --tag-survey-text: #1a2b5c;
+    --tag-quarto: #f0eaf5;
+    --tag-quarto-text: #3b1a5c;
+    --tag-stan: #faeee8;
+    --tag-stan-text: #5c2a0e;
+    --tag-ai: #f5edf0;
+    --tag-ai-text: #4a1a30;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Lora', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  header {
+    background: var(--navy);
+    padding: 5rem 2rem 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(255,255,255,0.04) 79px, rgba(255,255,255,0.04) 80px),
+    repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(255,255,255,0.04) 79px, rgba(255,255,255,0.04) 80px);
+  }
+
+  .header-inner { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
+
+  .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--powder);
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    font-weight: 400;
+    color: var(--cream);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+
+  h1 em { font-style: italic; color: var(--powder); }
+
+  .tagline {
+    font-family: 'Lora', serif;
+    font-size: 1.1rem;
+    color: var(--powder);
+    margin-top: 1.25rem;
+    font-style: italic;
+    opacity: 0.85;
+  }
+
+  .header-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .header-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--powder);
+    text-decoration: none;
+    border: 1px solid rgba(168,196,216,0.35);
+    padding: 0.4em 1em;
+    border-radius: 2px;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .header-links a:hover { background: rgba(168,196,216,0.15); color: var(--cream); }
+
+  .rule-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 2rem;
+    max-width: 900px;
+    margin: 3.5rem auto 0;
+  }
+
+  .rule-divider::before,
+  .rule-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  .rule-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .about {
+    max-width: 720px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+  }
+
+  .about p {
+    font-size: 1.05rem;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+
+  .skills-strip {
+    background: var(--navy);
+    padding: 1.5rem 2rem;
+    overflow-x: auto;
+  }
+
+  .skills-inner {
+    display: flex;
+    gap: 2.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .skill-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .skill-group-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--powder);
+    opacity: 0.6;
+  }
+
+  .skill-group-items {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .skill-pill {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--cream);
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 0.2em 0.75em;
+    border-radius: 2px;
+  }
+
+  .projects-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem 5rem;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 2px;
+    margin-top: 0.5rem;
+    border: 1px solid var(--rule);
+  }
+
+  .project-card {
+    background: white;
+    padding: 2rem 2rem 1.75rem;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: background 0.15s;
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+
+  .project-card:hover { background: var(--accent-light); }
+  .project-card:hover .project-arrow { opacity: 1; transform: translate(2px, -2px); }
+
+  .project-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+  }
+
+  .project-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--navy);
+    line-height: 1.3;
+  }
+
+  .project-desc {
+    font-size: 0.9rem;
+    color: #444;
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.25rem;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    padding: 0.2em 0.6em;
+    border-radius: 2px;
+  }
+
+  .tag-r      { background: var(--tag-r);      color: var(--tag-r-text); }
+  .tag-stat   { background: var(--tag-stat);    color: var(--tag-stat-text); }
+  .tag-ml     { background: var(--tag-ml);      color: var(--tag-ml-text); }
+  .tag-survey { background: var(--tag-survey);  color: var(--tag-survey-text); }
+  .tag-quarto { background: var(--tag-quarto);  color: var(--tag-quarto-text); }
+  .tag-stan   { background: var(--tag-stan);    color: var(--tag-stan-text); }
+  .tag-ai     { background: var(--tag-ai);      color: var(--tag-ai-text); }
+
+  .project-arrow {
+    position: absolute;
+    top: 1.75rem;
+    right: 1.75rem;
+    font-size: 14px;
+    color: var(--accent);
+    opacity: 0;
+    transition: opacity 0.15s, transform 0.15s;
+  }
+
+  .featured-card {
+    grid-column: 1 / -1;
+    background: var(--navy);
+    color: var(--cream);
+  }
+
+  .featured-card:hover { background: var(--navy-mid); }
+  .featured-card .project-title { color: var(--cream); }
+  .featured-card .project-desc  { color: var(--powder); }
+  .featured-card .project-number { color: var(--powder); opacity: 0.5; }
+  .featured-card .tag-r, .featured-card .tag-stat, .featured-card .tag-survey,
+  .featured-card .tag-ml, .featured-card .tag-quarto, .featured-card .tag-ai,
+  .featured-card .tag-stan {
+    background: rgba(168,196,216,0.15);
+    color: var(--powder);
+  }
+  .featured-card .project-arrow { color: var(--powder); }
+
+  .featured-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .featured-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(201,79,42,0.15);
+    border: 1px solid rgba(201,79,42,0.3);
+    padding: 0.25em 0.75em;
+    border-radius: 2px;
+    white-space: nowrap;
+    margin-top: 0.25rem;
+  }
+
+  .private-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    border: 1px solid var(--rule);
+    padding: 0.15em 0.5em;
+    border-radius: 2px;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+  }
+
+  .private-card { cursor: default; }
+  .private-card:hover { background: white; }
+  .private-card:hover .project-arrow { opacity: 0; }
+
+  footer {
+    background: var(--navy);
+    padding: 2.5rem 2rem;
+    text-align: center;
+  }
+
+  footer p {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--powder);
+    opacity: 0.5;
+  }
+
+  @media (max-width: 600px) {
+    .projects-grid { grid-template-columns: 1fr; }
+    .featured-inner { grid-template-columns: 1fr; }
+    .featured-badge { align-self: start; width: fit-content; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <p class="eyebrow">Portfolio · github.com/klinares</p>
+    <h1>Kevin <em>Linares</em></h1>
+    <p class="tagline">Survey Methodologist · Data Scientist · R &amp; Quarto Practitioner</p>
+    <div class="header-links">
+      <a href="https://github.com/klinares" target="_blank">GitHub</a>
+      <a href="https://rpubs.com/klinares" target="_blank">RPubs</a>
+      <a href="https://github.com/klinares" target="_blank">Contact</a>
+    </div>
+  </div>
+</header>
+
+<div class="rule-divider"><span class="rule-label">About</span></div>
+
+<section class="about">
+  <!-- REPLACE WITH YOUR OWN BIO -->
+  <p>I am a survey methodologist and computational social scientist holding an <strong>MA in Quantitative Psychology</strong> and an <strong>MS in Survey and Data Science</strong> from the <strong>University of Maryland Joint Program in Survey Methodology (JPSM)</strong> and the <strong>University of Michigan Survey Research Center</strong>.</p>
+  <p>My work sits at the intersection of survey design, psychometric measurement, and applied machine learning. I specialize in complex sampling design, variance estimation, item response theory, latent variable modeling, and the responsible integration of AI into survey research pipelines — all built on reproducible R, Quarto, and Shiny workflows.</p>
+</section>
+
+<div class="skills-strip">
+  <div class="skills-inner">
+    <div class="skill-group">
+      <span class="skill-group-label">Languages &amp; Tools</span>
+      <div class="skill-group-items">
+        <span class="skill-pill">R</span>
+        <span class="skill-pill">Stan</span>
+        <span class="skill-pill">SQL</span>
+        <span class="skill-pill">Quarto</span>
+        <span class="skill-pill">Shiny</span>
+        <span class="skill-pill">Git</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <span class="skill-group-label">Survey Methods</span>
+      <div class="skill-group-items">
+        <span class="skill-pill">Complex Sampling</span>
+        <span class="skill-pill">PPS / Stratification</span>
+        <span class="skill-pill">Variance Estimation</span>
+        <span class="skill-pill">Questionnaire Design</span>
+        <span class="skill-pill">Total Survey Error</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <span class="skill-group-label">Measurement &amp; Modeling</span>
+      <div class="skill-group-items">
+        <span class="skill-pill">IRT / CFA / LCA</span>
+        <span class="skill-pill">Multilevel Models</span>
+        <span class="skill-pill">Multiple Imputation</span>
+        <span class="skill-pill">XGBoost / Random Forest</span>
+        <span class="skill-pill">NLP / LLM Integration</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="rule-divider"><span class="rule-label">Projects</span></div>
+
+<section class="projects-section">
+  <div class="projects-grid">
+
+    <!-- FEATURED: Latent to Language -->
+    <a class="project-card featured-card" href="https://github.com/klinares/Latent_to_Language" target="_blank">
+      <div class="featured-inner">
+        <div>
+          <p class="project-number">01 · Featured</p>
+          <h2 class="project-title">Latent-to-Language: Psychometric Context Engineering for LLM-Based Survey Imputation</h2>
+        </div>
+        <span class="featured-badge">IRT · LLM · TSE</span>
+      </div>
+      <p class="project-desc">Developed the L2L framework — translating IRT/CFA model conclusions into natural-language prompts that guide LLM-based multiple imputation of missing survey items. Compared Claude Sonnet and Llama 4 Maverick against tree-based benchmarks (mixgb, miceRanger) across three psychometric information tiers using 5-fold CV with per-fold model refitting. Evaluated via weighted kappa, latent trait recovery (θ correlation), and Biemer MSE decomposition within a Total Survey Error framework. Uses LAPOP and Latinobarómetro nationally representative survey data.</p>
+      <div class="project-tags">
+        <span class="tag tag-r">R</span>
+        <span class="tag tag-survey">IRT / CFA</span>
+        <span class="tag tag-ai">LLM Imputation</span>
+        <span class="tag tag-stat">Multiple Imputation</span>
+        <span class="tag tag-survey">Total Survey Error</span>
+        <span class="tag tag-quarto">Quarto</span>
+      </div>
+      <span class="project-arrow">↗</span>
+    </a>
+
+    <!-- MMR Dropout -->
+    <a class="project-card" href="https://github.com/klinares/MMR_dropout_XGBoost" target="_blank">
+      <p class="project-number">02</p>
+      <h2 class="project-title">Predicting MMR Vaccine Dropout in Afghan Children</h2>
+      <p class="project-desc">Supervised classification study using the 2023 UNICEF MICS multi-stage cluster survey to predict measles vaccination dropout among Afghan children. Benchmarked five algorithms — logistic regression, bagging, random forest, neural network, and XGBoost — under a full tidymodels pipeline with stratified 10-fold cross-validation and F1-optimized tuning. Enriched child-level microdata with World Bank provincial indicators and choropleth mapping.</p>
+      <div class="project-tags">
+        <span class="tag tag-r">R / tidymodels</span>
+        <span class="tag tag-ml">XGBoost</span>
+        <span class="tag tag-survey">MICS Cluster Survey</span>
+        <span class="tag tag-stat">Classification</span>
+        <span class="tag tag-quarto">Quarto</span>
+      </div>
+      <span class="project-arrow">↗</span>
+    </a>
+
+    <!-- Eight Mile Sample -->
+    <a class="project-card" href="https://github.com/klinares/eight-mile-sample" target="_blank">
+      <p class="project-number">03</p>
+      <h2 class="project-title">Eight Mile Sample: PPS Design for a Detroit Area Survey</h2>
+      <p class="project-desc">End-to-end area probability sample design for the Detroit metro using ACS frame data. Implements probability-proportional-to-size (PPS) selection at the block group level with self-weighting domains and equal interviewer workload constraints — demonstrating stratification, measure-of-size computation, and selection probability derivation from first principles.</p>
+      <div class="project-tags">
+        <span class="tag tag-r">R</span>
+        <span class="tag tag-survey">PPS Sampling</span>
+        <span class="tag tag-survey">Self-Weighting Design</span>
+        <span class="tag tag-stat">ACS Frame</span>
+        <span class="tag tag-quarto">Quarto</span>
+      </div>
+      <span class="project-arrow">↗</span>
+    </a>
+
+    <!-- Michigan Teen Survey Design -->
+    <a class="project-card" href="https://github.com/klinares/michigan-teen-survey-design" target="_blank">
+      <p class="project-number">04</p>
+      <h2 class="project-title">Michigan Teen Survey Design</h2>
+      <p class="project-desc">Complete survey design exercise for a Michigan adolescent population, covering sampling frame construction, stratified multi-stage selection, variance estimation under complex design, design effect (DEFF) computation, and power analysis accounting for the intraclass correlation coefficient (ICC) within primary sampling units.</p>
+      <div class="project-tags">
+        <span class="tag tag-r">R</span>
+        <span class="tag tag-survey">Stratified Multi-Stage</span>
+        <span class="tag tag-survey">DEFF / ICC</span>
+        <span class="tag tag-stat">Variance Estimation</span>
+      </div>
+      <span class="project-arrow">↗</span>
+    </a>
+
+    <!-- DOGE -->
+    <a class="project-card" href="https://github.com/klinares/DOGE_Days_R_Over" target="_blank">
+      <p class="project-number">05</p>
+      <h2 class="project-title">DOGE Days R Over: Reddit Sentiment &amp; AI Stance Classification</h2>
+      <p class="project-desc">Full research pipeline analyzing public sentiment toward federal workforce reductions on Reddit. Scraped 12,553 comments across 19 subreddits via the Reddit API, hand-coded 400 for stance, benchmarked 13 supervised ML classifiers, and deployed LLaMA 3.2B and Gemma 3.12B for zero-shot classification — comparing inter-rater agreement via Cohen's κ.</p>
+      <div class="project-tags">
+        <span class="tag tag-r">R</span>
+        <span class="tag tag-ml">NLP / Sentiment</span>
+        <span class="tag tag-ai">LLM Zero-Shot</span>
+        <span class="tag tag-ml">XGBoost / RF</span>
+        <span class="tag tag-quarto">Quarto</span>
+      </div>
+      <span class="project-arrow">↗</span>
+    </a>
+
+    <!-- Moneyball FC -->
+    <a class="project-card" href="https://github.com/klinares/Moneyball_FC" target="_blank">
+      <p class="project-number">06</p>
+      <h2 class="project-title">Moneyball FC: Multilevel Modeling of Player Market Value</h2>
+      <p class="project-desc">Multilevel regression analysis of professional soccer player market valuations, treating players as nested within clubs and leagues. Explores random intercepts and slopes for club-level effects on individual transfer value, demonstrating hierarchical modeling with crossed random effects and model comparison via likelihood ratio tests.</p>
+      <div class="project-tags">
+        <span class="tag tag-r">R</span>
+        <span class="tag tag-stat">Multilevel / HLM</span>
+        <span class="tag tag-stat">Random Effects</span>
+        <span class="tag tag-quarto">Quarto</span>
+      </div>
+      <span class="project-arrow">↗</span>
+    </a>
+
+    <!-- Who Let the Dogs Stat -->
+    <a class="project-card" href="https://github.com/klinares/Who_let_the_dogs_stat" target="_blank">
+      <p class="project-number">07</p>
+      <h2 class="project-title">Who Let the Dogs Stat</h2>
+      <p class="project-desc">Applied data analysis project exploring trends in dog breed registrations, public perceptions, and behavioral outcomes. Combines web-scraped data with descriptive statistics and ggplot2 visualization to produce a reproducible Quarto report on canine population dynamics and breed-level attitudinal patterns.</p>
+      <div class="project-tags">
+        <span class="tag tag-r">R / ggplot2</span>
+        <span class="tag tag-stat">Descriptive Analysis</span>
+        <span class="tag tag-quarto">Quarto</span>
+      </div>
+      <span class="project-arrow">↗</span>
+    </a>
+
+    <!-- Airwars -->
+    <a class="project-card" href="https://github.com/klinares/airwars_scraping_project" target="_blank">
+      <p class="project-number">08</p>
+      <h2 class="project-title">Airwars Gaza: Web Scraping, Geocoding &amp; Cluster Analysis</h2>
+      <p class="project-desc">Scraped and structured every Airwars civilian-harm incident report into a public SQLite database. Enriched coordinates via the Nominatim API for reverse geocoding, applied sentiment analysis to incident narratives, and used hierarchical clustering to identify targeting patterns and casualty profiles across location types.</p>
+      <div class="project-tags">
+        <span class="tag tag-r">R</span>
+        <span class="tag tag-stat">Clustering</span>
+        <span class="tag tag-ml">NLP / Sentiment</span>
+        <span class="tag tag-stat">SQLite</span>
+        <span class="tag tag-quarto">Quarto</span>
+      </div>
+      <span class="project-arrow">↗</span>
+    </a>
+
+    <!-- Mixture Models -->
+    <a class="project-card" href="https://github.com/klinares/mixture_models" target="_blank">
+      <p class="project-number">09</p>
+      <h2 class="project-title">Latent Class Analysis of Item Nonresponse in Survey Data</h2>
+      <p class="project-desc">Applied Bayesian Latent Class Analysis to GSS abortion attitude items to discover latent patterns of item-level nonresponse. Implemented a Bernoulli mixture model in Stan, extending the LCA-for-"don't know" literature to model nonresponse mechanisms directly — moving beyond conventional MCAR/MAR assumptions to treat missingness as a latent construct.</p>
+      <div class="project-tags">
+        <span class="tag tag-r">R</span>
+        <span class="tag tag-stan">Stan</span>
+        <span class="tag tag-survey">LCA / Nonresponse</span>
+        <span class="tag tag-stat">Bayesian</span>
+        <span class="tag tag-survey">GSS</span>
+      </div>
+      <span class="project-arrow">↗</span>
+    </a>
+
+    <!-- Ask the Rotarians -->
+    <a class="project-card" href="https://github.com/klinares/ask-the-rotarians" target="_blank">
+      <p class="project-number">10</p>
+      <h2 class="project-title">Ask the Rotarians: Membership Survey Dashboard</h2>
+      <p class="project-desc">End-to-end survey processing pipeline for the RCAA Annual Membership Survey. Covers SPSS data ingestion via haven, labelled-to-factor conversion, automated codebook generation, and a fully static interactive HTML dashboard with pre-rendered base64 visualizations — built entirely in R and Quarto with no server dependency.</p>
+      <div class="project-tags">
+        <span class="tag tag-r">R / tidyverse</span>
+        <span class="tag tag-survey">Survey Processing</span>
+        <span class="tag tag-quarto">Quarto Dashboard</span>
+        <span class="tag tag-stat">Codebook</span>
+      </div>
+      <span class="project-arrow">↗</span>
+    </a>
+
+    <!-- UMD Classes Code -->
+    <div class="project-card private-card">
+      <p class="project-number">11</p>
+      <h2 class="project-title">JPSM Graduate Coursework <span class="private-badge">private</span></h2>
+      <p class="project-desc">Code archive for JPSM coursework including SURV 701 (Survey Statistics), SURV 745 (Analysis of Complex Survey Data), and SVY 751 (Applied Sampling). Covers BRR and jackknife variance estimation, Taylor Series Linearization, optimal stratified allocation via nloptr and lpSolve, KNN/CART/Random Forest classification in tidymodels, and Shiny dashboard development for survey pedagogy.</p>
+      <div class="project-tags">
+        <span class="tag tag-r">R / tidymodels</span>
+        <span class="tag tag-survey">BRR / JRR / TSL</span>
+        <span class="tag tag-survey">Optimal Allocation</span>
+        <span class="tag tag-stat">Shiny</span>
+      </div>
+    </div>
+
+    <!-- UM-IHC -->
+    <div class="project-card private-card">
+      <p class="project-number">12</p>
+      <h2 class="project-title">UM-IHC Summer Research <span class="private-badge">private</span></h2>
+      <p class="project-desc">Code repository from a summer internship at the University of Maryland Institute for Health Computing. Work included applying Tourangeau's cognitive response process framework to evaluate AI-integrated patient-reported outcome measures (PROMs), presented at DC-AAPOR. Focused on measurement validity threats introduced by LLM-PROM integration across comprehension, retrieval, judgment, and response stages.</p>
+      <div class="project-tags">
+        <span class="tag tag-r">R</span>
+        <span class="tag tag-ai">LLM / PROMs</span>
+        <span class="tag tag-survey">Cognitive Interviewing</span>
+        <span class="tag tag-survey">Measurement Validity</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <p>Kevin Linares · University of Maryland JPSM · University of Michigan Survey Research Center</p>
+</footer>
+
+</body>
+</html>
