@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kevin Linares — Survey Methodologist & Data Scientist</title>
+<title>Kevin Linares, Survey Methodologist & Data Scientist</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
@@ -327,22 +327,6 @@
     margin-top: 0.25rem;
   }
 
-  .private-badge {
-    font-family: 'DM Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 0.1em;
-    color: var(--muted);
-    border: 1px solid var(--rule);
-    padding: 0.15em 0.5em;
-    border-radius: 2px;
-    margin-left: 0.5rem;
-    vertical-align: middle;
-  }
-
-  .private-card { cursor: default; }
-  .private-card:hover { background: white; }
-  .private-card:hover .project-arrow { opacity: 0; }
-
   footer {
     background: var(--navy);
     padding: 2.5rem 2rem;
@@ -357,10 +341,157 @@
     opacity: 0.5;
   }
 
+  .frameworks {
+    max-width: 820px;
+    margin: 2rem auto 0;
+    padding: 0 2rem;
+  }
+
+  .frameworks-svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 1.5rem auto 1rem;
+  }
+
+  .frameworks-caption {
+    font-family: 'Lora', serif;
+    font-size: 0.9rem;
+    color: var(--muted);
+    font-style: italic;
+    text-align: center;
+    line-height: 1.6;
+    margin-top: 1rem;
+  }
+
+  .frameworks-intro {
+    max-width: 720px;
+    margin: 2.5rem auto 0;
+  }
+
+  .frameworks-intro p {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 1rem;
+    line-height: 1.7;
+  }
+
+  .frameworks-components-heading {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+    margin: 3rem 0 1.5rem;
+  }
+
+  .frameworks-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    border: 1px solid var(--rule);
+    background: var(--rule);
+    margin: 0 auto;
+  }
+
+  .framework-component {
+    background: white;
+    padding: 1.5rem 1.5rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .framework-component-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+  }
+
+  .framework-component-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--navy);
+    line-height: 1.3;
+    margin-bottom: 0.25rem;
+  }
+
+  .framework-component-desc {
+    font-size: 0.875rem;
+    color: #444;
+    line-height: 1.6;
+  }
+
+  .framework-component-example {
+    font-size: 0.85rem;
+    color: #444;
+    line-height: 1.5;
+    margin-top: 0.5rem;
+  }
+
+  .framework-component-example .example-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  .frameworks-references {
+    max-width: 720px;
+    margin: 2.5rem auto 0;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .frameworks-references-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.25rem;
+  }
+
+  .frameworks-references ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: ref;
+  }
+
+  .frameworks-references li {
+    font-size: 0.85rem;
+    color: #444;
+    line-height: 1.55;
+    margin-bottom: 0.85rem;
+    padding-left: 2.5rem;
+    position: relative;
+    counter-increment: ref;
+  }
+
+  .frameworks-references li::before {
+    content: counter(ref) ".";
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    width: 2rem;
+    text-align: right;
+  }
+
   @media (max-width: 600px) {
     .projects-grid { grid-template-columns: 1fr; }
     .featured-inner { grid-template-columns: 1fr; }
     .featured-badge { align-self: start; width: fit-content; }
+    .frameworks-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -373,7 +504,7 @@
     <p class="tagline">Survey Methodologist · Data Scientist · R &amp; Quarto Practitioner</p>
     <div class="header-links">
       <a href="https://github.com/klinares" target="_blank">GitHub</a>
-      <a href="https://rpubs.com/klinares" target="_blank">RPubs</a>
+      <a href="methods.html">Methods</a>
       <a href="https://github.com/klinares" target="_blank">Contact</a>
     </div>
   </div>
@@ -382,10 +513,12 @@
 <div class="rule-divider"><span class="rule-label">About</span></div>
 
 <section class="about">
-  <!-- REPLACE WITH YOUR OWN BIO -->
-  <p>I am a survey methodologist and computational social scientist holding an <strong>MA in Quantitative Psychology</strong> and an <strong>MS in Survey and Data Science</strong> from the <strong>University of Maryland Joint Program in Survey Methodology (JPSM)</strong> and the <strong>University of Michigan Survey Research Center</strong>.</p>
-  <p>My work sits at the intersection of survey design, psychometric measurement, and applied machine learning within the Total Survey Error framework. I specialize in complex sampling design, variance estimation, item response theory, latent variable modeling, and the responsible integration of AI into survey research pipelines; all built on properly documented and reproducible R, Quarto, and Shiny workflows.</p>
+  <p>I am a survey methodologist working at the intersection of measurement science, probability sampling, and applied data science. My research training comes through the <strong>University of Maryland Joint Program in Survey Methodology (JPSM)</strong> and the <strong>University of Michigan Survey Research Center</strong>, where I earned an <strong>MS in Survey and Data Science</strong>; I also hold an <strong>MA in Quantitative Psychology</strong>.</p>
+  <p>My work spans probability sample design, latent variable modeling, multilevel and Bayesian methods, and the responsible integration of machine learning and large language models into survey research workflows. My methodological foundation rests on the <strong>Total Survey Error (TSE) framework</strong> developed by Groves and colleagues, extended through the <strong>Total Error Framework (TEF)</strong> of Amaya, Biemer, and Kinyon (2020), which adapts TSE to non-probability and Big Data sources such as social media, administrative records, and AI-generated content. This dual foundation lets me reason about data quality consistently across traditional surveys and the alternative data streams that increasingly supplement them.</p>
+  <p>I am especially interested in questions about measurement validity (how new tools affect what we are actually measuring) and in building reproducible, transparent analytic pipelines that make methodological decisions easy to audit.</p>
+  <p>Most of what you'll find here is built in <strong>R</strong>, organized around the tidyverse, and rendered through <strong>Quarto</strong> and <strong>Shiny</strong>. I favor functional code, fully reproducible pipelines, and methods documentation that travels with the code.</p>
 </section>
+
 
 <div class="skills-strip">
   <div class="skills-inner">
@@ -403,20 +536,22 @@
     <div class="skill-group">
       <span class="skill-group-label">Survey Methods</span>
       <div class="skill-group-items">
+        <span class="skill-pill">Total Survey Error</span>
+        <span class="skill-pill">Total Error Framework</span>
         <span class="skill-pill">Complex Sampling</span>
         <span class="skill-pill">PPS / Stratification</span>
         <span class="skill-pill">Variance Estimation</span>
         <span class="skill-pill">Questionnaire Design</span>
-        <span class="skill-pill">Total Survey Error</span>
       </div>
     </div>
     <div class="skill-group">
       <span class="skill-group-label">Measurement &amp; Modeling</span>
       <div class="skill-group-items">
-        <span class="skill-pill">IRT / CFA / LCA</span>
+        <span class="skill-pill">Latent Class Analysis</span>
         <span class="skill-pill">Multilevel Models</span>
+        <span class="skill-pill">Bayesian Inference</span>
         <span class="skill-pill">Multiple Imputation</span>
-        <span class="skill-pill">XGBoost / Random Forest</span>
+        <span class="skill-pill">Tree-Based ML</span>
         <span class="skill-pill">NLP / LLM Integration</span>
       </div>
     </div>
@@ -433,17 +568,16 @@
       <div class="featured-inner">
         <div>
           <p class="project-number">01 · Featured</p>
-          <h2 class="project-title">Latent-to-Language: Psychometric Context Engineering for LLM-Based Survey Imputation</h2>
+          <h2 class="project-title">Latent-to-Language: Psychometric-Informed Prompts for LLM-Based Survey Imputation</h2>
         </div>
-        <span class="featured-badge">IRT · LLM · TSE</span>
+        <span class="featured-badge">Psychometrics · LLM</span>
       </div>
-      <p class="project-desc">Developed the L2L framework — translating IRT/CFA model conclusions into natural-language prompts that guide LLM-based multiple imputation of missing survey items. Compared Claude Sonnet and Llama 4 Maverick against tree-based benchmarks (mixgb, miceRanger) across three psychometric information tiers using 5-fold CV with per-fold model refitting. Evaluated via weighted kappa, latent trait recovery (θ correlation), and Biemer MSE decomposition within a Total Survey Error framework. Uses LAPOP and Latinobarómetro nationally representative survey data.</p>
+      <p class="project-desc">An R-based research framework exploring how psychometrically-informed prompts can guide large language models in the multiple imputation of missing survey items. The project investigates whether translating measurement-model output into natural-language context produces imputations that better preserve the latent structure of the data than purely algorithmic approaches. For survey methodologists, this opens a path toward LLM-assisted imputation that respects the psychometric properties of the instrument rather than treating items as arbitrary tabular features.</p>
       <div class="project-tags">
         <span class="tag tag-r">R</span>
-        <span class="tag tag-survey">IRT / CFA</span>
+        <span class="tag tag-survey">Psychometrics</span>
         <span class="tag tag-ai">LLM Imputation</span>
         <span class="tag tag-stat">Multiple Imputation</span>
-        <span class="tag tag-survey">Total Survey Error</span>
         <span class="tag tag-quarto">Quarto</span>
       </div>
       <span class="project-arrow">↗</span>
@@ -453,7 +587,7 @@
     <a class="project-card" href="https://github.com/klinares/MMR_dropout_XGBoost" target="_blank">
       <p class="project-number">02</p>
       <h2 class="project-title">Predicting MMR Vaccine Dropout in Afghan Children</h2>
-      <p class="project-desc">Supervised classification study using the 2023 UNICEF MICS multi-stage cluster survey to predict measles vaccination dropout among Afghan children. Benchmarked five algorithms (e.g., logistic regression, bagging, random forest, neural network, and XGBoost) under a full tidymodels pipeline with stratified 10-fold cross-validation and F1-optimized tuning. Enriched child-level microdata with World Bank provincial indicators and choropleth mapping.</p>
+      <p class="project-desc">Supervised classification study using the 2023 UNICEF Multiple Indicator Cluster Survey (MICS) to predict measles vaccination dropout among Afghan children aged 24+ months. Benchmarked five algorithms (logistic regression, bagging, random forest, neural network, and XGBoost) under a tidymodels pipeline with 10-fold cross-validation, an 80/20 train-test split, and F1-optimized tuning. The neural network achieved the strongest performance (F1 = 0.722, AUC = 0.633), with provincial population density and household characteristics emerging as key predictors. The work shows how complex-survey microdata can be enriched with administrative indicators to produce actionable risk profiles for public health programs operating in low-resource settings.</p>
       <div class="project-tags">
         <span class="tag tag-r">R / tidymodels</span>
         <span class="tag tag-ml">XGBoost</span>
@@ -467,13 +601,13 @@
     <!-- Eight Mile Sample -->
     <a class="project-card" href="https://github.com/klinares/eight-mile-sample" target="_blank">
       <p class="project-number">03</p>
-      <h2 class="project-title">Eight Mile Sample: PPS Design for a Detroit Area Survey</h2>
-      <p class="project-desc">End-to-end area probability sample design for the Detroit metro using ACS frame data. Implements probability-proportional-to-size (PPS) selection at the block group level with self-weighting domains and equal interviewer workload constraints; demonstrating stratification, measure-of-size computation, and selection probability derivation from first principles.</p>
+      <h2 class="project-title">Detroit Transportation Multi-Stage Survey Design</h2>
+      <p class="project-desc">A three-stage area probability sample design for a Detroit face-to-face transportation survey. Targets 1,000 respondents evenly split across four age domains using a composite Measure of Size that delivers self-weighting domain samples and equal interviewer workload across PSUs. Built on 2020 Decennial Census DHC data for 265 census tracts and 612 block groups, with Madow systematic PPS selection (sampling::UPsystematic), Kish (1965) tract linking, and a paired-strata variance estimator to handle the zero joint inclusion probabilities inherent in systematic PPS. The design illustrates how composite MOS reconciles competing constraints (self-weighting, equal workload, domain precision) in a single coherent specification ready for fielded city-level survey work.</p>
       <div class="project-tags">
         <span class="tag tag-r">R</span>
         <span class="tag tag-survey">PPS Sampling</span>
-        <span class="tag tag-survey">Self-Weighting Design</span>
-        <span class="tag tag-stat">ACS Frame</span>
+        <span class="tag tag-survey">Multi-Stage Design</span>
+        <span class="tag tag-survey">Composite MOS</span>
         <span class="tag tag-quarto">Quarto</span>
       </div>
       <span class="project-arrow">↗</span>
@@ -482,13 +616,14 @@
     <!-- Michigan Teen Survey Design -->
     <a class="project-card" href="https://github.com/klinares/michigan-teen-survey-design" target="_blank">
       <p class="project-number">04</p>
-      <h2 class="project-title">Michigan Teen Survey Design</h2>
-      <p class="project-desc">Complete survey design exercise for a Michigan adolescent population, covering sampling frame construction, stratified multi-stage selection, variance estimation under complex design, design effect (DEFF) computation, and power analysis accounting for the intraclass correlation coefficient (ICC) within primary sampling units.</p>
+      <h2 class="project-title">Michigan Teen Smoking &amp; Drug Use Survey Design</h2>
+      <p class="project-desc">A two-stage stratified cluster sample design developed for the Michigan Department of Education to monitor teen smoking and drug use across grades 7–12 statewide. Schools (PSUs) are stratified across nine regions and selected with probability proportional to estimated size (PPeS); students are selected systematically within school. The design jointly satisfies CV ≤ 0.05 across three outcomes and a $500K budget by computing optimal cluster size from pilot-study DEFFs, evaluating three candidate clustering options, and adjusting for 30% school and 70% student response rates, yielding 88 schools and ~4,721 students from a frame of 830,138. The work demonstrates end-to-end design optimization under realistic budget, precision, and response-rate constraints, the kind of integrated planning required for state agency surveys.</p>
       <div class="project-tags">
         <span class="tag tag-r">R</span>
-        <span class="tag tag-survey">Stratified Multi-Stage</span>
-        <span class="tag tag-survey">DEFF / ICC</span>
-        <span class="tag tag-stat">Variance Estimation</span>
+        <span class="tag tag-survey">Stratified PPeS</span>
+        <span class="tag tag-survey">DEFF / roh</span>
+        <span class="tag tag-survey">Optimal Allocation</span>
+        <span class="tag tag-quarto">Quarto</span>
       </div>
       <span class="project-arrow">↗</span>
     </a>
@@ -496,8 +631,8 @@
     <!-- DOGE -->
     <a class="project-card" href="https://github.com/klinares/DOGE_Days_R_Over" target="_blank">
       <p class="project-number">05</p>
-      <h2 class="project-title">DOGE Days R Over: Reddit Sentiment &amp; AI Stance Classification</h2>
-      <p class="project-desc">Two-paper research pipeline analyzing public sentiment toward federal workforce reductions on Reddit. Paper 1: scraped 557 posts and 12,553 comments across 19 subreddits via the Reddit API, hand-coded 400 comments for stance (54% opposed, 28% favor, 18% neutral), and analyzed post/comment volume spikes around major DOGE news events. Paper 2: applied supervised ML classifiers (SVM, KNN) and deployed LLaMA 3.2B and Gemma 3.12B for zero-shot stance classification, comparing inter-model agreement via Cohen's κ.</p>
+      <h2 class="project-title">DOGE Days on Reddit: Public Sentiment in a Federal Shakeup</h2>
+      <p class="project-desc">A two-paper research pipeline analyzing public discourse on the Department of Government Efficiency's federal workforce reductions. Scraped 557 posts and 12,553 comments across 19 subreddits via the Reddit API, hand-coded 400 comments with a four-rater team (54% opposed, 28% favor, 18% neutral), and analyzed activity peaks around major news events. A companion paper applied supervised ML (SVM, KNN) and zero-shot LLM classification (LLaMA 3.2B, Gemma 3.12B) for stance detection. The work is a direct application of the Total Error Framework: it interrogates how non-probability digital trace data can complement probability surveys, and how zero-shot LLMs perform against trained classifiers on attitudinal coding tasks where coverage and measurement error structures differ fundamentally from traditional survey instruments.</p>
       <div class="project-tags">
         <span class="tag tag-r">R</span>
         <span class="tag tag-ml">NLP / Sentiment</span>
@@ -511,12 +646,12 @@
     <!-- Moneyball FC -->
     <a class="project-card" href="https://github.com/klinares/Moneyball_FC" target="_blank">
       <p class="project-number">06</p>
-      <h2 class="project-title">Moneyball FC: Multilevel Modeling of Player Market Value</h2>
-      <p class="project-desc">Multilevel regression analysis of professional soccer player market valuations, modeling players nested within clubs and leagues. Applies a hierarchical framework to decompose variance in transfer value across individual and club levels, demonstrating the utility of multilevel modeling for clustered observational data.</p>
+      <h2 class="project-title">Player Market Value in Elite European Football</h2>
+      <p class="project-desc">A cross-classified multilevel model of player market value in elite European football, fit to 7,023 player-season observations across 2,159 unique players and 21 top clubs (2013–2024). Treats players and clubs as crossed (not nested) random effects to handle inter-club transfers, with cubic time terms centered on 2020 to isolate the COVID-era market correction. Estimated in lme4 via REML with the BOBYQA optimizer; significance via Satterthwaite approximations. Findings include a peak valuation age of around 27, a 42% premium per SD of within-club playing time, and a 17% domestic-citizenship discount. The cross-classified framework transfers directly to survey contexts where respondents move between clusters over time, such as students changing schools or employees changing firms in panel surveys.</p>
       <div class="project-tags">
-        <span class="tag tag-r">R</span>
-        <span class="tag tag-stat">Multilevel / HLM</span>
-        <span class="tag tag-stat">Random Effects</span>
+        <span class="tag tag-r">R / lme4</span>
+        <span class="tag tag-stat">Cross-Classified MLM</span>
+        <span class="tag tag-stat">Crossed Random Effects</span>
         <span class="tag tag-quarto">Quarto</span>
       </div>
       <span class="project-arrow">↗</span>
@@ -525,12 +660,13 @@
     <!-- Who Let the Dogs Stat -->
     <a class="project-card" href="https://github.com/klinares/Who_let_the_dogs_stat" target="_blank">
       <p class="project-number">07</p>
-      <h2 class="project-title">Who Let the Dogs Stat</h2>
-      <p class="project-desc">Applied data analysis project exploring trends in dog breed registrations, public perceptions, and behavioral outcomes. Combines web-scraped data with descriptive statistics and ggplot2 visualization to produce a reproducible Quarto report on canine population dynamics and breed-level attitudinal patterns.</p>
+      <h2 class="project-title">Dog Breed Explorer: A Data-Visualization Dashboard</h2>
+      <p class="project-desc">An interactive Quarto dashboard for exploring 391 AKC dog breeds, scraped from dogTime and structured for visual comparison. The dashboard combines mosaic plots, small-multiples panels, and an interactive 2-to-4-breed comparison tool to reveal behavioral and trait signatures across AKC breed groups. Framed as a simulated data-science presentation to a corporate audience, the project showcases applied design principles (Tufte data-ink ratio, small multiples) alongside reproducible R/Quarto authoring. Effective dissemination is itself a methodological concern in survey research: well-designed dashboards make complex findings legible to non-technical decision-makers without sacrificing analytic rigor.</p>
       <div class="project-tags">
         <span class="tag tag-r">R / ggplot2</span>
-        <span class="tag tag-stat">Descriptive Analysis</span>
-        <span class="tag tag-quarto">Quarto</span>
+        <span class="tag tag-stat">Web Scraping</span>
+        <span class="tag tag-stat">Data Visualization</span>
+        <span class="tag tag-quarto">Quarto Dashboard</span>
       </div>
       <span class="project-arrow">↗</span>
     </a>
@@ -538,13 +674,12 @@
     <!-- Airwars -->
     <a class="project-card" href="https://github.com/klinares/airwars_scraping_project" target="_blank">
       <p class="project-number">08</p>
-      <h2 class="project-title">Airwars Gaza: Web Scraping, Geocoding &amp; Cluster Analysis</h2>
-      <p class="project-desc">Scraped and structured every Airwars civilian-harm incident report into a public SQLite database. Enriched coordinates via the Nominatim API for reverse geocoding, applied sentiment analysis to incident narratives, and used hierarchical clustering to identify targeting patterns and casualty profiles across location types.</p>
+      <h2 class="project-title">Open-Source Data Analysis of Civilian Impact in Gaza</h2>
+      <p class="project-desc">A web-scraping and data-visualization project that draws on the Airwars open-source archive to examine the civilian impact of military operations in Gaza. Built end-to-end in R and Quarto, the project handles structured extraction of incident-level records, frame construction, and a series of exploratory visualizations developed for a JPSM data-visualization course. Within the Total Error Framework, the project sits squarely in the territory the framework was designed for: open-source incident archives serving as alternative data when probability sampling of an affected population is infeasible, with the attendant questions of coverage and reporting bias that a survey methodologist is equipped to assess.</p>
       <div class="project-tags">
         <span class="tag tag-r">R</span>
-        <span class="tag tag-stat">Clustering</span>
-        <span class="tag tag-ml">NLP / Sentiment</span>
-        <span class="tag tag-stat">SQLite</span>
+        <span class="tag tag-stat">Web Scraping</span>
+        <span class="tag tag-stat">Data Visualization</span>
         <span class="tag tag-quarto">Quarto</span>
       </div>
       <span class="project-arrow">↗</span>
@@ -553,14 +688,13 @@
     <!-- Mixture Models -->
     <a class="project-card" href="https://github.com/klinares/mixture_models" target="_blank">
       <p class="project-number">09</p>
-      <h2 class="project-title">Latent Class Analysis of Item Nonresponse in Survey Data</h2>
-      <p class="project-desc">Applied Bayesian Latent Class Analysis to GSS abortion attitude items to discover latent patterns of item-level nonresponse. Implemented a Bernoulli mixture model in Stan, extending the LCA-for-"don't know" literature to model nonresponse mechanisms directly; moving beyond conventional MCAR/MAR assumptions to treat missingness as a latent construct.</p>
+      <h2 class="project-title">Latent Class Analysis of Survey Data</h2>
+      <p class="project-desc">An applied Latent Class Analysis (LCA) project on survey data, implemented as a Bayesian mixture model in Stan. Demonstrates how mixture modeling can recover unobserved respondent typologies from item-level data, an approach particularly useful in survey methodology for studying patterns of item nonresponse, attitude clustering, and respondent heterogeneity that ordinary descriptive statistics flatten.</p>
       <div class="project-tags">
         <span class="tag tag-r">R</span>
         <span class="tag tag-stan">Stan</span>
-        <span class="tag tag-survey">LCA / Nonresponse</span>
+        <span class="tag tag-survey">LCA</span>
         <span class="tag tag-stat">Bayesian</span>
-        <span class="tag tag-survey">GSS</span>
       </div>
       <span class="project-arrow">↗</span>
     </a>
@@ -568,29 +702,28 @@
     <!-- Ask the Rotarians -->
     <a class="project-card" href="https://github.com/klinares/ask-the-rotarians" target="_blank">
       <p class="project-number">10</p>
-      <h2 class="project-title">Ask the Rotarians: Membership Survey Dashboard</h2>
-      <p class="project-desc">End-to-end survey processing pipeline for the RCAA Annual Membership Survey. Covers SPSS data ingestion via haven, labelled-to-factor conversion, automated codebook generation, and a fully static interactive HTML dashboard with pre-rendered base64 visualizations, built entirely in R and Quarto with no server dependency.</p>
+      <h2 class="project-title">RCAA 2026 Membership Survey Pipeline</h2>
+      <p class="project-desc">A reproducible end-to-end pipeline for the Rotary Club of Aspen Annual 2026 Membership Survey. Ingests labelled SPSS data via <code>haven</code>, derives demographic groupings (age, tenure, retirement status), and produces both a structured Word-format briefing of preliminary findings and a self-contained interactive HTML dashboard, built entirely in R and Quarto with no live server runtime. The pipeline shows how the full survey deliverable chain (cleaning, codebook, briefing, dashboard) can be assembled into one reproducible Quarto project that a client organization can host on any static server.</p>
       <div class="project-tags">
         <span class="tag tag-r">R / tidyverse</span>
         <span class="tag tag-survey">Survey Processing</span>
         <span class="tag tag-quarto">Quarto Dashboard</span>
-        <span class="tag tag-stat">Codebook</span>
       </div>
       <span class="project-arrow">↗</span>
     </a>
 
-    <!-- UMD Classes Code -->
-    <div class="project-card private-card">
+    <!-- UM-IHC Summer 2025 -->
+    <a class="project-card" href="https://github.com/klinares/UM-IHC_summer_2025" target="_blank">
       <p class="project-number">11</p>
-      <h2 class="project-title">JPSM Graduate Coursework <span class="private-badge">private</span></h2>
-      <p class="project-desc">Code archive for JPSM coursework including SURV 701 (Survey Statistics), SURV 745 (Analysis of Complex Survey Data), and SVY 751 (Applied Sampling). Covers BRR and jackknife variance estimation, Taylor Series Linearization, optimal stratified allocation via nloptr and lpSolve, KNN/CART/Random Forest classification in tidymodels, and Shiny dashboard development for survey pedagogy.</p>
+      <h2 class="project-title">UM-IHC Summer 2025: AI in Survey &amp; Health Measurement</h2>
+      <p class="project-desc">Methodological work from a summer 2025 internship at the University of Maryland Institute for Health Computing. Applies Tourangeau's cognitive response process framework (comprehension, retrieval, judgment, response) to evaluate the integration of large language models into patient-reported outcome measures (LLM-PROMs). Identifies validity threats at each cognitive stage and argues that classic survey-methodology theory, in particular the measurement-error component of the Total Survey Error framework, provides the conceptual tools needed to evaluate AI-enhanced measurement. Presented at DC-AAPOR, September 2025.</p>
       <div class="project-tags">
-        <span class="tag tag-r">R / tidymodels</span>
-        <span class="tag tag-survey">BRR / JRR / TSL</span>
-        <span class="tag tag-survey">Optimal Allocation</span>
-        <span class="tag tag-stat">Shiny</span>
+        <span class="tag tag-ai">LLM / PROMs</span>
+        <span class="tag tag-survey">Cognitive Response Process</span>
+        <span class="tag tag-survey">Measurement Validity</span>
       </div>
-    </div>
+      <span class="project-arrow">↗</span>
+    </a>
 
   </div>
 </section>
