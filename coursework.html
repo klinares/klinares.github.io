@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coursework, Kevin Linares · UMD JPSM</title>
+<meta name="description" content="Graduate coursework, grades, and per-course materials for Kevin Linares' MS in Survey and Data Science at the University of Maryland Joint Program in Survey Methodology.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f1f38;
+    --navy-mid: #1a3255;
+    --slate: #2d4a6e;
+    --steel: #4a7098;
+    --powder: #a8c4d8;
+    --cream: #f5f0e8;
+    --paper: #faf8f4;
+    --ink: #1c1c1c;
+    --muted: #6b6b6b;
+    --rule: #d4cfc4;
+    --accent: #c94f2a;
+    --accent-light: #f0e0d6;
+    --gold: #b08d3f;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Lora', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  header {
+    background: var(--navy);
+    padding: 4rem 2rem 3.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(255,255,255,0.04) 79px, rgba(255,255,255,0.04) 80px),
+    repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(255,255,255,0.04) 79px, rgba(255,255,255,0.04) 80px);
+  }
+
+  .header-inner { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
+
+  .back-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--powder);
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 1.25rem;
+    transition: color 0.2s;
+  }
+
+  .back-link:hover { color: var(--cream); }
+
+  .back-arrow { display: inline-block; margin-right: 0.4em; }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    font-weight: 400;
+    color: var(--cream);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--powder);
+  }
+
+  .tagline {
+    font-family: 'Lora', serif;
+    font-size: 1.05rem;
+    color: var(--powder);
+    margin-top: 1.1rem;
+    font-style: italic;
+    opacity: 0.85;
+  }
+
+  main {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 3rem 2rem 4rem;
+  }
+
+  .lede {
+    max-width: 720px;
+    margin: 0 auto 0;
+  }
+
+  .lede p {
+    font-size: 1.05rem;
+    color: #2c2c2c;
+    line-height: 1.8;
+    margin-bottom: 1.1rem;
+  }
+
+  .lede p:first-child {
+    font-size: 1.15rem;
+    color: var(--ink);
+  }
+
+  .lede a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-light);
+    transition: border-color 0.2s;
+  }
+  .lede a:hover { border-bottom-color: var(--accent); }
+
+  /* GPA Card */
+  .gpa-card {
+    max-width: 720px;
+    margin: 2.75rem auto 0;
+    background: var(--navy);
+    padding: 2rem 2rem 2.25rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    position: relative;
+  }
+
+  .gpa-card::before {
+    content: 'TRANSCRIPT SUMMARY';
+    position: absolute;
+    top: -8px;
+    left: 1.5rem;
+    background: var(--paper);
+    padding: 0 0.6rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.24em;
+    color: var(--muted);
+  }
+
+  .gpa-stat { text-align: center; }
+  .gpa-stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    color: var(--cream);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .gpa-stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--powder);
+    line-height: 1.4;
+  }
+  .gpa-stat-num em {
+    font-family: 'DM Mono', monospace;
+    font-style: normal;
+    font-size: 0.65rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    display: block;
+    margin-top: 0.4rem;
+  }
+
+  .gpa-footnote {
+    max-width: 720px;
+    margin: 0.75rem auto 0;
+    font-size: 0.82rem;
+    color: var(--muted);
+    font-style: italic;
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  /* Semester sections */
+  .semester {
+    max-width: 820px;
+    margin: 3.5rem auto 0;
+  }
+
+  .semester-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.25rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.65rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .semester-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.55rem;
+    color: var(--navy);
+    font-weight: 400;
+  }
+
+  .semester-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-left: auto;
+  }
+
+  /* Course card */
+  .course {
+    padding: 1.5rem 0 1.65rem;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 90px 1fr 80px;
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  .course:last-child { border-bottom: none; }
+
+  .course-code {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    padding-top: 0.4rem;
+    line-height: 1.5;
+  }
+
+  .course-code-num {
+    color: var(--navy);
+    font-weight: 500;
+    display: block;
+    font-size: 13px;
+    margin-bottom: 0.2rem;
+  }
+
+  .course-code-credits {
+    display: block;
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    margin-top: 0.4rem;
+  }
+
+  .course-body { min-width: 0; }
+
+  .course-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    color: var(--navy);
+    font-weight: 400;
+    line-height: 1.3;
+    margin-bottom: 0.25rem;
+  }
+
+  .course-instructor {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 0.65rem;
+  }
+
+  .course-summary {
+    font-size: 0.92rem;
+    color: #333;
+    line-height: 1.65;
+    margin-bottom: 0.75rem;
+  }
+
+  .course-links {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .course-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-light);
+    padding-bottom: 1px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .course-link:hover {
+    color: var(--navy);
+    border-bottom-color: var(--navy);
+  }
+
+  /* Grade chip */
+  .course-grade {
+    text-align: center;
+    padding-top: 0.3rem;
+  }
+
+  .grade-chip {
+    display: inline-block;
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem;
+    color: var(--navy);
+    background: var(--cream);
+    border: 1px solid var(--rule);
+    padding: 0.35rem 0.7rem 0.45rem;
+    line-height: 1;
+    min-width: 54px;
+  }
+
+  .grade-chip.a-plus {
+    background: var(--navy);
+    color: var(--cream);
+    border-color: var(--navy);
+  }
+
+  .grade-chip.pending {
+    background: var(--paper);
+    color: var(--accent);
+    border: 1px dashed var(--accent);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    font-style: normal;
+    text-transform: uppercase;
+    padding: 0.55rem 0.55rem;
+  }
+
+  .grade-note {
+    display: block;
+    font-family: 'DM Mono', monospace;
+    font-size: 8.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 0.4rem;
+    line-height: 1.5;
+  }
+
+  /* Semester footer */
+  .semester-footer {
+    margin-top: 1rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: right;
+  }
+  .semester-footer strong {
+    color: var(--navy);
+    font-weight: 500;
+  }
+
+  /* Program info */
+  .program-block {
+    max-width: 720px;
+    margin: 3.5rem auto 0;
+    padding: 2rem 2rem;
+    background: white;
+    border: 1px solid var(--rule);
+  }
+
+  .program-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .program-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.35rem;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .program-body {
+    font-size: 0.95rem;
+    color: #333;
+    line-height: 1.7;
+  }
+  .program-body a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-light);
+  }
+
+  footer {
+    background: var(--navy);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    margin-top: 4rem;
+  }
+
+  footer p {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--powder);
+    opacity: 0.5;
+  }
+
+  footer a { color: var(--powder); text-decoration: none; transition: opacity 0.2s; }
+  footer a:hover { opacity: 1; }
+
+  @media (max-width: 700px) {
+    .gpa-card { grid-template-columns: repeat(2, 1fr); gap: 1.5rem 1rem; }
+    .course { grid-template-columns: 1fr 70px; gap: 1rem; }
+    .course-code { grid-column: 1 / -1; padding-top: 0; padding-bottom: 0.4rem; border-bottom: 1px dotted var(--rule); display: flex; gap: 0.75rem; align-items: baseline; }
+    .course-code-num { display: inline; margin: 0; }
+    .course-code-credits { display: inline; margin: 0; }
+    .course-grade { padding-top: 0; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a class="back-link" href="index.html"><span class="back-arrow">&larr;</span>Kevin Linares &middot; Portfolio</a>
+    <h1>Graduate <em>Coursework</em></h1>
+    <p class="tagline">University of Maryland Joint Program in Survey Methodology</p>
+  </div>
+</header>
+
+<main>
+
+  <section class="lede">
+    <p>Two years of graduate training in the <strong>MS in Survey and Data Science</strong> at the University of Maryland JPSM, in partnership with the University of Michigan Survey Research Center. Courses are listed below in the order I took them, with each entry linking to the official syllabus and the full set of homework, code, and project materials in the <a href="https://github.com/klinares/UMD_JPSM_coursework">coursework repository</a> on GitHub.</p>
+  </section>
+
+  <div class="gpa-card">
+    <div class="gpa-stat">
+      <p class="gpa-stat-num">3.96</p>
+      <p class="gpa-stat-label">Cumulative<br>GPA (projected)</p>
+    </div>
+    <div class="gpa-stat">
+      <p class="gpa-stat-num">47</p>
+      <p class="gpa-stat-label">Total<br>Credits</p>
+    </div>
+    <div class="gpa-stat">
+      <p class="gpa-stat-num">18</p>
+      <p class="gpa-stat-label">SURV<br>Courses</p>
+    </div>
+    <div class="gpa-stat">
+      <p class="gpa-stat-num">12</p>
+      <p class="gpa-stat-label">Grades of<br>A+</p>
+    </div>
+  </div>
+  <p class="gpa-footnote">Cumulative GPA shown reflects all four semesters once Spring 2026 finalizes; UMD's transcript records 3.948 through Fall 2025 and lists Spring 2026 as in progress. SURV745 is currently posted as NG (no grade) and finalizes at A+.</p>
+
+  <!-- FALL 2024 -->
+  <section class="semester">
+    <div class="semester-header">
+      <h2 class="semester-name">Fall 2024</h2>
+      <span class="semester-meta">12 credits &middot; GPA 3.925</span>
+    </div>
+
+    <div class="course">
+      <div class="course-code">
+        <span class="course-code-num">SURV 615</span>
+        <span class="course-code-credits">3 CREDITS</span>
+      </div>
+      <div class="course-body">
+        <h3 class="course-title">Statistical Methods and Machine Learning I</h3>
+        <p class="course-instructor">John Kubale &middot; UMICH / JPSM</p>
+        <p class="course-summary">First course in a three-term sequence in applied statistical methods and machine learning for complex datasets. Covers linear model theory and regression as the basis for handling survey and observational data, with emphasis on the proper application of techniques (model assumptions, diagnostics, interpretation) rather than derivation of theoretical properties. Implemented in R using Faraway and James, Witten, Hastie, and Tibshirani as core texts.</p>
+        <div class="course-links">
+          <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/blob/main/stat_mod_ML_1_SURV615/syllabus.pdf">Syllabus &#8599;</a>
+          <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/tree/main/stat_mod_ML_1_SURV615">Course Materials &#8599;</a>
+        </div>
+      </div>
+      <div class="course-grade">
+        <span class="grade-chip">A</span>
+      </div>
+    </div>
+
+    <div class="course">
+      <div class="course-code">
+        <span class="course-code-num">SURV 621</span>
+        <span class="course-code-credits">3 CREDITS</span>
+      </div>
+      <div class="course-body">
+        <h3 class="course-title">Fundamentals of Data Collection I</h3>
+        <p class="course-instructor">Christopher Antoun &middot; Z. Tuba Suzer-Gurtekin</p>
+        <p class="course-summary">First semester of a two-semester sequence on the processes that generate data, both designed (primarily survey data) and found (administrative records, smartphone sensor data, social media). Introduces the Total Survey Error framework and its extension to found data, then works through coverage error, nonresponse error, sources of measurement error in questionnaire writing, and modes of data collection from classic (mail, face-to-face, telephone, web) to emerging (text/SMS, video) and mixed-mode designs.</p>
+        <div class="course-links">
+          <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/blob/main/fund_data_coll_1_SURV621/syllabus.pdf">Syllabus &#8599;</a>
+          <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/tree/main/fund_data_coll_1_SURV621">Course Materials &#8599;</a>
+        </div>
+      </div>
+      <div class="course-grade">
+        <span class="grade-chip">A&minus;</span>
+      </div>
+    </div>
+
+    <div class="course">
+      <div class="course-code">
+        <span class="course-code-num">SURV 632</span>
+        <span class="course-code-credits">3 CREDITS</span>
+      </div>
+      <div class="course-body">
+        <h3 class="course-title">Cognition, Communication, and Survey Measurement</h3>
+        <p class="course-instructor">Aaron Maitland</p>
+        <p class="course-summary">Covers major sources of survey measurement error from the perspective of the social sciences, particularly cognitive psychology. The first part of the course follows the sequence of cognitive processes a respondent carries out to produce an answer — comprehension, retrieval, judgment, response — and the errors that arise at each stage (misunderstanding questions, forgetting relevant information, imprecise estimation, question and response order effects). The second part covers special topics: classification and coding, technology-mediated responding, survey satisficing, and cross-cultural survey research.</p>
+        <div class="course-links">
+          <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/blob/main/cog_comm_surv_measurement_SURV632/syllabus.pdf">Syllabus &#8599;</a>
+          <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/tree/main/cog_comm_surv_measurement_SURV632">Course Materials &#8599;</a>
+        </div>
+      </div>
+      <div class="course-grade">
+        <span class="grade-chip">A</span>
+      </div>
+    </div>
+
+    <div class="course">
+      <div class="course-code">
+        <span class="course-code-num">SURV 727</span>
+        <span class="course-code-credits">3 CREDITS</span>
+      </div>
+      <div class="course-body">
+        <h3 class="course-title">Fundamentals of Computing and Data Display</h3>
+        <p class="course-instructor">Brian Kim</p>
+        <p class="course-summary">A computational methods course for empirical social scientists working with data that extends beyond structured, ready-to-handle survey data. The first half covers web scraping and APIs for gathering data from the web and storing and managing data from diverse sources efficiently; the second half covers techniques for exploring and finding patterns in non-standard data with a focus on data visualization. Built around R, with excursions into SQL and big-data processing tools, and uses Git and GitHub for reproducible, collaborative research.</p>
+        <div class="course-links">
+          <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/blob/main/fund_comp_data_display_SURV727/syllabus.pdf">Syllabus &#8599;</a>
+          <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/tree/main/fund_comp_data_display_SURV727">Course Materials &#8599;</a>
+        </div>
+      </div>
+      <div class="course-grade">
+        <span class="grade-chip a-plus">A+</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPRING 2025 -->
+  <section class="semester">
+    <div class="semester-header">
+      <h2 class="semester-name">Spring 2025</h2>
+      <span class="semester-meta">12 credits &middot; GPA 3.925</span>
+    </div>
+
+    <div class="course">
+      <div class="course-code">
+        <span class="course-code-num">SURV 613</span>
+        <span class="course-code-credits">3 CREDITS</span>
+      </div>
+      <div class="course-body">
+        <h3 class="course-title">Machine Learning for Social Science</h3>
+        <p class="course-instructor">Brian Kim</p>
+        <p class="course-summary">An introduction to supervised statistical learning techniques — decision trees, random forests, boosting, and related methods — and their potential applications in the social sciences. Where traditional regression focuses on causation, predictive methods focus on learning a function f(X) that predicts an outcome Y, opening different research perspectives and providing a valuable extension to empirical social scientists' toolkits as new data sources become more prominent. Covers the full ML workflow (data preparation, model building, validation, testing), the bias-variance tradeoff, and evaluation by both performance metrics and fairness measures.</p>
+        <div class="course-links">
+          <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/blob/main/ML_social_science_SURV613/syllabus.pdf">Syllabus &#8599;</a>
+          <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/tree/main/ML_social_science_SURV613">Course Materials &#8599;</a>
+        </div>
+      </div>
+      <div class="course-grade">
+        <span class="grade-chip a-plus">A+</span>
+      </div>
+    </div>
+
+    <div class="course">
+      <div class="course-code">
+        <span class="course-code-num">SURV 616</span>
+        <span class="course-code-credits">3 CREDITS</span>
+      </div>
+      <div class="course-body">
+        <h3 class="course-title">Statistical Methods and Machine Learning II</h3>
+        <p class="course-instructor">Z. Tuba Suzer-Gurtekin</p>
+        <p class="course-summary">Second course in the three-term applied statistics sequence, building on SURV 615 by introducing methods for categorical data and classification problems — predicting binary outcomes, classifying cases, and reasoning about how various perspectives can be applied to the same data analysis problem. Emphasis on comprehending the techniques and their assumptions rather than deriving their theoretical properties, applied through weekly homework, a paper, and a final exam.</p>
+        <div class="course-links">
+          <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/blob/main/stat_mod_ML_2_SURV616/syllabus.pdf">Syllabus &#8599;</a>
+          <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/tree/main/stat_mod_ML_2_SURV616">Course Materials &#8599;</a>
+        </div>
+      </div>
+      <div class="course-grade">
+        <span class="grade-chip a-plus">A+</span>
+      </div>
+    </div>
+
+    <div class="course">
+      <div class="course-code">
+        <span class="course-code-num">SURV 622</span>
+        <span class="course-code-credits">3 CREDITS</span>
+      </div>
+      <div class="course-body">
+        <h3 class="course-title">Fundamentals of Data Collection II</h3>
+        <p class="course-instructor">Frederick Conrad &middot; Brian Kim &middot; James Wagner</p>
+        <p class="course-summary">Second semester of the two-semester data-collection sequence, reversing the focus from designed to found data. Covers data augmentation across sources, repurposed data with an emphasis on linkage to administrative records and extraction from online sources, text classification (turning written documents into usable data, including machine-learning techniques for automated coding of open responses), special issues in longitudinal data, and methods for evaluating the quality of survey and non-survey data.</p>
+        <div class="course-links">
+          <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/blob/main/Fund_data_collection_SURV622/syllabus.pdf">Syllabus &#8599;</a>
+          <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/tree/main/Fund_data_collection_SURV622">Course Materials &#8599;</a>
+        </div>
+      </div>
+      <div class="course-grade">
+        <span class="grade-chip">A</span>
+      </div>
+    </div>
+
+    <div class="course">
+      <div class="course-code">
+        <span class="course-code-num">SURV 625</span>
+        <span class="course-code-credits">3 CREDITS</span>
+      </div>
+      <div class="course-body">
+        <h3 class="course-title">Applied Sampling</h3>
+        <p class="course-instructor">Yajuan Si</p>
+        <p class="course-summary">An applied statistical methods course concerned almost exclusively with the design of data collection through probability sampling. Covers the main techniques used in sampling practice — simple random sampling, stratification, systematic selection, cluster sampling, probability proportional to size, and multistage sampling — along with sampling cost models, sampling error estimation, non-sampling errors, missing data, and nonprobability samples. Focuses on competency in computing and reasoning about sampling variances for means and proportions under each technique.</p>
+        <div class="course-links">
+          <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/blob/main/applied_sampling_SURV625/syllabus.pdf">Syllabus &#8599;</a>
+          <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/tree/main/applied_sampling_SURV625">Course Materials &#8599;</a>
+        </div>
+      </div>
+      <div class="course-grade">
+        <span class="grade-chip">A&minus;</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FALL 2025 -->
+  <section class="semester">
+    <div class="semester-header">
+      <h2 class="semester-name">Fall 2025</h2>
+      <span class="semester-meta">11 credits &middot; GPA 4.000</span>
+    </div>
+
+    <div class="course">
+      <div class="course-code">
+        <span class="course-code-num">SURV 617</span>
+        <span class="course-code-credits">3 CREDITS</span>
+      </div>
+      <div class="course-body">
+        <h3 class="course-title">Applications of Statistical Modeling</h3>
+        <p class="course-instructor">Brady T. West &middot; John Kubale</p>
+        <p class="course-summary">Required for all three tracks of the JPSM and MPSDS programs, this course covers applications of more advanced statistical modeling tools for substantive and methodological investigations: multilevel and marginal modeling for clustered or longitudinal data (with applications to interviewer effects and to trend modeling in the Health and Retirement Study), structural equation modeling (with latent class models applied to measurement-error studies), and machine learning algorithms (with an application to response propensity prediction). Each technique is supplemented with methods for handling complex sample designs when fitting models.</p>
+        <div class="course-links">
+          <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/blob/main/applications_stats_modeling_SURV617/syllabus.pdf">Syllabus &#8599;</a>
+          <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/tree/main/applications_stats_modeling_SURV617">Course Materials &#8599;</a>
+        </div>
+      </div>
+      <div class="course-grade">
+        <span class="grade-chip a-plus">A+</span>
+      </div>
+    </div>
+
+    <div class="course">
+      <div class="course-code">
+        <span class="course-code-num">SURV 626</span>
+        <span class="course-code-credits">2 CREDITS</span>
+      </div>
+      <div class="course-body">
+        <h3 class="course-title">Sampling I</h3>
+        <p class="course-instructor">Raphael Nishimura</p>
+        <p class="course-summary">An applied statistics methods course concerned with the design of data collection rather than the analysis of collected data, focused on the particular problems of sampling human populations. Covers the basic ideas, concepts, and principles of probability sampling from an applied perspective; identification and appropriate application of sampling techniques to survey design problems; sample-size calculation for a variety of designs; the impact of sample design on survey estimates; and precision estimation using different techniques.</p>
+        <div class="course-links">
+          <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/blob/main/sampling_1_SURV626/syllabus.pdf">Syllabus &#8599;</a>
+          <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/tree/main/sampling_1_SURV626">Course Materials &#8599;</a>
+        </div>
+      </div>
+      <div class="course-grade">
+        <span class="grade-chip a-plus">A+</span>
+      </div>
+    </div>
+
+    <div class="course">
+      <div class="course-code">
+        <span class="course-code-num">SURV 720</span>
+        <span class="course-code-credits">2 CREDITS</span>
+      </div>
+      <div class="course-body">
+        <h3 class="course-title">Total Survey Error and Data Quality I</h3>
+        <p class="course-instructor">Sharan Sharma</p>
+        <p class="course-summary">A focused treatment of the major sources of error in estimates derived from survey data, excluding random sampling error. Covers coverage error (failure to give every member of the population a chance of selection), nonresponse error (failure to collect data on all sampled cases), measurement error (failure of recorded responses to reflect respondents' true characteristics), and editing, processing, and analysis errors, along with errors specific to newer data sources. Examines the interplay of errors and costs in survey designs and the tradeoffs that arise when reducing one source can increase another.</p>
+        <div class="course-links">
+          <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/blob/main/total_survey_error_SURV720/syllabus.pdf">Syllabus &#8599;</a>
+          <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/tree/main/total_survey_error_SURV720">Course Materials &#8599;</a>
+        </div>
+      </div>
+      <div class="course-grade">
+        <span class="grade-chip">A</span>
+      </div>
+    </div>
+
+    <div class="course">
+      <div class="course-code">
+        <span class="course-code-num">SURV 740</span>
+        <span class="course-code-credits">3 CREDITS</span>
+      </div>
+      <div class="course-body">
+        <h3 class="course-title">Fundamentals of Inference</h3>
+        <p class="course-instructor">Yan Li &middot; guest: Barry Graubard (NCI/NIH)</p>
+        <p class="course-summary">One of the three fundamental courses required by all students in the JPSM and MPSDS master's programs. Focused on the fundamentals of statistical inference in the finite population setting — the foundational theory that distinguishes survey statistics from standard inferential statistics, and the basis on which design-based methods for variance estimation and inference under complex sample designs are built.</p>
+        <div class="course-links">
+          <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/blob/main/Fund_Infe_SURV740/syllabus.pdf">Syllabus &#8599;</a>
+          <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/tree/main/Fund_Infe_SURV740">Course Materials &#8599;</a>
+        </div>
+      </div>
+      <div class="course-grade">
+        <span class="grade-chip a-plus">A+</span>
+      </div>
+    </div>
+
+    <div class="course">
+      <div class="course-code">
+        <span class="course-code-num">SURV 752</span>
+        <span class="course-code-credits">1 CREDIT</span>
+      </div>
+      <div class="course-body">
+        <h3 class="course-title">Introduction to Data Visualization</h3>
+        <p class="course-instructor">Richard Traunm&uuml;ller &middot; Olga Kononykhina</p>
+        <p class="course-summary">A short, intensive course on data visualization as a methodology for social science analysis rather than simply turning data into visual objects. Covers principles of analytic design and graphical perception, the distinction between high-level goals (exploration vs. presentation) and low-level goals (specific comparisons, revealing specific patterns), and the comparative merits of familiar formats — bar, dot, and line charts — alongside less well-known formats such as slope graphs, sparklines, bullet graphs, and small multiples. Implemented in R.</p>
+        <div class="course-links">
+          <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/blob/main/Data_visualization_SURV752/syllabus.pdf">Syllabus &#8599;</a>
+          <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/tree/main/Data_visualization_SURV752">Course Materials &#8599;</a>
+        </div>
+      </div>
+      <div class="course-grade">
+        <span class="grade-chip a-plus">A+</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPRING 2026 -->
+  <section class="semester">
+    <div class="semester-header">
+      <h2 class="semester-name">Spring 2026</h2>
+      <span class="semester-meta">12 credits &middot; In progress</span>
+    </div>
+
+    <div class="course">
+      <div class="course-code">
+        <span class="course-code-num">SURV 701</span>
+        <span class="course-code-credits">3 CREDITS</span>
+      </div>
+      <div class="course-body">
+        <h3 class="course-title">Analysis of Complex Sample Survey Data</h3>
+        <p class="course-instructor">Taylor Lewis (RTI)</p>
+        <p class="course-summary">An introduction to the statistical procedures developed for the analysis of complex sample survey data. Covers selection and compensatory weights, the effects of stratification and clustering on estimation and inference, alternative variance estimation procedures (Taylor series linearization and replication-based methods including JRR and BRR), methods and software that take complex sample designs into account, and methods for handling missing data through weighting adjustment and imputation. Built around West, Heeringa, and Berglund's <em>Applied Survey Data Analysis</em>.</p>
+        <div class="course-links">
+          <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/blob/main/complex_sample_data_SURV701/syllabus.pdf">Syllabus &#8599;</a>
+          <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/tree/main/complex_sample_data_SURV701">Course Materials &#8599;</a>
+        </div>
+      </div>
+      <div class="course-grade">
+        <span class="grade-chip a-plus">A+</span>
+      </div>
+    </div>
+
+    <div class="course">
+      <div class="course-code">
+        <span class="course-code-num">SURV 721</span>
+        <span class="course-code-credits">2 CREDITS</span>
+      </div>
+      <div class="course-body">
+        <h3 class="course-title">Total Survey Error and Data Quality II</h3>
+        <p class="course-instructor">Ting Yan (NORC) &middot; Sharan Sharma</p>
+        <p class="course-summary">A research-and-writing companion to SURV 720. Where the first term reviewed the existing research on total survey error, the second term gives students the opportunity to plan methodological research, conduct analysis on a specific form of survey error or data quality, and write a journal-article-style paper. The instructors take on the role of reviewers, with the explicit goal that final papers meet the standards of journals such as <em>Public Opinion Quarterly</em>, the <em>Journal of Official Statistics</em>, and the <em>Journal of Survey Statistics and Methodology</em>.</p>
+        <div class="course-links">
+          <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/blob/main/total_survey_error_II_SURV721/syllabus.pdf">Syllabus &#8599;</a>
+          <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/tree/main/total_survey_error_II_SURV721">Course Materials &#8599;</a>
+        </div>
+      </div>
+      <div class="course-grade">
+        <span class="grade-chip a-plus">A+</span>
+      </div>
+    </div>
+
+    <div class="course">
+      <div class="course-code">
+        <span class="course-code-num">SURV 745</span>
+        <span class="course-code-credits">3 CREDITS</span>
+      </div>
+      <div class="course-body">
+        <h3 class="course-title">Practical Tools for Study Design and Inference</h3>
+        <p class="course-instructor">Sunghee Lee &middot; Raphael Nishimura</p>
+        <p class="course-summary">A hands-on sampling-statistics course for second-year master's and doctoral students, combining applications with a review of the theory behind different approaches to sampling and weighting. Topics include sample-size calculation using relative standard error, margin of error, and power; mathematical programming for sample-size optimization across multiple subgroups; resources for area probability sample design; sample allocation in multistage designs; base weights, nonresponse adjustments, and auxiliary-data uses; nonresponse adjustment via weighting cells, regression-tree cells, and propensity scores; calibration via poststratification, raking, and general regression estimation; and weighting for nonprobability samples. Implemented in R (<code>PracTools</code>, <code>survey</code>, <code>tidycensus</code>) and Excel.</p>
+        <div class="course-links">
+          <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/blob/main/PracTools_SURV745/syllabus.pdf">Syllabus &#8599;</a>
+          <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/tree/main/PracTools_SURV745">Course Materials &#8599;</a>
+        </div>
+      </div>
+      <div class="course-grade">
+        <span class="grade-chip a-plus">A+</span>
+        <span class="grade-note">Pending posting</span>
+      </div>
+    </div>
+
+    <div class="course">
+      <div class="course-code">
+        <span class="course-code-num">SURV 751</span>
+        <span class="course-code-credits">1 CREDIT</span>
+      </div>
+      <div class="course-body">
+        <h3 class="course-title">Introduction to Machine Learning and Big Data</h3>
+        <p class="course-instructor">Trent D. Buskirk &middot; Frauke Kreuter</p>
+        <p class="course-summary">A focused introduction to how Big Data concepts and machine-learning methods are used in the context of survey research. Covers Big Data terminology and common data-generating processes; primary issues in linking Big Data with survey data; coverage and measurement error in the Big Data context; inference versus prediction; general ML concepts, signal detection, and information extraction; and key analytic techniques (classification trees, random forests, conditional forests) applied to Big Data problems. Implemented in R with example code, illustrated with survey-research examples including tailored survey designs and nonresponse adjustment evaluation.</p>
+        <div class="course-links">
+          <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/blob/main/intro_ML_big_data_SURV751/syllabus.pdf">Syllabus &#8599;</a>
+          <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/tree/main/intro_ML_big_data_SURV751">Course Materials &#8599;</a>
+        </div>
+      </div>
+      <div class="course-grade">
+        <span class="grade-chip a-plus">A+</span>
+      </div>
+    </div>
+
+    <div class="course">
+      <div class="course-code">
+        <span class="course-code-num">SURV 772</span>
+        <span class="course-code-credits">3 CREDITS</span>
+      </div>
+      <div class="course-body">
+        <h3 class="course-title">Survey Design Seminar</h3>
+        <p class="course-instructor">Michael Elliott &middot; Michael Traugott</p>
+        <p class="course-summary">A practical training element preparing students to work with real-world clients on methodological problems, with instruction in consulting skills, professional presentations, developing research proposals in response to requests for proposals, and professional conduct in survey design, data collection, analysis, and data science. Includes student and client presentation sessions in which teams present solutions to design issues raised by external sponsors, with readings drawn from literatures not covered in other classes and practical consulting problems addressed directly.</p>
+        <div class="course-links">
+          <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/blob/main/design_seminar_SURV670/syllabus.pdf">Syllabus &#8599;</a>
+          <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/tree/main/design_seminar_SURV670">Course Materials &#8599;</a>
+        </div>
+      </div>
+      <div class="course-grade">
+        <span class="grade-chip a-plus">A+</span>
+        <span class="grade-note">UMICH code: 670</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="program-block">
+    <p class="program-label">Program</p>
+    <h3 class="program-title">MS, Survey and Data Science</h3>
+    <p class="program-body">
+      Joint Program in Survey Methodology, University of Maryland, in partnership with the Program in Survey and Data Science at the University of Michigan Survey Research Center. Program details and course catalog at <a href="https://jpsm.umd.edu/">jpsm.umd.edu</a>. Course materials, code, and homework available in the <a href="https://github.com/klinares/UMD_JPSM_coursework">coursework repository</a>.
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  <p><a href="index.html">&larr; Back to portfolio</a> &nbsp;&middot;&nbsp; Kevin Linares &nbsp;&middot;&nbsp; University of Maryland JPSM &nbsp;&middot;&nbsp; University of Michigan Survey Research Center</p>
+</footer>
+
+</body>
+</html>
