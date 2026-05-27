@@ -124,12 +124,12 @@
 
   /* GPA Card */
   .gpa-card {
-    max-width: 720px;
+    max-width: 460px;
     margin: 2.75rem auto 0;
     background: var(--navy);
     padding: 2rem 2rem 2.25rem;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.25rem;
     position: relative;
   }
@@ -219,7 +219,7 @@
     padding: 1.5rem 0 1.65rem;
     border-bottom: 1px solid var(--rule);
     display: grid;
-    grid-template-columns: 90px 1fr 80px;
+    grid-template-columns: 90px 1fr;
     gap: 1.5rem;
     align-items: start;
   }
@@ -419,11 +419,9 @@
 
   @media (max-width: 700px) {
     .gpa-card { grid-template-columns: repeat(2, 1fr); gap: 1.5rem 1rem; }
-    .course { grid-template-columns: 1fr 70px; gap: 1rem; }
-    .course-code { grid-column: 1 / -1; padding-top: 0; padding-bottom: 0.4rem; border-bottom: 1px dotted var(--rule); display: flex; gap: 0.75rem; align-items: baseline; }
+    .course { grid-template-columns: 1fr; gap: 0.5rem; }
+    .course-code { padding-top: 0; padding-bottom: 0.4rem; border-bottom: 1px dotted var(--rule); display: flex; gap: 0.75rem; align-items: baseline; }
     .course-code-num { display: inline; margin: 0; }
-    .course-code-credits { display: inline; margin: 0; }
-    .course-grade { padding-top: 0; }
   }
 </style>
 </head>
@@ -446,34 +444,23 @@
   <div class="gpa-card">
     <div class="gpa-stat">
       <p class="gpa-stat-num">3.96</p>
-      <p class="gpa-stat-label">Cumulative<br>GPA (projected)</p>
-    </div>
-    <div class="gpa-stat">
-      <p class="gpa-stat-num">47</p>
-      <p class="gpa-stat-label">Total<br>Credits</p>
+      <p class="gpa-stat-label">Cumulative<br>GPA</p>
     </div>
     <div class="gpa-stat">
       <p class="gpa-stat-num">18</p>
       <p class="gpa-stat-label">SURV<br>Courses</p>
     </div>
-    <div class="gpa-stat">
-      <p class="gpa-stat-num">12</p>
-      <p class="gpa-stat-label">Grades of<br>A+</p>
-    </div>
   </div>
-  <p class="gpa-footnote">Cumulative GPA shown reflects all four semesters once Spring 2026 finalizes; UMD's transcript records 3.948 through Fall 2025 and lists Spring 2026 as in progress. SURV745 is currently posted as NG (no grade) and finalizes at A+.</p>
 
   <!-- FALL 2024 -->
   <section class="semester">
     <div class="semester-header">
       <h2 class="semester-name">Fall 2024</h2>
-      <span class="semester-meta">12 credits &middot; GPA 3.925</span>
     </div>
 
     <div class="course">
       <div class="course-code">
         <span class="course-code-num">SURV 615</span>
-        <span class="course-code-credits">3 CREDITS</span>
       </div>
       <div class="course-body">
         <h3 class="course-title">Statistical Methods and Machine Learning I</h3>
@@ -483,15 +470,11 @@
           <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/tree/main/stat_mod_ML_1_SURV615">Course Materials &#8599;</a>
         </div>
       </div>
-      <div class="course-grade">
-        <span class="grade-chip">A</span>
-      </div>
     </div>
 
     <div class="course">
       <div class="course-code">
         <span class="course-code-num">SURV 621</span>
-        <span class="course-code-credits">3 CREDITS</span>
       </div>
       <div class="course-body">
         <h3 class="course-title">Fundamentals of Data Collection I</h3>
@@ -501,15 +484,11 @@
           <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/tree/main/fund_data_coll_1_SURV621">Course Materials &#8599;</a>
         </div>
       </div>
-      <div class="course-grade">
-        <span class="grade-chip">A&minus;</span>
-      </div>
     </div>
 
     <div class="course">
       <div class="course-code">
         <span class="course-code-num">SURV 632</span>
-        <span class="course-code-credits">3 CREDITS</span>
       </div>
       <div class="course-body">
         <h3 class="course-title">Cognition, Communication, and Survey Measurement</h3>
@@ -519,15 +498,11 @@
           <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/tree/main/cog_comm_surv_measurement_SURV632">Course Materials &#8599;</a>
         </div>
       </div>
-      <div class="course-grade">
-        <span class="grade-chip">A</span>
-      </div>
     </div>
 
     <div class="course">
       <div class="course-code">
         <span class="course-code-num">SURV 727</span>
-        <span class="course-code-credits">3 CREDITS</span>
       </div>
       <div class="course-body">
         <h3 class="course-title">Fundamentals of Computing and Data Display</h3>
@@ -537,9 +512,6 @@
           <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/tree/main/fund_comp_data_display_SURV727">Course Materials &#8599;</a>
         </div>
       </div>
-      <div class="course-grade">
-        <span class="grade-chip a-plus">A+</span>
-      </div>
     </div>
   </section>
 
@@ -547,13 +519,11 @@
   <section class="semester">
     <div class="semester-header">
       <h2 class="semester-name">Spring 2025</h2>
-      <span class="semester-meta">12 credits &middot; GPA 3.925</span>
     </div>
 
     <div class="course">
       <div class="course-code">
         <span class="course-code-num">SURV 613</span>
-        <span class="course-code-credits">3 CREDITS</span>
       </div>
       <div class="course-body">
         <h3 class="course-title">Machine Learning for Social Science</h3>
@@ -563,15 +533,11 @@
           <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/tree/main/ML_social_science_SURV613">Course Materials &#8599;</a>
         </div>
       </div>
-      <div class="course-grade">
-        <span class="grade-chip a-plus">A+</span>
-      </div>
     </div>
 
     <div class="course">
       <div class="course-code">
         <span class="course-code-num">SURV 616</span>
-        <span class="course-code-credits">3 CREDITS</span>
       </div>
       <div class="course-body">
         <h3 class="course-title">Statistical Methods and Machine Learning II</h3>
@@ -581,15 +547,11 @@
           <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/tree/main/stat_mod_ML_2_SURV616">Course Materials &#8599;</a>
         </div>
       </div>
-      <div class="course-grade">
-        <span class="grade-chip a-plus">A+</span>
-      </div>
     </div>
 
     <div class="course">
       <div class="course-code">
         <span class="course-code-num">SURV 622</span>
-        <span class="course-code-credits">3 CREDITS</span>
       </div>
       <div class="course-body">
         <h3 class="course-title">Fundamentals of Data Collection II</h3>
@@ -599,15 +561,11 @@
           <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/tree/main/Fund_data_collection_SURV622">Course Materials &#8599;</a>
         </div>
       </div>
-      <div class="course-grade">
-        <span class="grade-chip">A</span>
-      </div>
     </div>
 
     <div class="course">
       <div class="course-code">
         <span class="course-code-num">SURV 625</span>
-        <span class="course-code-credits">3 CREDITS</span>
       </div>
       <div class="course-body">
         <h3 class="course-title">Applied Sampling</h3>
@@ -617,9 +575,6 @@
           <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/tree/main/applied_sampling_SURV625">Course Materials &#8599;</a>
         </div>
       </div>
-      <div class="course-grade">
-        <span class="grade-chip">A&minus;</span>
-      </div>
     </div>
   </section>
 
@@ -627,13 +582,11 @@
   <section class="semester">
     <div class="semester-header">
       <h2 class="semester-name">Fall 2025</h2>
-      <span class="semester-meta">11 credits &middot; GPA 4.000</span>
     </div>
 
     <div class="course">
       <div class="course-code">
         <span class="course-code-num">SURV 617</span>
-        <span class="course-code-credits">3 CREDITS</span>
       </div>
       <div class="course-body">
         <h3 class="course-title">Applications of Statistical Modeling</h3>
@@ -643,15 +596,11 @@
           <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/tree/main/applications_stats_modeling_SURV617">Course Materials &#8599;</a>
         </div>
       </div>
-      <div class="course-grade">
-        <span class="grade-chip a-plus">A+</span>
-      </div>
     </div>
 
     <div class="course">
       <div class="course-code">
         <span class="course-code-num">SURV 626</span>
-        <span class="course-code-credits">2 CREDITS</span>
       </div>
       <div class="course-body">
         <h3 class="course-title">Sampling I</h3>
@@ -661,15 +610,11 @@
           <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/tree/main/sampling_1_SURV626">Course Materials &#8599;</a>
         </div>
       </div>
-      <div class="course-grade">
-        <span class="grade-chip a-plus">A+</span>
-      </div>
     </div>
 
     <div class="course">
       <div class="course-code">
         <span class="course-code-num">SURV 720</span>
-        <span class="course-code-credits">2 CREDITS</span>
       </div>
       <div class="course-body">
         <h3 class="course-title">Total Survey Error and Data Quality I</h3>
@@ -679,15 +624,11 @@
           <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/tree/main/total_survey_error_SURV720">Course Materials &#8599;</a>
         </div>
       </div>
-      <div class="course-grade">
-        <span class="grade-chip">A</span>
-      </div>
     </div>
 
     <div class="course">
       <div class="course-code">
         <span class="course-code-num">SURV 740</span>
-        <span class="course-code-credits">3 CREDITS</span>
       </div>
       <div class="course-body">
         <h3 class="course-title">Fundamentals of Inference</h3>
@@ -697,15 +638,11 @@
           <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/tree/main/Fund_Infe_SURV740">Course Materials &#8599;</a>
         </div>
       </div>
-      <div class="course-grade">
-        <span class="grade-chip a-plus">A+</span>
-      </div>
     </div>
 
     <div class="course">
       <div class="course-code">
         <span class="course-code-num">SURV 752</span>
-        <span class="course-code-credits">1 CREDIT</span>
       </div>
       <div class="course-body">
         <h3 class="course-title">Introduction to Data Visualization</h3>
@@ -715,9 +652,6 @@
           <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/tree/main/Data_visualization_SURV752">Course Materials &#8599;</a>
         </div>
       </div>
-      <div class="course-grade">
-        <span class="grade-chip a-plus">A+</span>
-      </div>
     </div>
   </section>
 
@@ -725,13 +659,11 @@
   <section class="semester">
     <div class="semester-header">
       <h2 class="semester-name">Spring 2026</h2>
-      <span class="semester-meta">12 credits &middot; In progress</span>
     </div>
 
     <div class="course">
       <div class="course-code">
         <span class="course-code-num">SURV 701</span>
-        <span class="course-code-credits">3 CREDITS</span>
       </div>
       <div class="course-body">
         <h3 class="course-title">Analysis of Complex Sample Survey Data</h3>
@@ -741,15 +673,11 @@
           <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/tree/main/complex_sample_data_SURV701">Course Materials &#8599;</a>
         </div>
       </div>
-      <div class="course-grade">
-        <span class="grade-chip a-plus">A+</span>
-      </div>
     </div>
 
     <div class="course">
       <div class="course-code">
         <span class="course-code-num">SURV 721</span>
-        <span class="course-code-credits">2 CREDITS</span>
       </div>
       <div class="course-body">
         <h3 class="course-title">Total Survey Error and Data Quality II</h3>
@@ -759,15 +687,11 @@
           <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/tree/main/total_survey_error_II_SURV721">Course Materials &#8599;</a>
         </div>
       </div>
-      <div class="course-grade">
-        <span class="grade-chip a-plus">A+</span>
-      </div>
     </div>
 
     <div class="course">
       <div class="course-code">
         <span class="course-code-num">SURV 745</span>
-        <span class="course-code-credits">3 CREDITS</span>
       </div>
       <div class="course-body">
         <h3 class="course-title">Practical Tools for Study Design and Inference</h3>
@@ -777,16 +701,11 @@
           <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/tree/main/PracTools_SURV745">Course Materials &#8599;</a>
         </div>
       </div>
-      <div class="course-grade">
-        <span class="grade-chip a-plus">A+</span>
-        <span class="grade-note">Pending posting</span>
-      </div>
     </div>
 
     <div class="course">
       <div class="course-code">
         <span class="course-code-num">SURV 751</span>
-        <span class="course-code-credits">1 CREDIT</span>
       </div>
       <div class="course-body">
         <h3 class="course-title">Introduction to Machine Learning and Big Data</h3>
@@ -796,15 +715,11 @@
           <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/tree/main/intro_ML_big_data_SURV751">Course Materials &#8599;</a>
         </div>
       </div>
-      <div class="course-grade">
-        <span class="grade-chip a-plus">A+</span>
-      </div>
     </div>
 
     <div class="course">
       <div class="course-code">
         <span class="course-code-num">SURV 772</span>
-        <span class="course-code-credits">3 CREDITS</span>
       </div>
       <div class="course-body">
         <h3 class="course-title">Survey Design Seminar</h3>
@@ -813,10 +728,6 @@
           <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/blob/main/design_seminar_SURV670/syllabus.pdf">Syllabus &#8599;</a>
           <a class="course-link" href="https://github.com/klinares/UMD_JPSM_coursework/tree/main/design_seminar_SURV670">Course Materials &#8599;</a>
         </div>
-      </div>
-      <div class="course-grade">
-        <span class="grade-chip a-plus">A+</span>
-        <span class="grade-note">UMICH code: 670</span>
       </div>
     </div>
   </section>
