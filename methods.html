@@ -3,437 +3,1009 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Methodological Foundation, Kevin Linares</title>
-<meta name="description" content="A working reference to the Total Survey Error framework (Groves and colleagues) and the Total Error Framework (Amaya, Biemer, and Kinyon, 2020), the dual methodological foundation behind Kevin Linares' research portfolio.">
+<title>Methodological Foundation · Kevin Linares</title>
+<meta name="description" content="An interactive atlas of survey error: the Total Survey Error framework (Groves and colleagues) and its extensions to found data, digital traces, metered data, Twitter, and AI silicon samples — the methodological foundation behind Kevin Linares' research portfolio.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --navy: #0f1f38;
-    --navy-mid: #1a3255;
-    --slate: #2d4a6e;
-    --steel: #4a7098;
-    --powder: #a8c4d8;
-    --cream: #f5f0e8;
-    --paper: #faf8f4;
-    --ink: #1c1c1c;
-    --muted: #6b6b6b;
-    --rule: #d4cfc4;
-    --accent: #c94f2a;
-    --accent-light: #f0e0d6;
+  :root{
+    /* ---- site palette ---- */
+    --navy:#0f1f38;
+    --navy-mid:#1a3255;
+    --slate:#2d4a6e;
+    --steel:#4a7098;
+    --powder:#a8c4d8;
+    --cream:#f5f0e8;
+
+    /* ---- neutrals (warm, matching the portfolio) ---- */
+    --paper:#faf8f4;
+    --surface:#ffffff;
+    --surface-2:#f4efe6;
+    --ink:#1c1c1c;
+    --ink-soft:#444444;
+    --ink-faint:#6b6b6b;
+    --line:#d4cfc4;
+    --line-soft:#e6e0d4;
+
+    /* ---- three error arms, remapped into the site palette ----
+       color encodes WHICH error arm a source belongs to */
+    --rep:#34587f;   --rep-soft:#e7eef5;  --rep-deep:#20406a;   /* Representation — the "who"  (slate-blue) */
+    --meas:#c94f2a;  --meas-soft:#f3e2d8; --meas-deep:#8a3417;  /* Measurement   — the "what" (terracotta) */
+    --inf:#6b3a8c;   --inf-soft:#efe8f5;  --inf-deep:#3b1a5c;   /* Inference     — the "estimate" (plum) */
+
+    --focus:#c94f2a;
+
+    --serif:"DM Serif Display",Georgia,"Times New Roman",serif;
+    --sans:"Lora",Georgia,serif;
+    --mono:"DM Mono",ui-monospace,Consolas,monospace;
   }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    background: var(--paper);
-    color: var(--ink);
-    font-family: 'Lora', Georgia, serif;
-    font-size: 16px;
-    line-height: 1.75;
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:15px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
   }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 2rem}
 
-  header {
-    background: var(--navy);
-    padding: 4rem 2rem 3.5rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
+  /* ---------- Header (navy band, portfolio style) ---------- */
+  header.top{
+    background:var(--navy);
+    padding:3.5rem 2rem 2.25rem;
+    position:relative;
+    overflow:hidden;
   }
-
-  header::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(255,255,255,0.04) 79px, rgba(255,255,255,0.04) 80px),
-    repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(255,255,255,0.04) 79px, rgba(255,255,255,0.04) 80px);
+  header.top::before{
+    content:'';position:absolute;inset:0;
+    background:
+      repeating-linear-gradient(90deg,transparent,transparent 79px,rgba(255,255,255,.04) 79px,rgba(255,255,255,.04) 80px),
+      repeating-linear-gradient(0deg,transparent,transparent 79px,rgba(255,255,255,.04) 79px,rgba(255,255,255,.04) 80px);
   }
-
-  .header-inner { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
-
-  .back-link {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--powder);
-    text-decoration: none;
-    display: inline-block;
-    margin-bottom: 1.25rem;
-    transition: color 0.2s;
+  header.top .wrap{position:relative;z-index:1}
+  .back-link{
+    font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--powder);text-decoration:none;display:inline-block;margin-bottom:1.1rem;transition:color .2s;
   }
-
-  .back-link:hover { color: var(--cream); }
-
-  .back-arrow {
-    display: inline-block;
-    margin-right: 0.4em;
+  .back-link:hover{color:var(--cream)}
+  .back-link .arr{display:inline-block;margin-right:.45em}
+  h1.title{
+    font-family:var(--serif);font-weight:400;
+    font-size:clamp(2.1rem,4.6vw,3.2rem);line-height:1.12;letter-spacing:-.01em;
+    color:var(--cream);max-width:20ch;margin:0 0 .55rem;
   }
+  h1.title em{font-style:italic;color:var(--powder)}
+  .lede{max-width:62ch;color:var(--powder);font-style:italic;opacity:.9;font-size:1.02rem;line-height:1.5;margin:0}
+  .legend{display:flex;gap:1.25rem;flex-wrap:wrap;align-items:center;margin-top:1.5rem}
+  .legend .key{display:flex;gap:.5rem;align-items:center;font-family:var(--mono);font-size:11px;letter-spacing:.03em;color:var(--powder)}
+  .legend .swatch{width:12px;height:12px;border-radius:2px;border:1.5px solid;flex:0 0 auto}
+  .swatch.rep{background:var(--rep-soft);border-color:var(--rep)}
+  .swatch.meas{background:var(--meas-soft);border-color:var(--meas)}
+  .swatch.inf{background:var(--inf-soft);border-color:var(--inf)}
 
-  h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(2.2rem, 5vw, 3.4rem);
-    font-weight: 400;
-    color: var(--cream);
-    line-height: 1.15;
-    letter-spacing: -0.01em;
+  /* ---------- Framework tabs (sticky) ---------- */
+  nav.frameworks{
+    position:sticky;top:0;z-index:40;
+    background:rgba(250,248,244,.92);
+    backdrop-filter:saturate(120%) blur(8px);
+    border-bottom:1px solid var(--line);
   }
-
-  h1 em {
-    font-style: italic;
-    color: var(--powder);
+  .tabs{display:flex;gap:.25rem;overflow-x:auto;padding:.6rem 0;scrollbar-width:thin}
+  .tab{
+    flex:0 0 auto;appearance:none;border:1px solid transparent;background:transparent;
+    color:var(--ink-soft);font-family:var(--sans);font-size:.85rem;font-weight:600;
+    padding:.5rem .8rem;border-radius:2px;cursor:pointer;
+    display:flex;flex-direction:column;gap:1px;line-height:1.15;
+    transition:background .15s,color .15s,border-color .15s;
   }
+  .tab .tk{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--ink-faint);text-transform:uppercase;font-weight:400}
+  .tab:hover{background:var(--surface);color:var(--ink);border-color:var(--line)}
+  .tab[aria-selected="true"]{background:var(--navy);color:var(--cream);border-color:var(--navy)}
+  .tab[aria-selected="true"] .tk{color:var(--powder);opacity:.85}
+  .tab:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
 
-  .tagline {
-    font-family: 'Lora', serif;
-    font-size: 1.05rem;
-    color: var(--powder);
-    margin-top: 1.1rem;
-    font-style: italic;
-    opacity: 0.85;
+  /* ---------- Main layout ---------- */
+  main{padding:2rem 0 4rem}
+  .stage-head{margin:.4rem 0 1.1rem;display:flex;gap:1rem;align-items:baseline;flex-wrap:wrap}
+  .stage-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.4rem,2.7vw,1.95rem);margin:0;letter-spacing:-.01em;color:var(--navy)}
+  .cite-chip{font-family:var(--mono);font-size:11px;color:var(--ink-soft);background:var(--surface);border:1px solid var(--line);padding:.25em .6em;border-radius:2px}
+  .stage-desc{max-width:74ch;color:var(--ink-soft);margin:0 0 1.25rem;font-size:.97rem;line-height:1.6}
+  .stage-desc strong,.stage-desc b{color:var(--ink);font-weight:600}
+
+  .grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:1.6rem;align-items:start}
+  .diagram-col{min-width:0}
+  .panel-col{position:sticky;top:64px}
+
+  .howto{font-family:var(--mono);font-size:11px;color:var(--ink-faint);margin:0 0 1rem;display:flex;gap:.5rem;align-items:center;letter-spacing:.02em}
+  .howto kbd{font-family:var(--mono);background:var(--surface);border:1px solid var(--line);border-bottom-width:2px;border-radius:2px;padding:1px 6px;color:var(--ink-soft);font-size:10px}
+
+  /* ---------- Two-arm flow diagram (TSE) ---------- */
+  .flow{background:var(--surface);border:1px solid var(--line);border-radius:3px;padding:1.5rem 1.1rem 1.1rem}
+  .arms{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+  .arm{display:flex;flex-direction:column;align-items:stretch}
+  .arm-label{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;text-align:center;font-weight:500;margin-bottom:.75rem;padding-bottom:.5rem;border-bottom:1px dashed var(--line)}
+  .arm.rep .arm-label{color:var(--rep-deep)}
+  .arm.meas .arm-label{color:var(--meas-deep)}
+  .arm-label small{display:block;font-family:var(--sans);text-transform:none;letter-spacing:0;font-weight:400;font-style:italic;color:var(--ink-faint);font-size:11px;margin-top:2px}
+  .stage{border:1px solid var(--line);background:var(--surface-2);border-radius:2px;padding:.65rem .7rem;text-align:center;font-weight:600;font-size:.82rem;color:var(--ink);position:relative}
+  .arm.rep .stage{border-color:var(--rep-soft);background:#eef3f8}
+  .arm.meas .stage{border-color:var(--meas-soft);background:#f9f1ea}
+  .stage .sub{display:block;font-weight:400;font-style:italic;font-size:11px;color:var(--ink-faint);margin-top:1px}
+  .edge{display:flex;flex-direction:column;align-items:center;padding:3px 0}
+  .edge .rail{width:0;height:13px;border-left:1.5px solid var(--line)}
+  .arm.rep .edge .rail{border-color:#bccdde}
+  .arm.meas .edge .rail{border-color:#e7d3ad}
+
+  .err{
+    appearance:none;cursor:pointer;font-family:var(--sans);
+    border-radius:2px;padding:.4rem .7rem;font-size:.8rem;font-weight:600;
+    border:1.5px solid;background:var(--surface);white-space:nowrap;
+    display:inline-flex;gap:.5rem;align-items:center;
+    transition:background .15s,color .15s,border-color .15s,transform .12s;
   }
+  .err .code{font-family:var(--mono);font-size:9px;font-weight:500;opacity:.8}
+  .err.rep{border-color:var(--rep);color:var(--rep-deep)}
+  .err.meas{border-color:var(--meas);color:var(--meas-deep)}
+  .err.inf{border-color:var(--inf);color:var(--inf-deep)}
+  .err:hover{transform:translateY(-1px)}
+  .err.rep:hover{background:var(--rep-soft)}
+  .err.meas:hover{background:var(--meas-soft)}
+  .err.inf:hover{background:var(--inf-soft)}
+  .err:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+  .err[aria-pressed="true"].rep{background:var(--rep);color:#fff;border-color:var(--rep)}
+  .err[aria-pressed="true"].meas{background:var(--meas);color:#fff;border-color:var(--meas)}
+  .err[aria-pressed="true"].inf{background:var(--inf);color:#fff;border-color:var(--inf)}
+  .err[aria-pressed="true"] .code{opacity:.85}
 
-  main {
-    max-width: 820px;
-    margin: 0 auto;
-    padding: 3rem 2rem 4rem;
+  .converge{margin-top:6px;display:flex;flex-direction:column;align-items:center}
+  .converge .yrail{display:flex;width:100%;justify-content:space-between;padding:0 12%}
+  .converge .yrail span{width:0;height:16px;border-left:1.5px solid var(--line)}
+  .statistic{margin-top:2px;background:var(--navy);color:var(--cream);border-radius:2px;padding:.7rem 1.4rem;font-weight:600;font-size:.9rem;text-align:center;letter-spacing:.01em}
+  .statistic .sub{display:block;font-weight:400;font-style:italic;font-size:11px;color:var(--powder);opacity:.8;margin-top:1px}
+
+  /* ---------- Foundations chips (TSE) ---------- */
+  .chips{display:flex;gap:.5rem;flex-wrap:wrap;margin:1rem 0 0}
+  .chip{appearance:none;cursor:pointer;background:var(--surface);border:1px solid var(--line);border-radius:2px;padding:.5rem .75rem;font-size:.8rem;font-weight:600;color:var(--ink);font-family:var(--sans);display:inline-flex;gap:.5rem;align-items:center;transition:border-color .15s,background .15s,transform .12s}
+  .chip .ck{font-family:var(--mono);font-size:9px;color:var(--ink-faint);font-weight:500}
+  .chip:hover{transform:translateY(-1px);border-color:var(--ink-faint);background:var(--surface-2)}
+  .chip:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+  .chip[aria-pressed="true"]{background:var(--navy);color:var(--cream);border-color:var(--navy)}
+  .chip[aria-pressed="true"] .ck{color:var(--powder);opacity:.85}
+  .micro{font-family:var(--mono);font-size:10px;color:var(--ink-faint);margin:1.1rem 0 .25rem;letter-spacing:.14em;text-transform:uppercase}
+
+  /* ---------- Process + ribbon (TEF / TED-On / TEM) ---------- */
+  .process{background:var(--surface);border:1px solid var(--line);border-radius:3px;padding:1.25rem 1.1rem}
+  .ribbon{display:flex;gap:.5rem;align-items:stretch;overflow-x:auto;padding-bottom:.5rem}
+  .pbox{flex:0 0 auto;min-width:108px;max-width:128px;border:1px solid var(--line);background:var(--surface-2);border-radius:2px;padding:.55rem .6rem;text-align:center;font-size:.74rem;font-weight:600;display:flex;align-items:center;justify-content:center;position:relative}
+  .pbox.shared{background:#eee9df;border-style:solid}
+  .pbox.etl{background:#f9f1ea;border-color:var(--meas-soft);flex-direction:column;gap:4px;min-width:96px}
+  .pbox.etl .etlk{font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--meas-deep);text-transform:uppercase}
+  .pbox.etl .etlrow{font-size:11px;font-weight:600;color:var(--ink)}
+  .arrowx{flex:0 0 auto;align-self:center;color:var(--ink-faint);font-size:15px}
+  .ribbon-legend{font-family:var(--mono);font-size:10px;color:var(--ink-faint);margin:.6rem 0 .15rem;text-transform:uppercase;letter-spacing:.08em}
+
+  .err-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:.55rem;margin-top:.4rem}
+  .errcard{appearance:none;text-align:left;cursor:pointer;font-family:var(--sans);border:1px solid var(--line);background:var(--surface);border-radius:2px;padding:.65rem .7rem;display:flex;flex-direction:column;gap:3px;transition:background .15s,border-color .15s,transform .12s}
+  .errcard .ename{font-family:var(--serif);font-weight:400;font-size:.98rem;color:var(--navy);display:flex;gap:.5rem;align-items:baseline;line-height:1.2}
+  .errcard .ecode{font-family:var(--mono);font-size:9px;font-weight:500}
+  .errcard .ehint{font-size:.78rem;color:var(--ink-faint);line-height:1.4}
+  .errcard:hover{transform:translateY(-1px);border-color:var(--ink-faint)}
+  .errcard:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+  .errcard.rep{border-left:4px solid var(--rep)} .errcard.rep .ecode{color:var(--rep-deep)}
+  .errcard.meas{border-left:4px solid var(--meas)} .errcard.meas .ecode{color:var(--meas-deep)}
+  .errcard.inf{border-left:4px solid var(--inf)} .errcard.inf .ecode{color:var(--inf-deep)}
+  .errcard[aria-pressed="true"]{border-color:var(--navy)}
+  .errcard.rep[aria-pressed="true"]{background:var(--rep-soft)}
+  .errcard.meas[aria-pressed="true"]{background:var(--meas-soft)}
+  .errcard.inf[aria-pressed="true"]{background:var(--inf-soft)}
+
+  /* ---------- Big card grid (BDTE / Twitter / AI) ---------- */
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.9rem}
+  .bigcard{appearance:none;text-align:left;cursor:pointer;font-family:var(--sans);background:var(--surface);border:1px solid var(--line);border-radius:3px;padding:1.1rem;display:flex;flex-direction:column;gap:.5rem;transition:background .15s,border-color .15s,transform .12s}
+  .bigcard .bk{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;font-weight:500}
+  .bigcard h3{font-family:var(--serif);font-weight:400;font-size:1.1rem;margin:0;letter-spacing:-.01em;color:var(--navy);line-height:1.2}
+  .bigcard p{margin:0;font-size:.82rem;color:var(--ink-soft);line-height:1.45}
+  .bigcard .more{margin-top:auto;font-size:11px;font-weight:500;color:var(--ink-faint);font-family:var(--mono)}
+  .bigcard:hover{transform:translateY(-1px);border-color:var(--ink-faint)}
+  .bigcard:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+  .bigcard.rep{border-top:4px solid var(--rep)} .bigcard.rep .bk{color:var(--rep-deep)}
+  .bigcard.meas{border-top:4px solid var(--meas)} .bigcard.meas .bk{color:var(--meas-deep)}
+  .bigcard.inf{border-top:4px solid var(--inf)} .bigcard.inf .bk{color:var(--inf-deep)}
+  .bigcard[aria-pressed="true"]{border-color:var(--navy)}
+
+  /* ---------- Detail panel ("field notes") ---------- */
+  .notes{background:var(--surface);border:1px solid var(--line);border-radius:3px;overflow:hidden}
+  .notes-head{padding:1rem 1.1rem;border-bottom:1px solid var(--line-soft)}
+  .notes-tag{display:inline-flex;gap:.45rem;align-items:center;font-family:var(--mono);font-size:9.5px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:.2em .6em;border-radius:2px;border:1px solid}
+  .notes-tag.rep{color:var(--rep-deep);border-color:var(--rep);background:var(--rep-soft)}
+  .notes-tag.meas{color:var(--meas-deep);border-color:var(--meas);background:var(--meas-soft)}
+  .notes-tag.inf{color:var(--inf-deep);border-color:var(--inf);background:var(--inf-soft)}
+  .notes-tag.neutral{color:var(--ink-soft);border-color:var(--line);background:var(--surface-2)}
+  .notes-head h3{font-family:var(--serif);font-weight:400;font-size:1.35rem;margin:.5rem 0 0;letter-spacing:-.01em;line-height:1.15;color:var(--navy)}
+  .notes-body{padding:.3rem 1.1rem 1.1rem;max-height:min(64vh,640px);overflow-y:auto}
+  .field{margin-top:1rem}
+  .field h4{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 .35rem;font-weight:500}
+  .field p{margin:0;font-size:.9rem;color:var(--ink);line-height:1.55}
+  .field p+p{margin-top:.45rem}
+  .field .formula{font-family:var(--mono);font-size:.8rem;background:var(--surface-2);border:1px solid var(--line-soft);border-radius:2px;padding:.55rem .7rem;margin-top:.4rem;color:var(--ink);overflow-x:auto;white-space:nowrap}
+  .field.example p{color:var(--ink-soft);font-style:italic}
+  .reflist{list-style:none;margin:.3rem 0 0;padding:0}
+  .reflist li{font-family:var(--mono);font-size:11px;color:var(--ink-soft);line-height:1.4;padding:.3rem 0 .3rem 1rem;border-bottom:1px solid var(--line-soft);position:relative}
+  .reflist li:last-child{border-bottom:0}
+  .reflist li::before{content:"§";position:absolute;left:0;color:var(--ink-faint)}
+  .empty{padding:2.8rem 1.4rem;text-align:center;color:var(--ink-faint)}
+  .empty .mark{font-family:var(--serif);font-size:2.4rem;color:var(--line);line-height:1;margin-bottom:.6rem}
+  .empty p{margin:0;font-size:.85rem;line-height:1.5}
+
+  /* ---------- Crosswalk table ---------- */
+  .xwrap{background:var(--surface);border:1px solid var(--line);border-radius:3px;overflow:hidden}
+  .xtable{width:100%;border-collapse:collapse;font-size:.82rem}
+  .xtable th,.xtable td{padding:.8rem .85rem;text-align:left;vertical-align:top;border-bottom:1px solid var(--line-soft)}
+  .xtable thead th{position:sticky;top:0;background:var(--navy);color:var(--cream);font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;z-index:2}
+  .xtable tbody tr:hover{background:var(--surface-2)}
+  .xtable .concept{font-family:var(--serif);font-weight:400;color:var(--navy);width:18%;font-size:1rem;line-height:1.2}
+  .xtable .concept .csub{display:block;font-weight:400;font-size:10px;color:var(--ink-faint);font-family:var(--mono);margin-top:3px;letter-spacing:.06em;text-transform:uppercase}
+  .xtable td p{margin:0;color:var(--ink-soft);line-height:1.45}
+  .xtable td .src{display:block;font-family:var(--mono);font-size:10px;color:var(--ink-faint);margin-top:.4rem}
+  .col-rep{border-left:3px solid var(--rep)}
+  .col-meas{border-left:3px solid var(--meas)}
+  .col-inf{border-left:3px solid var(--inf)}
+
+  .footnote{margin-top:1.6rem;font-size:.8rem;color:var(--ink-faint);max-width:90ch;line-height:1.55;border-top:1px solid var(--line);padding-top:.9rem}
+  .footnote b{color:var(--ink-soft)}
+
+  .view{display:none}.view.active{display:block}
+
+  /* ---------- Overrides for the script-injected note styles (warm palette) ---------- */
+  #views .note{font-size:.8rem;color:var(--ink-soft);background:var(--surface-2);border:1px solid var(--line-soft);border-left:3px solid var(--rep);border-radius:2px;padding:.65rem .8rem;margin:0 0 .9rem;line-height:1.5}
+  #views .posnote{font-size:.8rem;color:var(--ink-soft);background:var(--surface-2);border:1px solid var(--line-soft);border-left:3px solid var(--inf);border-radius:2px;padding:.7rem .85rem;margin-top:1.1rem;line-height:1.5}
+  #views .formula-banner{font-family:var(--mono);font-size:.85rem;font-weight:500;color:var(--ink);background:var(--surface-2);border:1px dashed var(--line);border-radius:2px;padding:.8rem;text-align:center;letter-spacing:.01em}
+
+  /* ---------- Footer (navy band, portfolio style) ---------- */
+  footer{background:var(--navy);padding:2.5rem 2rem;text-align:center}
+  footer p{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--powder);opacity:.5}
+  footer a{color:var(--powder);text-decoration:none;transition:opacity .2s}
+  footer a:hover{opacity:1}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:900px){
+    .grid{grid-template-columns:1fr}
+    .panel-col{position:static;order:-1}
+    .notes-body{max-height:none}
+    .arms{grid-template-columns:1fr}
+    .arm.meas{margin-top:1.1rem;padding-top:1.1rem;border-top:1px dashed var(--line)}
+    .converge .yrail{padding:0 40%}
+    .xtable{font-size:.76rem}
+    .xtable th,.xtable td{padding:.6rem}
   }
-
-  .lede {
-    max-width: 720px;
-    margin: 0 auto 0;
+  @media (max-width:600px){
+    .wrap{padding:0 1.25rem}
+    header.top{padding:2.5rem 1.25rem 1.75rem}
+    footer{padding:2rem 1.25rem}
   }
-
-  .lede p {
-    font-size: 1.05rem;
-    color: #2c2c2c;
-    line-height: 1.8;
-    margin-bottom: 1.1rem;
-  }
-
-  .lede p:first-child {
-    font-size: 1.15rem;
-    color: var(--ink);
-  }
-
-  .frameworks-svg {
-    display: block;
-    width: 100%;
-    height: auto;
-    max-width: 820px;
-    margin: 3rem auto 1rem;
-  }
-
-  .frameworks-caption {
-    font-family: 'Lora', serif;
-    font-size: 0.9rem;
-    color: var(--muted);
-    font-style: italic;
-    text-align: center;
-    line-height: 1.6;
-    margin-top: 1rem;
-    margin-bottom: 2.5rem;
-  }
-
-  .frameworks-intro {
-    max-width: 720px;
-    margin: 0 auto;
-  }
-
-  .frameworks-intro p {
-    font-size: 1rem;
-    color: #333;
-    margin-bottom: 1rem;
-    line-height: 1.7;
-  }
-
-  .frameworks-components-heading {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--muted);
-    text-align: center;
-    margin: 3.5rem 0 1.5rem;
-  }
-
-  .frameworks-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1px;
-    border: 1px solid var(--rule);
-    background: var(--rule);
-    margin: 0 auto;
-  }
-
-  .framework-component {
-    background: white;
-    padding: 1.5rem 1.5rem 1.75rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .framework-component-number {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    color: var(--muted);
-  }
-
-  .framework-component-name {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.1rem;
-    font-weight: 400;
-    color: var(--navy);
-    line-height: 1.3;
-    margin-bottom: 0.25rem;
-  }
-
-  .framework-component-desc {
-    font-size: 0.875rem;
-    color: #444;
-    line-height: 1.6;
-  }
-
-  .framework-component-example {
-    font-size: 0.85rem;
-    color: #444;
-    line-height: 1.5;
-    margin-top: 0.5rem;
-  }
-
-  .framework-component-example .example-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--muted);
-    display: block;
-    margin-bottom: 0.2rem;
-  }
-
-  .frameworks-references {
-    max-width: 720px;
-    margin: 3rem auto 0;
-    padding-top: 2rem;
-    border-top: 1px solid var(--rule);
-  }
-
-  .frameworks-references-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 1.25rem;
-  }
-
-  .frameworks-references ol {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    counter-reset: ref;
-  }
-
-  .frameworks-references li {
-    font-size: 0.85rem;
-    color: #444;
-    line-height: 1.55;
-    margin-bottom: 0.85rem;
-    padding-left: 2.5rem;
-    position: relative;
-    counter-increment: ref;
-  }
-
-  .frameworks-references li::before {
-    content: counter(ref) ".";
-    position: absolute;
-    left: 0;
-    top: 0;
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--muted);
-    width: 2rem;
-    text-align: right;
-  }
-
-  footer {
-    background: var(--navy);
-    padding: 2.5rem 2rem;
-    text-align: center;
-  }
-
-  footer p {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    color: var(--powder);
-    opacity: 0.5;
-  }
-
-  footer a {
-    color: var(--powder);
-    text-decoration: none;
-    transition: opacity 0.2s;
-  }
-
-  footer a:hover { opacity: 1; }
-
-  @media (max-width: 600px) {
-    .frameworks-grid { grid-template-columns: 1fr; }
-  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
-
-<header>
-  <div class="header-inner">
-    <a class="back-link" href="index.html"><span class="back-arrow">&larr;</span>Kevin Linares &middot; Portfolio</a>
-    <h1>Methodological <em>Foundation</em></h1>
-    <p class="tagline">Total Survey Error and the Total Error Framework as a working reference</p>
+<header class="top">
+  <div class="wrap">
+    <a class="back-link" href="index.html"><span class="arr">←</span>Kevin Linares · Portfolio</a>
+    <h1 class="title">Methodological <em>Foundation</em></h1>
+    <p class="lede">Total Survey Error and its extensions — an interactive error atlas spanning surveys, found data, digital traces, and AI silicon samples.</p>
+    <div class="legend" aria-label="Color legend">
+      <span class="key"><span class="swatch rep"></span>Representation — the “who”</span>
+      <span class="key"><span class="swatch meas"></span>Measurement — the “what”</span>
+      <span class="key"><span class="swatch inf"></span>Estimation / Analytic — the “inference”</span>
+    </div>
   </div>
 </header>
 
-<main>
-
-  <section class="lede">
-    <p>The portfolio cards under "Projects" show <em>what</em> I do. This page shows the framework I do it within. My methodological training centers on the <strong>Total Survey Error (TSE) framework</strong> developed by Groves and colleagues, extended to Big Data through the <strong>Total Error Framework (TEF)</strong> of Amaya, Biemer, and Kinyon (2020). Both frameworks decompose data quality into the same eight error components, which keeps reasoning about quality consistent whether the data come from a probability survey, a web scrape, an administrative record system, or an AI-mediated instrument.</p>
-  </section>
-
-  <svg class="frameworks-svg" viewBox="0 0 800 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="framework-title framework-desc">
-    <title id="framework-title">Total Survey Error and Total Error Framework</title>
-    <desc id="framework-desc">A diagram showing how the Total Survey Error framework developed by Groves and colleagues, and the Total Error Framework introduced by Amaya, Biemer, and Kinyon in 2020, share a common set of eight error components. The Total Error Framework extends Total Survey Error to non-probability and Big Data sources.</desc>
-
-    <defs>
-      <marker id="frame-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-        <path d="M2 1L8 5L2 9" fill="none" stroke="#6b6b6b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </marker>
-    </defs>
-
-    <rect x="60" y="30" width="320" height="86" rx="2" fill="#0f1f38"/>
-    <text x="220" y="63" text-anchor="middle" font-family="DM Serif Display, serif" font-size="22" fill="#f5f0e8">Total Survey Error</text>
-    <text x="220" y="92" text-anchor="middle" font-family="DM Mono, monospace" font-size="10" fill="#a8c4d8" letter-spacing="2.4">GROVES AND COLLEAGUES</text>
-
-    <rect x="420" y="30" width="320" height="86" rx="2" fill="#c94f2a"/>
-    <text x="580" y="63" text-anchor="middle" font-family="DM Serif Display, serif" font-size="22" fill="#f5f0e8">Total Error Framework</text>
-    <text x="580" y="92" text-anchor="middle" font-family="DM Mono, monospace" font-size="10" fill="#f0e0d6" letter-spacing="2.4">AMAYA, BIEMER &amp; KINYON, 2020</text>
-
-    <text x="220" y="142" text-anchor="middle" font-family="Lora, serif" font-style="italic" font-size="14" fill="#444">Probability surveys</text>
-    <text x="580" y="142" text-anchor="middle" font-family="Lora, serif" font-style="italic" font-size="14" fill="#444">Extends TSE to Big Data sources</text>
-
-    <line x1="220" y1="158" x2="220" y2="200" stroke="#6b6b6b" stroke-width="1" marker-end="url(#frame-arrow)"/>
-    <line x1="580" y1="158" x2="580" y2="200" stroke="#6b6b6b" stroke-width="1" marker-end="url(#frame-arrow)"/>
-
-    <rect x="60" y="210" width="680" height="220" rx="2" fill="#faf8f4" stroke="#d4cfc4" stroke-width="1"/>
-    <text x="400" y="240" text-anchor="middle" font-family="DM Mono, monospace" font-size="10" fill="#6b6b6b" letter-spacing="2.4">SHARED ERROR COMPONENTS</text>
-
-    <text x="110" y="282" font-family="Lora, serif" font-size="14" fill="#1c1c1c">Coverage / domain error</text>
-    <text x="110" y="310" font-family="Lora, serif" font-size="14" fill="#1c1c1c">Sampling error</text>
-    <text x="110" y="338" font-family="Lora, serif" font-size="14" fill="#1c1c1c">Specification error</text>
-    <text x="110" y="366" font-family="Lora, serif" font-size="14" fill="#1c1c1c">Nonresponse / missing data</text>
-
-    <text x="430" y="282" font-family="Lora, serif" font-size="14" fill="#1c1c1c">Measurement / content error</text>
-    <text x="430" y="310" font-family="Lora, serif" font-size="14" fill="#1c1c1c">Processing error</text>
-    <text x="430" y="338" font-family="Lora, serif" font-size="14" fill="#1c1c1c">Modeling / estimation error</text>
-    <text x="430" y="366" font-family="Lora, serif" font-size="14" fill="#1c1c1c">Analytic error</text>
-
-    <text x="400" y="408" text-anchor="middle" font-family="Lora, serif" font-style="italic" font-size="13" fill="#6b6b6b">Eight components, two frameworks, one shared diagnostic vocabulary.</text>
-  </svg>
-
-  <p class="frameworks-caption">Eight components, two frameworks, one shared diagnostic vocabulary.</p>
-
-  <section class="frameworks-intro">
-    <p>The <strong>Total Survey Error (TSE)</strong> framework, developed across the survey methodology canon (Groves, 2004; Groves et al., 2004; Biemer, 2010; Groves and Lyberg, 2010), enumerates the distinct sources of error that can affect survey estimates and treats them collectively as the basis for evaluating data quality. Understanding the contribution of each component lets the analyst adjust survey design, processing steps, and analytic methods to minimize or compensate for them.</p>
-    <p>Amaya, Biemer, and Kinyon (2020) extended this thinking through the <strong>Total Error Framework (TEF)</strong>. Big Data, including web-scraped content, social media, administrative records, transactional logs, and other digital trace sources, increasingly supplements or replaces survey data, but it carries its own error structure. The TEF retains the same eight error components as TSE while recognizing that the Big Data workflow differs: it begins by identifying preexisting data sources rather than fielding a probability sample, and it Extracts, Transforms, and Loads the data rather than collecting it directly.</p>
-    <p>What makes the TEF powerful is that it gives both data types a shared diagnostic vocabulary. The methodologist can compare error sources across data types, reason about how survey and Big Data sources combine in mixed designs, and decide on principled grounds when each source is preferable for a given research question.</p>
-  </section>
-
-  <p class="frameworks-components-heading">The eight error components</p>
-
-  <div class="frameworks-grid">
-
-    <div class="framework-component">
-      <p class="framework-component-number">01</p>
-      <h3 class="framework-component-name">Coverage / domain error</h3>
-      <p class="framework-component-desc">Mismatch between the units represented in the data and those in the target population, including undercoverage, overcoverage, and duplication.</p>
-      <p class="framework-component-example"><span class="example-label">In surveys</span>Frame undercoverage of cell-phone-only households; out-of-scope businesses on a residential frame; multiple landlines linked to the same household.</p>
-      <p class="framework-component-example"><span class="example-label">In Big Data</span>Twitter users skew younger than the general population; corporate accounts appear in user-focused analyses; people maintain multiple accounts that cannot be deduplicated.</p>
+<nav class="frameworks" aria-label="Error frameworks">
+  <div class="wrap">
+    <div class="tabs" role="tablist" id="tablist">
+      <button class="tab" role="tab" aria-selected="true" data-view="tse"><span class="tk">Surveys</span>TSE</button>
+      <button class="tab" role="tab" aria-selected="false" data-view="tef"><span class="tk">Found data</span>Total Error Framework</button>
+      <button class="tab" role="tab" aria-selected="false" data-view="bdte"><span class="tk">Any dataset</span>Big Data Total Error</button>
+      <button class="tab" role="tab" aria-selected="false" data-view="tedon"><span class="tk">Social platforms</span>TED-On</button>
+      <button class="tab" role="tab" aria-selected="false" data-view="tem"><span class="tk">Web tracking</span>Metered (TEM)</button>
+      <button class="tab" role="tab" aria-selected="false" data-view="twitter"><span class="tk">Twitter</span>Total Twitter Error</button>
+      <button class="tab" role="tab" aria-selected="false" data-view="ai"><span class="tk">AI / LLMs</span>Silicon Samples</button>
+      <button class="tab" role="tab" aria-selected="false" data-view="cross"><span class="tk">Compare</span>Crosswalk</button>
     </div>
-
-    <div class="framework-component">
-      <p class="framework-component-number">02</p>
-      <h3 class="framework-component-name">Sampling error</h3>
-      <p class="framework-component-desc">Imprecision arising from analyzing a subset of the population rather than the full population.</p>
-      <p class="framework-component-example"><span class="example-label">In surveys</span>Driven by sample size, design effects from stratification and clustering, and weight variation under unequal probability designs.</p>
-      <p class="framework-component-example"><span class="example-label">In Big Data</span>Often minimal because the full data set may be analyzable as a census; in massive samples, however, even practically meaningless differences become statistically significant.</p>
-    </div>
-
-    <div class="framework-component">
-      <p class="framework-component-number">03</p>
-      <h3 class="framework-component-name">Specification error</h3>
-      <p class="framework-component-desc">Mismatch between the concept the research question requires and the concept actually captured in the data.</p>
-      <p class="framework-component-example"><span class="example-label">In surveys</span>Constructs that are difficult to operationalize unambiguously, such as housing-unit square footage, social engagement, or self-rated health.</p>
-      <p class="framework-component-example"><span class="example-label">In Big Data</span>Concepts inconsistent with the available data because variables were defined at the source, with little researcher control over how they were measured or recorded.</p>
-    </div>
-
-    <div class="framework-component">
-      <p class="framework-component-number">04</p>
-      <h3 class="framework-component-name">Nonresponse / missing data error</h3>
-      <p class="framework-component-desc">Bias and imprecision introduced when records lack values on key variables.</p>
-      <p class="framework-component-example"><span class="example-label">In surveys</span>Unit nonresponse when a sampled case refuses or is unreachable, and item nonresponse when a respondent skips a specific question.</p>
-      <p class="framework-component-example"><span class="example-label">In Big Data</span>Item and unit missingness, often confounded with undercoverage because the cause of missingness is rarely observable.</p>
-    </div>
-
-    <div class="framework-component">
-      <p class="framework-component-number">05</p>
-      <h3 class="framework-component-name">Measurement / content error</h3>
-      <p class="framework-component-desc">Erroneous values on variables that are present in the data, both unintentional and deliberate.</p>
-      <p class="framework-component-example"><span class="example-label">In surveys</span>Memory error, comprehension errors, social-desirability bias, interviewer effects, and deliberate misreporting on sensitive topics.</p>
-      <p class="framework-component-example"><span class="example-label">In Big Data</span>Mechanical and transcription errors, outdated entries, false readings from devices, and self-presentation effects on social platforms.</p>
-    </div>
-
-    <div class="framework-component">
-      <p class="framework-component-number">06</p>
-      <h3 class="framework-component-name">Processing error</h3>
-      <p class="framework-component-desc">Errors introduced after data collection by editing, transformation, and linkage.</p>
-      <p class="framework-component-example"><span class="example-label">In surveys</span>Editing errors and keying errors during data entry, coding, and cleaning.</p>
-      <p class="framework-component-example"><span class="example-label">In Big Data</span>Editing errors plus data linkage errors when joining records across sources without a common, clean identifier.</p>
-    </div>
-
-    <div class="framework-component">
-      <p class="framework-component-number">07</p>
-      <h3 class="framework-component-name">Modeling / estimation error</h3>
-      <p class="framework-component-desc">Errors arising from analytic adjustments such as imputation, calibration, weighting, and missing-data corrections.</p>
-      <p class="framework-component-example"><span class="example-label">In surveys</span>Imputation, calibration, weighting, and nonresponse adjustments are familiar tools with well-studied properties.</p>
-      <p class="framework-component-example"><span class="example-label">In Big Data</span>The same tools apply, but the missing-data mechanism is often unknown and harder to model than in surveys, and external calibration data may be needed.</p>
-    </div>
-
-    <div class="framework-component">
-      <p class="framework-component-number">08</p>
-      <h3 class="framework-component-name">Analytic error</h3>
-      <p class="framework-component-desc">Errors in interpreting results and drawing inference from the data.</p>
-      <p class="framework-component-example"><span class="example-label">In surveys</span>Inferences to small areas or rare subgroups are often difficult; biases and measurement variances are sometimes ignored in downstream analyses.</p>
-      <p class="framework-component-example"><span class="example-label">In Big Data</span>High granularity supports small-area inference, but biases and measurement variances are often ignored, and the data are frequently univariate, limiting causal and quasi-experimental modeling.</p>
-    </div>
-
   </div>
+</nav>
 
-  <section class="frameworks-references">
-    <p class="frameworks-references-label">References</p>
-    <ol>
-      <li>Amaya, A., Biemer, P. P., &amp; Kinyon, D. (2020). Total Error in a Big Data World: Adapting the TSE Framework to Big Data. <em>Journal of Survey Statistics and Methodology</em>, 8(1), 89&ndash;119.</li>
-      <li>Biemer, P. P. (2010). Total Survey Error: Design, Implementation, and Evaluation. <em>Public Opinion Quarterly</em>, 74(5), 817&ndash;848.</li>
-      <li>Groves, R. M. (2004). <em>Survey Errors and Survey Costs</em>. Hoboken: Wiley.</li>
-      <li>Groves, R. M., Fowler, F., Couper, M., Singer, E., &amp; Tourangeau, R. (2004). <em>Survey Methodology</em>. New York: Wiley.</li>
-      <li>Groves, R. M., &amp; Lyberg, L. (2010). Total Survey Error: Past, Present, and Future. <em>Public Opinion Quarterly</em>, 74(5), 849&ndash;879.</li>
-    </ol>
-  </section>
-
+<main>
+  <div class="wrap">
+    <div id="views"><!-- views injected by script --></div>
+  </div>
 </main>
 
+<script>
+/* =========================================================================
+   CONTENT DICTIONARY
+   Every entry is grounded in the course materials (Groves et al.; Amaya,
+   Biemer & Kinyon 2020; Biemer & Amaya 2020; Sen et al. 2021; Bosch &
+   Revilla 2022; Hsieh & Murphy 2017; Bisbee et al. 2023/2024; Lazer et al.
+   2014; the SURVMETH 720 study guides and Class 12 slides).
+   arm: rep | meas | inf | neutral  (drives color + tag)
+   ========================================================================= */
+const C = {
+
+/* ---------------- TSE — Total Survey Error (Groves et al. 2004, 2011) ---------------- */
+"tse-coverage":{arm:"rep",code:"R1",title:"Coverage Error",
+  def:["The gap between the <b>target population</b> and the <b>frame population</b>: some target-population members have a zero probability of being selected because they are not on the frame. It spans <b>undercoverage</b> (target units omitted from the frame), <b>overcoverage</b> (out-of-scope units that appear on the frame), and <b>duplication</b> (units listed more than once).",
+    "Coverage error is essentially <b>nonobservable</b> — it leaves no trace inside the collected data, so its extent can only be gauged against an external check. This is what makes it hard to estimate, and distinct from nonresponse."],
+  formula:"Coverage Bias = (U/N) · (Ȳ_C − Ȳ_U)",
+  context:"Drives a bias only when covered and uncovered units differ on the characteristic of interest. U/N is the uncovered share; (Ȳ_C − Ȳ_U) is the covered–uncovered difference.",
+  example:"RDD frames are challenged by cell-phone-only households; address-based frames miss new construction and have P.O.-box issues. Area frames have high coverage but are expensive and prone to lister error.",
+  refs:["Groves, Fowler, Couper, Lepkowski, Singer & Tourangeau (2004; 2011), Survey Methodology.","Kish (1965); Federal Committee on Statistical Methodology (1990).","Measuring and Reporting Sources of Error in Surveys (2001), Ch. 5."]},
+
+"tse-sampling":{arm:"rep",code:"R2",title:"Sampling Error",
+  def:["Error that arises because we observe a <b>sample</b> rather than the whole frame: the particular units drawn vary from one possible sample to the next. It is the one error component that is routinely <b>quantified</b>, because the sample design lets us compute standard errors.",
+    "Sampling error is a <b>variance</b> phenomenon: it shrinks as sample size grows and disappears in a complete census — which is exactly why nonsampling errors, not sampling error, set the floor on accuracy."],
+  context:"In the MSE accounting, only the variable (sampling-variance) component is fully captured by design-based standard errors. Choosing a design on sampling error alone can be suboptimal once nonsampling errors are considered.",
+  refs:["Groves et al. (2004; 2011).","Biemer & Lyberg (2003), Introduction to Survey Quality, Ch. 2."]},
+
+"tse-nonresponse":{arm:"rep",code:"R3",title:"Nonresponse Error",
+  def:["The discrepancy between the <b>sample</b> and the <b>respondents</b>. It comes in two forms: <b>unit nonresponse</b> (a selected unit never participates) and <b>item nonresponse</b> (a respondent skips a question).",
+    "Unlike coverage error, nonresponse is <b>partly observable</b> — the selected sample can be compared with the achieved sample, and frame variables can describe nonrespondents."],
+  formula:"Bias ≈ (M/N)(Ȳ_r − Ȳ_m)   |   stochastic: ≈ σ_Yρ / ρ̄",
+  context:"Bias depends on the nonresponse rate (M/N) and how respondents differ from nonrespondents (Ȳ_r − Ȳ_m). Groves (2006): only a weak correlation (r ≈ 0.2) links response rate to nonresponse bias — a high rate lowers the risk but does not guarantee low bias.",
+  example:"In the 2016 U.S. election polls, many surveys failed to weight by education, which was correlated with both response propensity and vote choice — a nonresponse/adjustment failure that produced systematic error.",
+  refs:["Groves et al. (2004; 2011); Groves (2006), POQ — Nonresponse rates and bias.","Lessler & Kalsbeek (1992), Nonsampling Error in Surveys."]},
+
+"tse-adjustment":{arm:"rep",code:"R4",title:"Adjustment Error",
+  def:["Error introduced by the <b>post-survey statistical adjustments</b> — base weighting, nonresponse weighting, calibration / post-stratification, raking — that are meant to <i>repair</i> coverage and nonresponse. Adjustments can over- or under-correct, and can inflate variance.",
+    "The adjustment is only as good as its <b>auxiliary variables</b>."],
+  context:"Little & Vartivarian (2005): the conventional ‘weighting trades variance for bias’ story is oversimplified. When auxiliary variables predict BOTH the outcome Y and the response propensity, weighting can reduce <b>both</b> bias and variance; variables predicting only response inflate variance with no bias payoff.",
+  refs:["Groves et al. (2004; 2011).","Little & Vartivarian (2005), Survey Methodology — Weighting on auxiliary variables."]},
+
+"tse-validity":{arm:"meas",code:"M1",title:"Validity (Construct Error)",
+  def:["The gap between the abstract <b>construct</b> a researcher cares about and the <b>measurement</b> chosen to operationalize it — i.e., how well a concept was translated into a working question. A perfectly reliable question can still measure the wrong thing.",
+    "Validity is the ceiling on what a measure can do, set in part by reliability."],
+  formula:"Empirical validity ≤ Theoretical validity = √Reliability",
+  context:"High reliability is necessary but not sufficient for validity. Validity is assessed qualitatively (cognitive interviewing, expert review) and quantitatively (correlations with measures it should/shouldn’t track, known-group comparisons, split-ballot experiments).",
+  refs:["Groves et al. (2004; 2011).","Course study guide — Construct validity & reliability."]},
+
+"tse-measurement":{arm:"meas",code:"M2",title:"Measurement Error",
+  def:["Any deviation of the <b>reported value</b> from the respondent’s <b>true value</b>, whether systematic (bias) or random (variance). At the respondent level: yᵢ = μᵢ + εᵢ.",
+    "Random measurement error inflates the <b>variance</b> of estimates and <b>attenuates</b> correlations and regression coefficients toward zero, but leaves means and proportions roughly unbiased; systematic error biases them."],
+  formula:"β_observed = β_true · λ ,  λ = σ²_true / σ²_observed (reliability ratio)",
+  context:"Sources include interviewer effects (Kish 1962: ρ_int, with deff = 1 + ρ_int(m−1)), respondent factors (memory/telescoping, satisficing — Krosnick 1991, social desirability), and the questionnaire itself (wording, response options, question order, usability).",
+  refs:["Groves et al. (2004; 2011); Kish (1962); Krosnick (1991), Applied Cognitive Psychology.","Course study guide — Measurement error."]},
+
+"tse-processing":{arm:"meas",code:"M3",title:"Processing Error",
+  def:["Errors introduced while converting raw responses into a clean, analyzable file: <b>data entry/capture</b>, <b>editing</b>, <b>coding of open responses</b>, and disclosure-limitation transformations. Like measurement error, processing can add both bias and variance.",
+    "Editing itself carries risk — wrong values can be ‘corrected,’ and over-editing introduces error."],
+  formula:"deff_coder = 1 + ρ_c (m − 1)",
+  context:"Coding open responses is judged by intercoder reliability; coder variance behaves like interviewer variance. Disclosure-limitation steps (top-coding, noise, synthetic data) distort relationships — Reiter (2012) shows partially synthetic data can still support valid inference if analysts combine estimates across datasets, but analysts often ignore the added error.",
+  refs:["Groves et al. (2004; 2011); Reiter (2012), POQ — Statistical disclosure limitation.","Gweon & Schonlau (2024) — fine-tuned BERT for coding."]},
+
+/* Foundations (TSE) */
+"tse-mse":{arm:"neutral",code:"Σ",title:"Mean Squared Error (MSE)",
+  def:["The mathematical core of survey <b>accuracy</b>: total error decomposes into a squared bias term plus a variance term, summed across <i>every</i> source in the design.",
+    "Key insight: MSE <b>cannot reach zero even in a census</b>, because nonsampling errors (measurement, processing, coverage) persist."],
+  formula:"MSE = Bias² + Variance      e.g. MSE(ȳ) = B²_NR + B²_Meas + Var_Sam",
+  context:"Aggregating error tells data users the overall quality of an estimate; decomposing it tells methodologists which source to target first. Nonsampling components are often many times larger than the sampling-error contribution.",
+  refs:["Biemer & Lyberg (2003), Ch. 2 — MSE in the TSE context.","Groves et al. (2004; 2011)."]},
+
+"tse-bias":{arm:"neutral",code:"B",title:"Bias",
+  def:["<b>Systematic, non-compensating</b> error that pushes an estimate consistently in one direction — errors that ‘tend to agree.’ Because bias is directional, errors from different sources can <b>accentuate</b> one another (net bias greater than the sum), be <b>independent</b>, or <b>cancel</b> out."],
+  context:"This directionality is why design decisions should be based on overall effects, not on a single error source. A ‘common cause’ (e.g., low motivation) can generate both nonresponse and measurement error at once.",
+  refs:["Course study guide — Bias & variance.","Class 12 — Tradeoff/interplay between error sources."]},
+
+"tse-variance":{arm:"neutral",code:"V",title:"Variance",
+  def:["<b>Random, compensating</b> error that creates spread or instability around an expected value — errors that ‘tend to disagree.’ Over many hypothetical repetitions, these deviations average out of point estimates but widen confidence intervals."],
+  context:"Random measurement error, sampling error, interviewer variance, and coder variance all contribute to the variance side of MSE.",
+  refs:["Course study guide.","Groves et al. (2004; 2011)."]},
+
+"tse-quality":{arm:"neutral",code:"Q",title:"Data Quality Beyond Accuracy",
+  def:["Accuracy (MSE) is only one dimension of ‘fitness for use.’ A survey’s value also rests on <b>relevance</b> (meeting real user needs), <b>timeliness</b> (delay between reference point and release), <b>coherence</b> (consistency over time and with other sources), <b>accessibility</b>, and <b>interpretability</b> (available metadata)."],
+  context:"A recognized weakness of TSE is that it concentrates on accuracy and largely sets these quality dimensions aside — a key reason the framework needed extending for found data.",
+  refs:["Course study guide — Data quality dimensions.","Biemer & Lyberg (2003)."]},
+
+"tse-cascade":{arm:"neutral",code:"P",title:"The Population Cascade",
+  def:["Survey error starts by being clear about <i>which</i> population is meant. The cascade runs from abstract to operational: <b>Inferential</b> population (whom we want to generalize to) → <b>Target</b> population (the operational set, defined by content, units, extent and time) → <b>Frame</b> population (those with a chance of selection) → <b>Survey</b> population (frame members actually reachable)."],
+  context:"Each step in the cascade is where a representation error can enter: target↔frame is coverage, frame↔sample is sampling, sample↔respondents is nonresponse.",
+  refs:["Course study guide — The population cascade."]},
+
+/* ---------------- TEF — Total Error Framework (Amaya, Biemer & Kinyon 2020) ---------------- */
+"tef-coverage":{arm:"rep",code:"T1",title:"Coverage / Domain Error",
+  def:["For survey frames: undercoverage, overcoverage, and duplicative entries, at both the unit and the within-unit level. For <b>Big Data</b> there is no frame ‘per se,’ yet the population a source represents can be distorted in the very same ways — undercoverage, overcoverage and duplication of target members.",
+    "The ‘<b>domain</b>’ piece: subsetting the population into domains (e.g., only a few industries) can itself introduce coverage error."],
+  context:"Causes (Amaya et al., Table 1) — Survey: undercoverage, overcoverage, duplication. Big Data: undercoverage, overcoverage, duplication. The TEF treats survey and Big-Data coverage with one vocabulary so the two can be compared.",
+  example:"RECS square footage: Zillow lists ~110 M addresses against the Census’s ~135 M housing units (≈82% coverage), and 22% of survey units could not be matched to the three Big-Data sources.",
+  refs:["Amaya, Biemer & Kinyon (2020), JSSAM 8(1):89–119 — §2.1."]},
+
+"tef-sampling":{arm:"rep",code:"T2",title:"Sampling Error",
+  def:["For surveys: the familiar variance from drawing a sample, plus the practical problem of <b>inadequate sample sizes</b> for sub-domains or non-key variables. For Big Data a <b>complete census</b> of the source is often possible, so sampling error may be N/A.",
+    "But large samples create their own trap: with the full data set, statistical tests almost always detect a ‘significant’ difference even when it is not practically meaningful — breeding false confidence when large biases are present."],
+  context:"Causes (Table 1) — Survey: inadequate sub-domain sizes. Big Data: very large probability samples yielding significant-but-trivial differences; weight variation.",
+  refs:["Amaya, Biemer & Kinyon (2020) — §2.2."]},
+
+"tef-specification":{arm:"meas",code:"T3",title:"Specification Error",
+  def:["Occurs when the <b>concept (construct)</b> needed to answer the research question does not precisely align with the concept implied by the available <b>data item</b>. For surveys, constructs can be hard to operationalize; for Big Data, the variables are predefined with little or no researcher control, so concepts may be <b>inconsistent with what the data actually capture</b>."],
+  context:"Composite ‘proxy’ measures (social engagement from friends/activities, or from Twitter followers/Facebook friends) may not match the researcher’s construct. In the RECS case, specification and measurement error were hard to separate.",
+  example:"There is no universal definition of ‘square footage’ — heated space? attic? garage? EIA’s official definition (main living space + attached heated/cooled garages + all basements + finished/heated attics) differs from what respondents likely report (often only livable area). CoreLogic even stores a variable for which area is counted: building, living, adjusted, or gross.",
+  refs:["Amaya, Biemer & Kinyon (2020) — §2.3, §3.2.3."]},
+
+"tef-nonresponse":{arm:"rep",code:"T4",title:"Nonresponse / Missing Data Error",
+  def:["For surveys, missing data is unit or item nonresponse. For Big Data, the parallel is <b>unit missingness</b> and <b>item missingness</b>, arising from many causes: a record never created, a field never entered, no access to a county’s records, or a value deleted as implausible during Big-Data editing.",
+    "Missing-data bias is the product of the missing-data rate and how complete and missing records differ."],
+  formula:"Missing-data bias = (missing rate) × (mean difference: complete vs. missing records)",
+  context:"Because the missing-data mechanism in Big Data is usually unknown, the bias is harder to model than in surveys.",
+  example:"About 10% of Zillow records had no housing-unit-size value.",
+  refs:["Amaya, Biemer & Kinyon (2020) — §2.4; Lessler & Kalsbeek (1992)."]},
+
+"tef-measurement":{arm:"meas",code:"T5",title:"Measurement / Content Error",
+  def:["The deviation of the recorded value from the true value. For surveys this is unintentional and deliberate respondent error. For Big Data, ‘<b>content error</b>’ is the broader term capturing erroneous values from the measurement process, transcription, data-conversion, <b>false readings from mechanical devices</b>, and <b>outdated information</b>.",
+    "Content error increases variance; it becomes <b>bias</b> when it runs consistently in one direction."],
+  context:"Causes (Table 1) — Survey: unintentional & deliberate errors. Big Data: unintentional & deliberate errors. Directional examples: people post only their best photos on Instagram; illicit spending hidden behind vague business names.",
+  example:"A real-estate database may not yet record a brand-new addition (outdated → bias); a roadside camera may struggle to decide whether a double-trailer semitruck is one vehicle or two (→ variance).",
+  refs:["Amaya, Biemer & Kinyon (2020) — §2.5."]},
+
+"tef-processing":{arm:"meas",code:"T6",title:"Processing Error",
+  def:["For surveys: data entry, coding, editing, disclosure limitation, and variable conversions/transformations. Big Data shares all of these — and adds two acute risks: complex <b>ETL transformations</b>, and especially <b>record-linkage error</b> when joining Big-Data records to people or sample members."],
+  context:"Causes (Table 1) — Survey: editing errors, keying errors. Big Data: editing errors, <b>incorrect data linkage</b>. Linkage fails when units have missing/outdated link keys, or when the two files use incompatible units (a roster of names vs. a list of addresses). The more complex the transformation, the higher the processing-error risk.",
+  refs:["Amaya, Biemer & Kinyon (2020) — §2.6."]},
+
+"tef-modeling":{arm:"inf",code:"T7",title:"Modeling / Estimation Error",
+  def:["Error from deficiencies in the <b>weighting adjustments</b> for missing-data and coverage error, and in <b>imputation</b> for item-missing data. Survey and Big Data can use similar models but carry different risks.",
+    "For Big Data the missing-data mechanism is unknown and harder to model, and the few variables per record limit what can be used to impute."],
+  context:"Causes (Table 1) — Survey: imputation, calibration/weighting, nonresponse adjustment. Big Data: imputation, calibration/weighting, missingness adjustment. External calibration data can help, but linking records across sources at the unit level is itself difficult.",
+  refs:["Amaya, Biemer & Kinyon (2020) — §2.7."]},
+
+"tef-analytic":{arm:"inf",code:"T8",title:"Analytic Error",
+  def:["Errors made by <b>data users and clients</b> in analyzing and interpreting results. Big Data’s strength is high spatial, temporal and demographic <b>granularity</b> — enabling small-area and rare-group inference and relationship/network analysis usually out of reach for surveys.",
+    "Its weakness: Big Data is often <b>univariate</b>, which precludes many quasi-experimental, high-dimensional models; and biases and measurement variances are routinely ignored in analysis."],
+  context:"This is the stage where automated analytics without human critical thinking can lead to confident-but-wrong inferences. Modeling and analytic error were left unassessed in the RECS case because they depend on how the two data sources are combined.",
+  refs:["Amaya, Biemer & Kinyon (2020) — §2.8.","West et al. (analytic error in secondary survey analysis)."]},
+
+/* ---------------- BDTE — Big Data Total Error (Biemer & Amaya 2020; AAPOR 2015) ---------------- */
+"bdte-row":{arm:"rep",code:"D1",title:"Row Error",
+  def:["In a generic rectangular dataset (rows = population units, columns = their characteristics), <b>row error</b> is about <i>which units appear</i>. It bundles <b>omission</b> errors, <b>duplication</b> errors, and <b>erroneous inclusions</b>.",
+    "Row error is the rectangular-data restatement of the representation problems — coverage, sampling and nonresponse — depending on <i>why</i> a unit is missing or duplicated."],
+  context:"Because each row is typically a unique unit, a missing unit shows up as row error. The strength of this view is its simplicity: it applies to any structured source. Its limit: it does not natively handle unstructured data (which must first be converted to a rectangle — itself an error-prone step not represented here).",
+  refs:["Biemer & Amaya (2020), ‘Total error frameworks for found data,’ in Big Data Meets Survey Science, 131–161.","Biemer (2016); AAPOR (2015) Big Data Task Force Report."]},
+
+"bdte-column":{arm:"meas",code:"D2",title:"Column Error",
+  def:["Error in <i>which characteristics</i> are recorded: <b>misspecified variables</b> — a column whose construct is misaligned with what the analyst needs, or whose values are outdated or otherwise wrong for the intended use.",
+    "Column error is the rectangular-data analogue of specification error."],
+  context:"A column may be perfectly populated yet measure the wrong thing, or measure the right thing on a stale schedule. Identifying the column as the locus helps pinpoint variable-definition problems.",
+  refs:["Biemer & Amaya (2020); AAPOR (2015)."]},
+
+"bdte-cell":{arm:"meas",code:"D3",title:"Cell Error",
+  def:["Error at the intersection of a row and a column — the individual value. Two kinds: <b>content error</b> (measurement error, linking error, data-processing error) and <b>missing data</b>.",
+    "Cell error is where measurement/content, linkage and item-missingness all land in the rectangular view."],
+  context:"Representing pre-processing errors at the cell level helps illuminate the root causes of error, which matters for mitigation and control.",
+  refs:["Biemer & Amaya (2020); AAPOR (2015)."]},
+
+/* ---------------- TED-On — Digital Traces on Online Platforms (Sen et al. 2021) ---------------- */
+"ted-validity":{arm:"meas",code:"O1",title:"Validity",
+  def:["At <b>Construct Definition</b>: the gap between the construct of interest and what platform <b>traces</b> can actually represent. A central TED-On question is whether ‘digital traces on the platform’ really are the theoretical construct of interest.",
+    "TED-On speaks of <b>traces</b> and <b>users</b> rather than ‘responses’ and ‘respondents,’ and of <b>selection</b> rather than ‘sample.’ A trace is user-generated content, an interaction with content (liking, viewing, downloading), or an interaction between users (following)."],
+  context:"Validity here mirrors construct validity in the TSE measurement arm, adapted to behavioral traces that were produced for reasons that may have nothing to do with the researcher’s concept.",
+  refs:["Sen, Flöck, Weller, Weiß & Wagner (2021), POQ — A total error framework for digital traces (TED-On)."]},
+
+"ted-plataff":{arm:"meas",code:"O2",title:"Platform Affordances Error",
+  def:["At <b>Platform Selection</b> (measurement side): users’ and traces’ behaviors are shaped by the platform itself — its <b>sociocultural norms</b> (trending topics, ‘likes,’ recommended connections, a support base) and its <b>design / technical capability</b> (e.g., a character limit).",
+    "These affordances <b>change over time</b>, producing ‘<b>behavioral drifts</b>’ that undermine reliability across time. The defining question: are platform-driven behaviors different from the behaviors a person would show independently?"],
+  context:"This is the signature error of TED-On — it has no clean survey analogue, because the ‘instrument’ (the platform) actively steers the behavior being measured. (Explicitly defined in the Class 12 materials.)",
+  refs:["Sen et al. (2021); Class 12 slides — Platform affordances error."]},
+
+"ted-traceselect":{arm:"meas",code:"O3",title:"Trace Selection Error",
+  def:["At <b>Data Collection</b> (measurement side): error in <i>which traces</i> are captured from the platform. It adapts the TSE collection stage to traces — the analogue, on the content side, of who/what gets selected.",
+    "Drawing the wrong set of traces (e.g., through an API or keyword query) systematically shifts what is measured."],
+  context:"In TED-On the collection step splits into a trace (measurement) path and a user (representation) path; this node is the trace path.",
+  refs:["Sen et al. (2021), POQ — TED-On framework structure."]},
+
+"ted-traceaug":{arm:"meas",code:"O4",title:"Trace Augmentation Error",
+  def:["At <b>Data Preprocessing</b> (measurement side): error introduced when the set of traces is <b>added to or enriched</b> — for example, deriving new variables or labels from raw traces. Augmentation can inject artifacts that were never in the original behavior."],
+  context:"Augmentation and reduction are the two preprocessing moves on the trace path; both can distort the measured construct.",
+  refs:["Sen et al. (2021), POQ — TED-On."]},
+
+"ted-tracered":{arm:"meas",code:"O5",title:"Trace Reduction Error",
+  def:["At <b>Data Preprocessing</b> (measurement side): error from <b>filtering, de-duplicating, or otherwise shrinking</b> the set of traces — dropping content that should have been kept, or keeping content that should have been removed."],
+  context:"The mirror image of augmentation: reduction errors change which traces survive into analysis.",
+  refs:["Sen et al. (2021), POQ — TED-On."]},
+
+"ted-tracemeas":{arm:"meas",code:"O6",title:"Trace Measurement Error",
+  def:["At <b>Data Analysis</b> (measurement side): error in <b>measuring or coding the content</b> of traces — turning raw traces into the variable actually analyzed. It is the trace-world analogue of measurement error in the TSE framework."],
+  context:"Whether traces are coded by humans or by automated classifiers, mis-measurement here propagates directly into the estimate.",
+  refs:["Sen et al. (2021), POQ — TED-On."]},
+
+"ted-platcov":{arm:"rep",code:"O7",title:"Platform Coverage Error",
+  def:["At <b>Platform Selection</b> (representation side): the mismatch between the <b>platform’s user population</b> and the <b>target population</b> — who is, and is not, on the platform at all. A central TED-On question is whether the platform population can stand in for the target population."],
+  context:"This is the representation-side counterpart to platform affordances error: choosing a platform fixes both how behavior is shaped (measurement) and whom you can observe (representation).",
+  refs:["Sen et al. (2021), POQ — TED-On."]},
+
+"ted-userselect":{arm:"rep",code:"O8",title:"User Selection Error",
+  def:["At <b>Data Collection</b> (representation side): error in <i>which users</i> are captured into the selection — the trace-world analogue of selection/nonresponse on the ‘who’ side. Users are ideally humans or institutions, but bots and duplicate accounts complicate this."],
+  context:"TED-On uses ‘selection’ rather than ‘sample’ because users are rarely drawn by a probability mechanism.",
+  refs:["Sen et al. (2021), POQ — TED-On."]},
+
+"ted-useraug":{arm:"rep",code:"O9",title:"User Augmentation Error",
+  def:["At <b>Data Preprocessing</b> (representation side): error from <b>adding users</b> to the selection during preprocessing — for instance, inferring or appending accounts — which can over-represent some kinds of users."],
+  context:"Augmentation/reduction on the user path determine which users persist into the analyzed selection.",
+  refs:["Sen et al. (2021), POQ — TED-On."]},
+
+"ted-userred":{arm:"rep",code:"O10",title:"User Reduction Error",
+  def:["At <b>Data Preprocessing</b> (representation side): error from <b>removing users</b> — filtering out accounts (e.g., suspected bots, inactive users) where the filter is imperfect and drops or keeps the wrong ones."],
+  context:"The mirror image of user augmentation, on the representation side.",
+  refs:["Sen et al. (2021), POQ — TED-On."]},
+
+"ted-adjust":{arm:"rep",code:"O11",title:"Adjustment Error",
+  def:["At <b>Data Analysis</b> (representation side): error from the <b>adjustments</b> applied to the user selection to make it stand in for the target population — the trace-world counterpart of survey weighting/adjustment error."],
+  context:"As in surveys, adjustment quality depends on having the right auxiliary information about users — which platforms rarely provide.",
+  refs:["Sen et al. (2021), POQ — TED-On."]},
+
+"ted-terms":{arm:"neutral",code:"O·",title:"Why TED-On renames everything",
+  def:["TED-On deliberately swaps the survey vocabulary: <b>traces</b> and <b>users</b> instead of ‘responses’ and ‘respondents,’ and <b>selection</b> instead of ‘sample.’ This is not cosmetic — it forces two questions before any error can be assessed: <b>is the platform population the target population?</b> and <b>are the traces the construct of interest?</b>",
+    "Like the TSE, the framework has a measurement arm (traces) and a representation arm (users) that both flow into the estimate."],
+  context:"The renaming signals that the data-generating process of a platform is fundamentally different from a survey: behavior is produced for the platform’s purposes, not the researcher’s.",
+  refs:["Sen et al. (2021), POQ; Class 12 slides."]},
+
+/* ---------------- TEM — Metered / web-tracking data (Bosch & Revilla 2022) ---------------- */
+"tem-spec":{arm:"meas",code:"E1",title:"Specification Error",
+  def:["At <b>Design measurement</b>: the gap between the concept of interest and what the meter is set up to record. Metered (web-tracking / weblog) data is collected from a sample of participants who willingly install or configure technologies — <b>apps, browser plug-ins, or proxies</b> — that capture the digital traces they leave online (e.g., URLs visited)."],
+  context:"Because metered data is focused on <b>behavior</b>, it sidesteps recall error — but the construct must still be expressible from the traces a meter can see.",
+  refs:["Bosch & Revilla (2022), JRSS-A — An error framework for metered data (TEM)."]},
+
+"tem-coverage":{arm:"rep",code:"E2",title:"Coverage Error",
+  def:["At <b>Construct frame</b>: the usual mismatch between the target/inferential population and the frame from which metered participants are recruited.",
+    "Metered samples can be built with <b>probability or non-probability</b> methods, so coverage risk depends on how participants are sourced."],
+  context:"Represented on the representation arm of the TEM diagram, alongside sampling, missing-data, and adjustment error.",
+  refs:["Bosch & Revilla (2022), JRSS-A — TEM."]},
+
+"tem-sampling":{arm:"rep",code:"E3",title:"Sampling Error",
+  def:["At <b>Draw sample</b>: variance from observing a sample of metered participants rather than the whole frame. With non-probability recruitment, classic sampling-error logic is replaced by selection concerns."],
+  context:"One of the representation-side error components in the TEM framework.",
+  refs:["Bosch & Revilla (2022), JRSS-A — TEM."]},
+
+"tem-meas":{arm:"meas",code:"E4",title:"Measurement Error",
+  def:["Spanning the metering pipeline — <b>Develop/choose technologies → Install meter → Identify/Generate data source → ETL</b>: error in what the meter actually records versus the true online behavior. The chosen technology and how it is installed determine what can and cannot be observed."],
+  context:"Measurement error is a measurement-arm component that, in TEM, stretches across several metering-specific steps not present in surveys (choosing the metering technology, installing it on devices, generating the data source).",
+  refs:["Bosch & Revilla (2022), JRSS-A — TEM."]},
+
+"tem-processing":{arm:"meas",code:"E5",title:"Processing Errors",
+  def:["At the <b>Extract → Transform → Load</b> stage: editing, transformation and integration errors as raw meter logs are turned into an analyzable file. As in the TEF, ETL is iterative rather than strictly linear."],
+  context:"Processing errors sit on the measurement arm alongside measurement error in the TEM diagram.",
+  refs:["Bosch & Revilla (2022), JRSS-A — TEM."]},
+
+"tem-missing":{arm:"rep",code:"E6",title:"Missing Data Error",
+  def:["Spanning <b>Install meter → … → Load</b> on the representation arm: traces that the meter fails to capture. Meters can miss activity on devices, browsers, or apps they cannot track, or when participants browse around the meter — producing missingness that is hard to model."],
+  context:"This is the metered-data counterpart of nonresponse/missing-data: the meter is the instrument, and its blind spots create the gaps.",
+  refs:["Bosch & Revilla (2022), JRSS-A — TEM."]},
+
+"tem-adjust":{arm:"rep",code:"E7",title:"Adjustment Error",
+  def:["At <b>Model</b>: error from the weighting/calibration applied to metered participants so their behavior can represent the target population."],
+  context:"The representation-arm adjustment step, analogous to survey post-stratification.",
+  refs:["Bosch & Revilla (2022), JRSS-A — TEM."]},
+
+/* ---------------- Total Twitter Error (Hsieh & Murphy 2017) ---------------- */
+"tw-coverage":{arm:"rep",code:"W1",title:"Coverage Error",
+  def:["Who is on the platform versus the population of interest. It includes <b>overcoverage</b> — units in the analytic set that are not in the target/inferential population and should be excluded — and <b>undercoverage</b> — target units excluded from the analytic set. Applies to both users and tweets."],
+  context:"A typical Twitter workflow first fixes geography, language and time frame; each choice shapes coverage. If the platform’s users differ from the target population, estimates are biased before any analysis begins.",
+  example:"Asking ‘what were U.S. opinions on marijuana legalization, 2011–2014?’ already excludes everyone not tweeting on Twitter in that window.",
+  refs:["Hsieh & Murphy (2017) — Total Twitter Error; summarized in Amaya, Biemer & Kinyon (2020)."]},
+
+"tw-query":{arm:"meas",code:"W2",title:"Query Error",
+  def:["A <b>type of coverage error</b> specific to keyword scraping: the search query used to pull tweets can <b>over-collect</b> (too many generic words bring in irrelevant tweets) or <b>under-collect</b> (incomplete terms miss relevant content).",
+    "Query design sits at the boundary of specification, coverage and measurement."],
+  context:"Example queries: basic — (marijuana OR pot) AND (legal OR legalize OR legalization); expanded — adds 420, cannabis, mmj, weed, hemp, ganja, THC … OR mmot. Practical query dilemmas include how to treat links/images and whether a retweet counts as endorsement.",
+  refs:["Hsieh & Murphy (2017); Amaya et al. (2020)."]},
+
+"tw-interpretation":{arm:"meas",code:"W3",title:"Interpretation Error",
+  def:["Error that occurs when <b>coding tweets</b> into the variables used in analysis — deciding what a tweet actually <i>means</i>. It is the Twitter-world analogue of measurement/coding error."],
+  context:"Critique (Amaya et al. 2020): the Hsieh & Murphy framework is a good start but is specific to Twitter, excludes data-processing and analytic errors, conflates some sources (query error may blend specification, coverage and measurement/content), and does not map cleanly onto the TSE framework — which is precisely why the more general TEF and BDTE were proposed.",
+  refs:["Hsieh & Murphy (2017); Amaya et al. (2020)."]},
+
+/* ---------------- AI / Silicon Samples — applying the error lens to LLM data ---------------- */
+"ai-intro":{arm:"neutral",code:"AI",title:"What is a ‘silicon sample’?",
+  def:["A <b>silicon sample</b> is produced by prompting a large language model to <b>adopt personas</b> — defined by political and demographic characteristics — and then answer survey questions, yielding synthetic ‘respondents.’ The course also covers AI for coding open-ended responses, questionnaire design, and respondent-facing chatbots.",
+    "There is no separate published ‘error framework’ for silicon samples in the materials. The point of this view is the pedagogical payoff: the <b>same TSE / TEF vocabulary</b> — validity, coverage, measurement, modeling, processing, analytic — lets an analyst interrogate AI-generated data with discipline rather than hype."],
+  context:"Bisbee et al. (2024) built the largest such test in the materials: 30 synthetic respondents for each of the 7,530 human respondents in the ANES, yielding 3,614,400 synthetic responses. The headline lesson: ‘researchers cannot take for granted that responses from a pretrained LLM will match traditional survey data.’",
+  refs:["Bisbee, Clinton, Dorff, Kenkel & Larson (2024); Class 12 — AI and survey research."]},
+
+"ai-validity":{arm:"meas",code:"A1",title:"Validity / Specification — does the persona measure the construct?",
+  def:["The first question to ask of a silicon sample: does a synthetic persona’s answer measure what a real respondent’s answer would? In the materials, the answer is often <b>no</b>.",
+    "Bisbee et al. (2024) prompted ChatGPT to adopt political/demographic personas and answer feeling-thermometer-style batteries, then compared to ANES."],
+  formula:"48% of coefficients differed significantly from ANES;  among those, the sign flipped 32% of the time.",
+  context:"This is a validity/specification failure in TSE terms: the construct the model expresses is systematically not the construct the survey measures. Maps to TEF Specification (T3) and TSE Validity (M1).",
+  refs:["Bisbee et al. (2024) — can a pretrained LLM mirror human survey responses?"]},
+
+"ai-measurement":{arm:"meas",code:"A2",title:"Measurement / Content — does the model distort systematically?",
+  def:["When the model does respond, are its answers biased in a consistent direction? In the materials, yes: <b>ChatGPT exaggerates the extremity and certainty of partisan and social division</b> relative to the actual opinions of people with the same attributes."],
+  context:"A directional distortion is exactly what TSE calls measurement <b>bias</b> (the silicon analogue of social-desirability or instrument effects). Maps to TEF Measurement/Content (T5) and TSE Measurement (M2).",
+  example:"Lerner et al. (2024) used LLMs to generate synthetic answers to open-ended questions; the synthetic word-count distribution was visibly different from real survey responses — a content signature of the generator, not the respondent.",
+  refs:["Bisbee et al. (2023) — synthetic opinions exaggerate division; Lerner et al. (2024)."]},
+
+"ai-coverage":{arm:"rep",code:"A3",title:"Coverage / Representation — whose views are encoded?",
+  def:["A silicon sample represents the model’s <b>training data</b>, not a frame of real people. LLMs are built on that data and can <b>perpetuate its biases</b>, so some groups’ views are over- or under-represented in ways the analyst cannot see.",
+    "This is the coverage/representation problem, relocated inside the model."],
+  context:"It echoes the broader found-data lesson: ‘quantity of data does not mean that one can ignore foundational issues of measurement and construct validity and reliability’ (Lazer et al. 2014, on ‘Big Data hubris’). Maps to TEF Coverage/Domain (T1) and TSE Coverage (R1).",
+  refs:["Geng et al. (2024) — LLM bias; Lazer, Kennedy, King & Vespignani (2014), Science — the parable of Google Flu."]},
+
+"ai-modeling":{arm:"inf",code:"A4",title:"Modeling / Estimation — are results reproducible?",
+  def:["Silicon-sample estimates are unstable in two ways the materials document directly: results are <b>sensitive to small differences in the prompt</b>, and the distribution of responses to the <b>same</b> prompt <b>changed between April and July 2023</b> because the underlying model changed.",
+    "If re-running the ‘instrument’ gives different answers, every downstream estimate is at risk."],
+  context:"This is the silicon-sample version of modeling/estimation error — and it directly recalls Google Flu’s ‘algorithm dynamics,’ where a change to the platform broke a model that had looked accurate. Maps to TEF Modeling/Estimation (T7).",
+  refs:["Bisbee et al. (2024) — prompt sensitivity & version drift; Lazer et al. (2014)."]},
+
+"ai-processing":{arm:"meas",code:"A5",title:"Processing — using LLMs to code and clean data",
+  def:["When AI is used to <b>code open-ended responses</b> rather than to generate them, it sits at the processing stage. The materials are concrete about what works: <b>fine-tuning / pre-training is essential</b>; few-shot prompting beats zero-shot; prompt design should give both positive and negative examples; and performance varies by model."],
+  formula:"BERT (Gweon & Schonlau 2024): ~100 coded cases barely beats non-pretrained ML; advantage grows fast at 200–400+ coded cases.",
+  context:"Treated as a processing-error question (coding/editing), AI can reduce coder burden — but only with enough labeled training data and careful prompts. Maps to TSE Processing (M3) and TEF Processing (T6).",
+  refs:["Gweon & Schonlau (2024) — fine-tuned BERT for occupation/text coding; Class 12."]},
+
+"ai-analytic":{arm:"inf",code:"A6",title:"Analytic — the temptation to trust AI blindly",
+  def:["The final risk is in the analyst’s chair: <b>‘Big Data hubris’</b> — believing the sheer volume or fluency of AI output ‘compensates for any of their deficiencies, obviating the need for traditional, scientific analytic approaches.’ Automated analytics without human critical thinking and quality control lead to confident, incorrect inferences."],
+  context:"This is analytic error, full stop. It is also where survey methodologists add value: Sambasivan et al. (2021) — ‘here’s where we definitely come in.’ The discipline of TSE is the antidote to AI hype. Maps to TEF Analytic (T8).",
+  example:"On the constructive side, Yun et al. (2024) found LLM-generated question variants that target the same construct showed good validity/reliability and felt less repetitive to respondents — AI used to reduce fatigue, evaluated with survey-methods rigor.",
+  refs:["Lazer et al. (2014); Amaya et al. (2020) — analytic error; Sambasivan et al. (2021); Yun et al. (2024)."]}
+};
+
+/* ===================== helpers ===================== */
+const ARM={rep:"Representation",meas:"Measurement",inf:"Estimation / Analytic",neutral:"Foundation"};
+const short = id => C[id].title.replace(/\s*—.*$/,"").replace(/\s*\(.*?\)\s*$/,"").trim();
+
+function pill(id){const n=C[id];return `<button class="err ${n.arm}" data-node="${id}" aria-pressed="false"><span class="code">${n.code}</span>${short(id)}</button>`;}
+function chip(id){const n=C[id];return `<button class="chip" data-node="${id}" aria-pressed="false"><span class="ck">${n.code}</span>${short(id)}</button>`;}
+function stage(label,sub){return `<div class="stage">${label}${sub?`<span class="sub">${sub}</span>`:""}</div>`;}
+function edge(id){return `<div class="edge"><div class="rail"></div>${pill(id)}</div>`;}
+function pbox(label,cls){return `<div class="pbox ${cls||""}">${label}</div>`;}
+const etlBox = `<div class="pbox etl"><span class="etlk">ETL ⇄</span><span class="etlrow">Extract</span><span class="etlrow">Transform</span><span class="etlrow">Load</span></div>`;
+function errcard(id,hint){const n=C[id];return `<button class="errcard ${n.arm}" data-node="${id}" aria-pressed="false"><span class="ename"><span class="ecode">${n.code}</span>${short(id)}</span><span class="ehint">${hint}</span></button>`;}
+function bigcard(id,desc){const n=C[id];return `<button class="bigcard ${n.arm}" data-node="${id}" aria-pressed="false"><span class="bk">${n.code} · ${ARM[n.arm]}</span><h3>${short(id)}</h3><p>${desc}</p><span class="more">Open definition →</span></button>`;}
+const ribbonJoin = arr => arr.join('<span class="arrowx">→</span>');
+
+/* ===================== TSE ===================== */
+const tseDiagram = `
+<div class="flow">
+  <div class="arms">
+    <div class="arm rep"><div class="arm-label">Representation<small>the “who”</small></div>
+      ${stage("Target Population")}${edge("tse-coverage")}${stage("Sampling Frame")}${edge("tse-sampling")}${stage("Sample")}${edge("tse-nonresponse")}${stage("Respondents")}${edge("tse-adjustment")}${stage("Post-survey Adjustments")}
+    </div>
+    <div class="arm meas"><div class="arm-label">Measurement<small>the “what”</small></div>
+      ${stage("Construct")}${edge("tse-validity")}${stage("Measurement")}${edge("tse-measurement")}${stage("Response")}${edge("tse-processing")}${stage("Edited Response")}
+    </div>
+  </div>
+  <div class="converge"><div class="yrail"><span></span><span></span></div><div class="statistic">Survey Statistic<span class="sub">the published estimate</span></div></div>
+</div>
+<div class="micro">Foundations — click to review</div>
+<div class="chips">${["tse-mse","tse-bias","tse-variance","tse-quality","tse-cascade"].map(chip).join("")}</div>`;
+
+/* ===================== TEF ===================== */
+const tefRibbon = ribbonJoin([
+  pbox("Define Population","shared"),pbox("Construct Frame · Identify Sources"),pbox("Draw Sample"),
+  pbox("Design Questionnaire"),pbox("Conduct Survey"),etlBox,pbox("Process Data"),
+  pbox("Model","shared"),pbox("Create Estimates","shared"),pbox("Draw Inference","shared")
+]);
+const tefDiagram = `
+<div class="process">
+  <div class="ribbon-legend">Survey + Big-Data process · chronological (the ETL loop is iterative, not linear)</div>
+  <div class="ribbon">${tefRibbon}</div>
+  <div class="micro" style="margin-top:18px">Eight error components — click any source</div>
+  <div class="err-grid">
+    ${errcard("tef-coverage","Undercoverage, overcoverage, duplication — even without a frame.")}
+    ${errcard("tef-sampling","Census often possible; huge N makes trivial gaps ‘significant.’")}
+    ${errcard("tef-specification","Predefined variables may not match your construct.")}
+    ${errcard("tef-nonresponse","Unit & item missingness from many hidden causes.")}
+    ${errcard("tef-measurement","‘Content error’: bad readings, transcription, stale values.")}
+    ${errcard("tef-processing","ETL transforms + record-linkage errors.")}
+    ${errcard("tef-modeling","Unknown missingness; thin records limit imputation.")}
+    ${errcard("tef-analytic","Granular but often univariate; biases ignored.")}
+  </div>
+</div>`;
+
+/* ===================== BDTE ===================== */
+const matrix = `
+<div class="matrix-wrap">
+  <table class="matrix" aria-hidden="true"><thead><tr><th>Rec #</th><th>V1</th><th>V2</th><th>…</th><th>Vk</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td></td><td class="hl-cell"></td><td></td><td></td></tr>
+    <tr class="hl-row"><td>2</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>…</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>N</td><td class="hl-col"></td><td></td><td></td><td></td></tr>
+  </tbody></table>
+  <div class="matrix-key"><span><i class="k-row"></i> a <b>row</b> = a unit</span><span><i class="k-col"></i> a <b>column</b> = a characteristic</span><span><i class="k-cell"></i> a <b>cell</b> = one value</span></div>
+</div>`;
+const bdteDiagram = `
+<div class="process">
+  <div class="formula-banner">Total error&nbsp;=&nbsp;Row error&nbsp;+&nbsp;Column error&nbsp;+&nbsp;Cell error</div>
+  ${matrix}
+  <div class="cards" style="margin-top:18px">
+    ${bigcard("bdte-row","Which units appear: omissions, duplicates, erroneous inclusions.")}
+    ${bigcard("bdte-column","Which characteristics: misspecified or outdated variables.")}
+    ${bigcard("bdte-cell","Individual values: content error, linking error, missing data.")}
+  </div>
+</div>`;
+
+/* ===================== TED-On ===================== */
+function srow(meas,label,rep,last){
+  return `<div class="srow">
+    <div class="mcol">${meas.map(pill).join("")}</div>
+    <div class="ccol"><div class="stage">${label}</div>${last?"":'<div class="crail"></div>'}</div>
+    <div class="rcol">${rep.map(pill).join("")}</div>
+  </div>`;
+}
+const tedonDiagram = `
+<div class="flow">
+  <div class="srow spine-head">
+    <div class="mcol"><span class="armcap meas">Measurement · traces</span></div>
+    <div class="ccol"><span class="spinecap">process</span></div>
+    <div class="rcol"><span class="armcap rep">Representation · users</span></div>
+  </div>
+  ${srow(["ted-validity"],"Construct Definition",[],false)}
+  ${srow(["ted-plataff"],"Platform Selection",["ted-platcov"],false)}
+  ${srow(["ted-traceselect"],"Data Collection",["ted-userselect"],false)}
+  ${srow(["ted-traceaug","ted-tracered"],"Data Preprocessing",["ted-useraug","ted-userred"],false)}
+  ${srow(["ted-tracemeas"],"Data Analysis",["ted-adjust"],true)}
+  <div class="srow"><div class="mcol"></div><div class="ccol"><div class="statistic">Estimate</div></div><div class="rcol"></div></div>
+</div>
+<div class="micro">Read first — the renamed vocabulary</div>
+<div class="chips">${chip("ted-terms")}</div>`;
+
+/* ===================== TEM ===================== */
+const temRibbon = ribbonJoin([
+  pbox("Define Concept · Target Pop","shared"),pbox("Design measurement · Construct frame"),pbox("Draw sample"),
+  pbox("Develop / choose technologies"),pbox("Install meter"),pbox("Identify / Generate data source"),etlBox,
+  pbox("Model","shared"),pbox("Create Estimates","shared")
+]);
+const temDiagram = `
+<div class="process">
+  <div class="note">Metered data = web-tracking / weblog traces captured from participants who <b>willingly install</b> apps, browser plug-ins, or proxies. Samples can be probability or non-probability; because it records behavior, it <b>avoids recall error</b>.</div>
+  <div class="ribbon-legend">Metering process (grey steps are unique to metered data)</div>
+  <div class="ribbon">${temRibbon}</div>
+  <div class="micro" style="margin-top:18px">Seven error components — click any source</div>
+  <div class="err-grid">
+    ${errcard("tem-spec","Can the meter express your concept?")}
+    ${errcard("tem-coverage","Probability or non-probability recruitment.")}
+    ${errcard("tem-sampling","A sample of metered participants.")}
+    ${errcard("tem-meas","What the meter records vs. true behavior.")}
+    ${errcard("tem-processing","ETL of raw meter logs.")}
+    ${errcard("tem-missing","Devices, apps, or browsers the meter can’t see.")}
+    ${errcard("tem-adjust","Weighting participants to the population.")}
+  </div>
+</div>`;
+
+/* ===================== Twitter ===================== */
+const twitterDiagram = `
+<div class="process">
+  <div class="note">Typical Twitter workflow: define geography, language &amp; time frame → choose topical keywords → build a search query → analyze automatically. Three error types follow.</div>
+  <div class="cards" style="margin-top:6px">
+    ${bigcard("tw-coverage","Who’s on the platform vs. the population — for both users and tweets.")}
+    ${bigcard("tw-query","Keywords over-collect irrelevant tweets, or miss relevant ones.")}
+    ${bigcard("tw-interpretation","What does a tweet actually mean once it’s coded into a variable?")}
+  </div>
+</div>`;
+
+/* ===================== AI / Silicon Samples ===================== */
+const aiDiagram = `
+<div class="process">
+  <div class="micro">Start here</div>
+  <div class="chips" style="margin-bottom:6px">${chip("ai-intro")}</div>
+  <div class="micro" style="margin-top:16px">Apply each error lens — click to see the evidence</div>
+  <div class="cards" style="margin-top:6px">
+    ${bigcard("ai-validity","Do persona answers measure the survey construct? Often not.")}
+    ${bigcard("ai-measurement","LLMs exaggerate the extremity & certainty of division.")}
+    ${bigcard("ai-coverage","The model represents its training data, not a frame.")}
+    ${bigcard("ai-modeling","Prompt-sensitive; the same prompt drifted across versions.")}
+    ${bigcard("ai-processing","AI as a coder needs fine-tuning + labeled data.")}
+    ${bigcard("ai-analytic","‘Big Data hubris’ — don’t trust fluent output blindly.")}
+  </div>
+  <div class="posnote"><b>The constructive side.</b> Used with survey-methods rigor, AI helps: LLM-generated question variants that target the same construct were less repetitive with good validity/reliability (Yun et al. 2024); LLMs can pre-test open-ended items against human answers (Lerner et al. 2024); fine-tuned models support coding (Gweon &amp; Schonlau 2024).</div>
+</div>`;
+
+/* ===================== Crosswalk ===================== */
+function xrow(concept,sub,survey,found,ai){
+  return `<tr>
+    <td class="concept">${concept}<span class="csub">${sub}</span></td>
+    <td class="col-rep"><p>${survey.t}</p><span class="src">${survey.s}</span></td>
+    <td class="col-meas"><p>${found.t}</p><span class="src">${found.s}</span></td>
+    <td class="col-inf"><p>${ai.t}</p><span class="src">${ai.s}</span></td>
+  </tr>`;
+}
+const crossTable = `
+<table class="xtable">
+  <thead><tr><th>Error concept</th><th>Survey data (TSE)</th><th>Found data (TEF · BDTE · TED-On · TEM)</th><th>AI silicon samples</th></tr></thead>
+  <tbody>
+  ${xrow("Construct &amp; validity","specification",
+    {t:"Validity — does the question capture the construct? Empirical validity ≤ √reliability.",s:"Groves et al."},
+    {t:"Specification (TEF) / Column error (BDTE): predefined variables may not match the construct.",s:"Amaya 2020 · Biemer &amp; Amaya 2020"},
+    {t:"Persona answers often don’t measure the survey construct — 48% of coefficients differ, signs flip 32%.",s:"Bisbee et al. 2024"})}
+  ${xrow("Coverage","representation",
+    {t:"Coverage error: target vs. frame; nonobservable. Bias = (U/N)(Ȳ_C−Ȳ_U).",s:"Groves et al. · FCSM 2001"},
+    {t:"Coverage/Domain (TEF), Platform coverage (TED-On), Coverage (Twitter): who’s on the platform vs. the population.",s:"Amaya 2020 · Sen 2021 · Hsieh &amp; Murphy 2017"},
+    {t:"The model represents its training data, not a frame of people — and can perpetuate its biases.",s:"Geng 2024 · Lazer et al. 2014"})}
+  ${xrow("Sampling","selection",
+    {t:"Sampling error: variance from drawing a sample; quantified via standard errors.",s:"Groves et al."},
+    {t:"Often a census (no sampling error), but huge N flags trivial differences; TED-On says ‘selection,’ not ‘sample.’",s:"Amaya 2020 · Sen 2021"},
+    {t:"No sampling mechanism at all — synthetic respondents are generated, not drawn.",s:"Bisbee et al. 2024"})}
+  ${xrow("Nonresponse","missing data",
+    {t:"Unit &amp; item nonresponse; Bias ≈ (M/N)(Ȳ_r−Ȳ_m). Response rate weakly tied to bias (r≈0.2).",s:"Groves 2006"},
+    {t:"Unit/item missingness (TEF); meter blind spots (TEM). The mechanism is usually unknown.",s:"Amaya 2020 · Bosch &amp; Revilla 2022"},
+    {t:"Models may refuse, hedge, or skip — and what’s missing depends on the prompt.",s:"Bisbee et al. 2024"})}
+  ${xrow("Measurement","content",
+    {t:"Reported vs. true value; random error attenuates correlations (β=β·λ).",s:"Groves et al."},
+    {t:"‘Content error’ (TEF): stale or false sensor readings; Trace measurement (TED-On); Interpretation (Twitter).",s:"Amaya 2020 · Sen 2021 · Hsieh &amp; Murphy 2017"},
+    {t:"LLMs exaggerate the extremity &amp; certainty of partisan and social division.",s:"Bisbee et al. 2023"})}
+  ${xrow("Processing","linkage · coding",
+    {t:"Entry, editing, coding (deff_coder), disclosure limitation; synthetic data can still allow valid inference.",s:"Reiter 2012"},
+    {t:"ETL transforms + record-linkage error (TEF · BDTE · TEM).",s:"Amaya 2020 · Bosch &amp; Revilla 2022"},
+    {t:"AI as a coder needs fine-tuning + 200–400+ labeled cases; few-shot beats zero-shot.",s:"Gweon &amp; Schonlau 2024"})}
+  ${xrow("Modeling","estimation · adjustment",
+    {t:"Weighting &amp; imputation; auxiliaries predicting Y and response cut bias AND variance.",s:"Little &amp; Vartivarian 2005"},
+    {t:"Adjustment error (TED-On · TEM); unknown missingness mechanism is hard to model (TEF).",s:"Amaya 2020 · Sen 2021"},
+    {t:"Estimates drift with prompt wording and with model-version changes (April→July 2023).",s:"Bisbee et al. 2024 · Lazer et al. 2014"})}
+  ${xrow("Analytic","interpretation",
+    {t:"User errors in analysis/interpretation; small-area &amp; rare-group inference is hard.",s:"West et al. · Amaya 2020"},
+    {t:"Granular but often univariate; biases &amp; measurement variances are routinely ignored.",s:"Amaya 2020"},
+    {t:"‘Big Data hubris’ — don’t let fluent output replace scientific analysis.",s:"Lazer et al. 2014 · Sambasivan et al. 2021"})}
+  </tbody>
+</table>`;
+
+
+/* ===================== heads / descriptions / footnotes ===================== */
+const HEAD={
+  tse:{t:"Total Survey Error (TSE)",c:"Groves et al. 2004 · 2011"},
+  tef:{t:"Total Error Framework (TEF)",c:"Amaya, Biemer & Kinyon 2020 · JSSAM"},
+  bdte:{t:"Big Data Total Error (BDTE)",c:"Biemer & Amaya 2020 · AAPOR 2015"},
+  tedon:{t:"Digital traces on online platforms (TED-On)",c:"Sen et al. 2021 · POQ"},
+  tem:{t:"Metered / web-tracking data (TEM)",c:"Bosch & Revilla 2022 · JRSS-A"},
+  twitter:{t:"Total Twitter Error",c:"Hsieh & Murphy 2017"},
+  ai:{t:"AI-generated “silicon samples”",c:"Applying the error lens · Class 12"}
+};
+const DESC={
+  tse:"The original framework. Two arms — <b>Representation</b> (who is in the data) and <b>Measurement</b> (what the data record) — flow into the survey statistic. Errors live on the <b>transitions</b> between stages, and every one of them feeds the Mean Squared Error.",
+  tef:"Amaya, Biemer & Kinyon adapt TSE to found / Big Data by cutting the “S.” They keep TSE’s vocabulary for comparability but reorganize it into <b>eight components</b> over a process that is deliberately <b>non-linear</b> — the ETL loop is iterative.",
+  bdte:"A deliberately simple view for <b>any structured (rectangular) dataset</b>: rows are units, columns are characteristics, cells are values. Total error is classified by <b>where</b> it sits.",
+  tedon:"Built for social-media platforms. It renames the survey world — <b>traces</b> and <b>users</b>, not responses and respondents — and adds an error with no survey analogue: the platform itself shapes the behavior being measured.",
+  tem:"For <b>metered</b> data — URLs and weblogs captured from participants who willingly install apps, plug-ins, or proxies. Behavior-focused, so it sidesteps recall error, but the meter is the instrument and its blind spots create missingness.",
+  twitter:"An early, Twitter-specific framework with just three error types. Intuitive and useful, but it conflates several TSE sources and doesn’t map cleanly onto TSE — which is exactly what motivated the more general TEF and BDTE.",
+  ai:"Not a separate published framework — a <b>demonstration</b>. The same TSE / TEF vocabulary lets a public-opinion analyst interrogate LLM-generated “silicon samples” with discipline instead of hype. Click each error to see what the research actually found."
+};
+const FOOT={
+  tse:"<b>Strengths:</b> a comprehensive nomenclature, error decomposition for targeting the biggest tractable source, a conceptual foundation for the field, and a structure for cost–error trade-offs. <b>Weaknesses:</b> it centers accuracy and sets aside quality dimensions like timeliness and relevance; the diagram implies error sources are independent when they are often correlated; bias components are rarely measured in practice; and many organizations still report only sampling error.",
+  tef:"In the original RECS case study, six of the eight components were assessed (specification, coverage, sampling, nonresponse/missing, measurement/content, processing). Modeling and analytic error were set aside because they depend on <i>how</i> the survey and Big Data are combined.",
+  bdte:"Simple and applicable to any structured source — but not directly applicable to unstructured data, which must first be converted to a rectangle, a step that is itself error-prone and not represented here.",
+  tedon:"TED-On = “Total Error Framework for Digital Traces of Human behavior on Online platforms.” Its measurement (trace) and representation (user) arms branch from the same process spine and converge on the estimate.",
+  tem:"TEM treats the meter as the measuring instrument: choosing and installing the metering technology are genuine, error-prone steps that have no counterpart in a questionnaire.",
+  twitter:"Critique (Amaya et al. 2020): the framework is specific to Twitter, omits data-processing and analytic error, conflates some sources (query error blends specification, coverage and measurement), and doesn’t map cleanly onto TSE.",
+  ai:"Scale of the evidence: Bisbee et al. (2024) generated 30 synthetic respondents for each of the 7,530 ANES respondents — 3,614,400 synthetic responses — and still concluded that LLM output cannot be assumed to match survey data."
+};
+const ORDER=["tse","tef","bdte","tedon","tem","twitter","ai"];
+const DIA={tse:tseDiagram,tef:tefDiagram,bdte:bdteDiagram,tedon:tedonDiagram,tem:temDiagram,twitter:twitterDiagram,ai:aiDiagram};
+
+function fwSection(id){
+  return `<section class="fw" data-fw="${id}">
+    <div class="stage-head"><h2>${HEAD[id].t}</h2><span class="cite-chip">${HEAD[id].c}</span></div>
+    <p class="stage-desc">${DESC[id]}</p>
+    ${DIA[id]}
+    ${FOOT[id]?`<p class="footnote">${FOOT[id]}</p>`:""}
+  </section>`;
+}
+const emptyState = `<div class="empty"><div class="mark">§</div><p>Select an error source to open its field notes — definition, how it shows up in this kind of data, an example, and the references behind it.</p></div>`;
+
+/* ===================== detail panel ===================== */
+function field(label,html,cls){return `<div class="field ${cls||""}"><h4>${label}</h4>${html}</div>`;}
+function renderNote(id){
+  const n=C[id]; if(!n) return;
+  let h=`<div class="notes-head"><span class="notes-tag ${n.arm}">${ARM[n.arm]||"Source"}${n.code?" · "+n.code:""}</span><h3>${n.title}</h3></div><div class="notes-body">`;
+  h+=field("Definition", n.def.map(p=>`<p>${p}</p>`).join("") + (n.formula?`<div class="formula">${n.formula}</div>`:""));
+  if(n.context) h+=field("In practice", `<p>${n.context}</p>`);
+  if(n.example) h+=field("Worked example", `<p>${n.example}</p>`, "example");
+  if(n.refs&&n.refs.length) h+=field("References", `<ul class="reflist">${n.refs.map(r=>`<li>${r}</li>`).join("")}</ul>`);
+  h+=`</div>`;
+  document.getElementById("notes").innerHTML=h;
+  document.querySelectorAll('[data-node][aria-pressed="true"]').forEach(el=>el.setAttribute("aria-pressed","false"));
+  document.querySelectorAll(`[data-node="${id}"]`).forEach(el=>el.setAttribute("aria-pressed","true"));
+  if(window.innerWidth<=900){const nt=document.getElementById("notes");nt.scrollIntoView({behavior:(matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"),block:"nearest"});}
+}
+
+/* ===================== framework switching ===================== */
+function switchFw(view){
+  document.querySelectorAll("#tablist .tab").forEach(t=>t.setAttribute("aria-selected", t.dataset.view===view?"true":"false"));
+  const fwArea=document.getElementById("fwArea"), crossArea=document.getElementById("crossArea");
+  if(view==="cross"){fwArea.style.display="none";crossArea.style.display="block";return;}
+  crossArea.style.display="none";fwArea.style.display="grid";
+  document.querySelectorAll(".fw").forEach(s=>s.classList.toggle("active", s.dataset.fw===view));
+  document.getElementById("notes").innerHTML=emptyState;
+}
+
+/* ===================== init ===================== */
+function init(){
+  // supplementary CSS for spine / ribbon-grey / matrix / misc
+  const css=document.createElement("style");
+  css.textContent=`
+   .fw{display:none}.fw.active{display:block}
+   .note{font-size:13px;color:var(--ink-soft);background:var(--surface-2);border:1px solid var(--line-soft);border-left:4px solid var(--rep);border-radius:10px;padding:11px 13px;margin:0 0 14px;line-height:1.5}
+   .posnote{font-size:13px;color:var(--ink-soft);background:#f3f1fa;border:1px solid #ded8f0;border-left:4px solid var(--inf);border-radius:10px;padding:12px 14px;margin-top:18px;line-height:1.5}
+   .formula-banner{font-family:var(--mono);font-size:14px;font-weight:600;color:var(--ink);background:var(--surface-2);border:1px dashed var(--line);border-radius:11px;padding:13px;text-align:center;letter-spacing:.01em}
+   /* TEM grey steps (unique to metered) */
+   [data-fw="tem"] .ribbon .pbox:nth-child(7),[data-fw="tem"] .ribbon .pbox:nth-child(9),[data-fw="tem"] .ribbon .pbox:nth-child(11){background:#eceef0;border-color:var(--ink-faint);border-style:dashed}
+   /* TED-On spine */
+   .srow{display:grid;grid-template-columns:1fr 188px 1fr;gap:0 14px;align-items:center;margin:0}
+   .srow .mcol{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+   .srow .rcol{display:flex;flex-direction:column;align-items:flex-start;gap:6px}
+   .srow .ccol{display:flex;flex-direction:column;align-items:stretch}
+   .srow .ccol .stage{width:100%}
+   .srow .crail{width:0;height:16px;border-left:2px solid var(--line);align-self:center}
+   .spine-head{margin-bottom:6px}
+   .armcap{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;padding:3px 8px;border-radius:6px;border:1px solid}
+   .armcap.meas{color:var(--meas-deep);border-color:var(--meas);background:var(--meas-soft)}
+   .armcap.rep{color:var(--rep-deep);border-color:var(--rep);background:var(--rep-soft)}
+   .spinecap{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);text-align:center;display:block}
+   /* BDTE matrix */
+   .matrix-wrap{display:flex;gap:20px;align-items:center;flex-wrap:wrap;margin-top:16px}
+   table.matrix{border-collapse:collapse;font-family:var(--mono);font-size:11px}
+   table.matrix th,table.matrix td{border:1px solid var(--line);width:34px;height:26px;text-align:center;color:var(--ink-soft);background:var(--surface)}
+   table.matrix th{background:var(--surface-2);color:var(--ink-faint);font-weight:600}
+   table.matrix .hl-row td{background:var(--rep-soft);border-color:var(--rep)}
+   table.matrix .hl-col{background:var(--rep-soft)!important;border-color:var(--rep)!important}
+   table.matrix .hl-cell{background:var(--meas-soft)!important;border-color:var(--meas)!important}
+   .matrix-key{display:flex;flex-direction:column;gap:8px;font-size:12.5px;color:var(--ink-soft)}
+   .matrix-key span{display:flex;gap:8px;align-items:center}
+   .matrix-key i{width:14px;height:14px;border-radius:3px;border:1.5px solid;display:inline-block}
+   .matrix-key .k-row{background:var(--rep-soft);border-color:var(--rep)}
+   .matrix-key .k-col{background:var(--rep-soft);border-color:var(--rep)}
+   .matrix-key .k-cell{background:var(--meas-soft);border-color:var(--meas)}
+   @media (max-width:720px){
+     .srow{grid-template-columns:1fr;gap:6px;margin-bottom:6px}
+     .srow .mcol{align-items:stretch;order:2}.srow .rcol{align-items:stretch;order:3}.srow .ccol{order:1}
+     .srow .mcol .err,.srow .rcol .err{justify-content:flex-start}
+     .srow .crail{display:none}
+     .spine-head .ccol{display:none}
+   }`;
+  document.head.appendChild(css);
+
+  // build layout
+  const views=document.getElementById("views");
+  views.innerHTML=`
+    <div id="fwArea" class="grid">
+      <div class="diagram-col">
+        <div class="howto">Click any <kbd>error source</kbd> to open its definition, context, example &amp; references.</div>
+        <div id="diagrams">${ORDER.map(fwSection).join("")}</div>
+      </div>
+      <div class="panel-col"><div class="notes" id="notes">${emptyState}</div></div>
+    </div>
+    <section id="crossArea" style="display:none">
+      <div class="stage-head"><h2>Crosswalk — one vocabulary, three data worlds</h2><span class="cite-chip">Survey · Found data · Silicon samples</span></div>
+      <p class="stage-desc">Read each row across the three columns to see how a single error concept changes — and stays recognizable — as you move from a designed survey, to found / Big Data, to AI-generated silicon samples. Color marks the arm: <b style="color:var(--rep-deep)">representation</b>, <b style="color:var(--meas-deep)">measurement</b>, <b style="color:var(--inf-deep)">inference</b>.</p>
+      <div class="xwrap">${crossTable}</div>
+      <p class="footnote">Sources are abbreviated; full citations appear in each framework’s field-notes panel. The crosswalk is a teaching aid for mapping concepts across data types, not a claim that the frameworks are interchangeable.</p>
+    </section>`;
+
+  // first framework
+  document.querySelector('.fw[data-fw="tse"]').classList.add("active");
+
+  // node clicks (delegated)
+  views.addEventListener("click",e=>{const el=e.target.closest("[data-node]");if(el)renderNote(el.dataset.node);});
+
+  // tabs
+  const tabs=[...document.querySelectorAll("#tablist .tab")];
+  tabs.forEach((t,i)=>{
+    t.addEventListener("click",()=>switchFw(t.dataset.view));
+    t.addEventListener("keydown",ev=>{
+      let j=null;
+      if(ev.key==="ArrowRight")j=(i+1)%tabs.length;
+      else if(ev.key==="ArrowLeft")j=(i-1+tabs.length)%tabs.length;
+      else if(ev.key==="Home")j=0;else if(ev.key==="End")j=tabs.length-1;
+      if(j!==null){ev.preventDefault();tabs[j].focus();switchFw(tabs[j].dataset.view);}
+    });
+  });
+}
+document.addEventListener("DOMContentLoaded",init);
+</script>
+
 <footer>
-  <p><a href="index.html">&larr; Back to portfolio</a> &nbsp;&middot;&nbsp; Kevin Linares &nbsp;&middot;&nbsp; University of Maryland JPSM &nbsp;&middot;&nbsp; University of Michigan Survey Research Center</p>
+  <p><a href="index.html">← Back to portfolio</a> &nbsp;·&nbsp; Kevin Linares &nbsp;·&nbsp; University of Maryland JPSM &nbsp;·&nbsp; University of Michigan Survey Research Center</p>
 </footer>
 
 </body>
