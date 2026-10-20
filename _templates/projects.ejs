@@ -1,0 +1,24 @@
+```{=html}
+<%
+const esc = s => String(s ?? "").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+const featured = items.length > 0 && items[0].group === "featured";
+%>
+<ul class="project-grid<%= featured ? ' featured' : '' %>">
+<% for (const item of items) { %>
+  <li class="project-card<%= featured ? ' featured' : '' %>">
+    <% if (featured) { %><span class="featured-badge">Featured · Psychometrics × LLM</span><% } %>
+    <h3 class="project-title"><a href="<%= item.repo %>" target="_blank" rel="noopener"><%= esc(item.title) %></a></h3>
+    <p class="project-summary"><%= esc(item.summary) %></p>
+    <% if (item.facts) { %><p class="project-facts"><%= esc(item.facts) %></p><% } %>
+    <% if (item.detail) { %>
+    <details><summary>More</summary><p><%= esc(item.detail) %></p></details>
+    <% } %>
+    <% if (item.links) { %>
+    <p class="project-links"><% for (const l of item.links) { %><a href="<%= l.href %>" target="_blank" rel="noopener"><%= esc(l.text) %> ↗</a><% } %></p>
+    <% } %>
+    <div class="project-tags"><% for (const t of (item.tags || [])) { %><span class="tag tag-<%= t.kind %>"><%= esc(t.label) %></span><% } %></div>
+    <span class="project-arrow" aria-hidden="true">↗</span>
+  </li>
+<% } %>
+</ul>
+```

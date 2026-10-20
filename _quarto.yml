@@ -1,0 +1,52 @@
+project:
+  type: website
+  output-dir: _site
+  # Render only the site pages. Everything under courses/ is pre-rendered
+  # (Quarto reference summaries, PDFs, R scripts) and is copied as-is.
+  render:
+    - index.qmd
+    - coursework.qmd
+    - 404.qmd
+  resources:
+    - methods.html          # self-contained TSE atlas, served untouched
+    - courses/**
+    - assets/favicon.svg
+
+website:
+  title: "Kevin Linares"
+  site-url: https://klinares.github.io
+  description: "Kevin Linares: survey methodologist and data scientist. Probability sampling, measurement, and the responsible use of machine learning and language models in survey research."
+  favicon: assets/favicon.svg
+  open-graph: true
+  page-navigation: false
+  search: false
+  navbar:
+    background: primary
+    left:
+      - text: "Projects"
+        href: index.qmd#projects
+      - text: "Methods"
+        href: methods.html
+      - text: "Coursework"
+        href: coursework.qmd
+    right:
+      - icon: github
+        href: https://github.com/klinares
+        aria-label: GitHub
+  page-footer:
+    background: primary
+    center: >-
+      Kevin Linares · University of Maryland JPSM ·
+      University of Michigan Survey Research Center ·
+      [github.com/klinares](https://github.com/klinares)
+
+format:
+  html:
+    theme: [default, assets/theme.scss]
+    page-layout: custom
+    toc: false
+    anchor-sections: false
+    link-external-newwindow: true
+    link-external-icon: false
+    smooth-scroll: true
+    lang: en

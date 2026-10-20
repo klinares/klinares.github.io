@@ -1,0 +1,289 @@
+# ---------------------------------------------------------------------------
+# Single source of truth for every project on the site AND the GitHub profile
+# README (klinares/klinares). Edit here, then:
+#   quarto preview                      -> site
+#   Rscript R/build_profile_readme.R    -> ../klinares/README.md
+#
+# Fields
+#   group    featured | measurement | design | found | modeling  (section on index)
+#   title    card heading
+#   repo     GitHub URL (the card links here)
+#   summary  one or two sentences shown on the card
+#   facts    short key-numbers line in mono (optional)
+#   detail   longer write-up, shown behind "more" (optional)
+#   links    extra links [{text, href}] (optional)
+#   tags     [{label, kind}]  kind = r | stat | ml | survey | quarto | stan | ai
+#   badge    present => project appears as a badge on the profile README
+#            {text, color, order}  color = badge hex without '#'; order = position
+# ---------------------------------------------------------------------------
+
+- group: featured
+  title: "Latent-to-Language: Psychometric-Informed Prompts for LLM-Based Survey Imputation"
+  repo: https://github.com/klinares/Latent_to_Language
+  summary: >-
+    Translates psychometric model conclusions (predictions, confidence, adjustment
+    direction) into natural-language prompts, so a large language model refines the
+    IRT/CFA starting point for each missing survey item instead of treating items as
+    arbitrary tabular features.
+  facts: "LAPOP Mexico 2023 · n = 1,430  ·  Latinobarómetro Colombia 2023 · n = 1,073  ·  5-fold CV · m = 5"
+  detail: >-
+    Four imputation methods (two tree-based benchmarks, two LLMs) are compared across
+    three information tiers with per-fold CFA refitting and IRT/GRM estimation.
+    Psychometric context reduces item-level error monotonically (Claude Sonnet weighted
+    kappa .645 → .667 → .675 on LAPOP), and the anchor helps most under heavy masking.
+    Because LLM and tree-based imputers carry structurally different error, the paper
+    argues for stacking them rather than choosing one.
+  links:
+    - text: "Manuscript (PDF)"
+      href: https://github.com/klinares/Latent_to_Language/blob/main/manuscript/final_paper_linares.pdf
+  tags:
+    - {label: "R", kind: r}
+    - {label: "Psychometrics", kind: survey}
+    - {label: "LLM Imputation", kind: ai}
+    - {label: "Multiple Imputation", kind: stat}
+    - {label: "Quarto", kind: quarto}
+  badge: {text: "Latent-to-Language · Psychometric-Informed LLM Imputation", color: "c94f2a", order: 1}
+
+# ---- Measurement & latent variables ---------------------------------------
+
+- group: measurement
+  title: "WISE: Weighted Inference for Survey Estimation"
+  repo: https://github.com/klinares/weighted_inference_survey_estimation
+  summary: >-
+    Latent class and confirmatory factor analysis for complex survey data, with one
+    stratified jackknife (JKn) replicate design generating every standard error, from
+    the measurement model through domain estimates and the corrections applied to them.
+  facts: "LCA + CFA arms  ·  one replicate design  ·  naive vs. design-based vs. corrected"
+  detail: >-
+    Replication rather than linearization, so new statistics need no new variance code.
+    Neither arm chooses the number of segments or factors: each renders the search
+    evidence and waits for the analyst's number in the config. Both reports print the
+    ratio of the design-based standard error to the default one, parameter by
+    parameter and cell by cell.
+  tags:
+    - {label: "R / survey", kind: r}
+    - {label: "Latent Class Analysis", kind: survey}
+    - {label: "CFA / lavaan", kind: stat}
+    - {label: "JKn Replication", kind: survey}
+    - {label: "Quarto", kind: quarto}
+
+- group: measurement
+  title: "DrSvyR: A Survey Methodologist You Can Consult"
+  repo: https://github.com/klinares/DrSvyR
+  summary: >-
+    An R package and Shiny app that finds segments in a battery of survey questions,
+    with standard errors that respect the sampling design, an AI methodologist that
+    comments but cannot overrule, and a log of who decided what.
+  facts: "200 starts per candidate K  ·  analyst signs every decision  ·  SPSS / Stata in, report + data out"
+  detail: >-
+    Protocol is enforced in code (a single-PSU stratum halts the run; the
+    classification table is rebuilt inside every replicate), and the analyst enters the
+    number of classes before the model offers a view. Numbers are validated against the
+    WISE reference implementation. Delivers a self-contained report, the survey file
+    with segment membership, a re-runnable spec, and the decision log.
+  tags:
+    - {label: "R / Shiny", kind: r}
+    - {label: "Latent Class Analysis", kind: survey}
+    - {label: "Design-Based SEs", kind: survey}
+    - {label: "LLM Assistant", kind: ai}
+
+- group: measurement
+  title: "UM-IHC Summer 2025: AI in Survey & Health Measurement"
+  repo: https://github.com/klinares/UM-IHC_summer_2025
+  summary: >-
+    Applies Tourangeau's cognitive response process framework to large language models
+    built into patient-reported outcome measures (LLM-PROMs), identifying validity
+    threats at each stage from comprehension to response.
+  facts: "UMD Institute for Health Computing  ·  presented at DC-AAPOR, September 2025"
+  detail: >-
+    Argues that classic survey-methodology theory, in particular the measurement-error
+    component of the Total Survey Error framework, provides the conceptual tools
+    needed to evaluate AI-enhanced measurement.
+  tags:
+    - {label: "LLM / PROMs", kind: ai}
+    - {label: "Cognitive Response Process", kind: survey}
+    - {label: "Measurement Validity", kind: survey}
+
+# ---- Sample design --------------------------------------------------------
+
+- group: design
+  title: "Detroit Transportation Multi-Stage Survey Design"
+  repo: https://github.com/klinares/eight-mile-sample
+  summary: >-
+    A three-stage area probability sample whose composite measure of size delivers
+    self-weighting age-domain samples and equal interviewer workload across PSUs.
+  facts: "265 tracts · 612 block groups  ·  n = 1,000 across 4 age domains"
+  detail: >-
+    Built on 2020 Decennial Census DHC data, with Madow systematic PPS selection
+    (sampling::UPsystematic), Kish (1965) tract linking, and a paired-strata variance
+    estimator to handle the zero joint inclusion probabilities inherent in systematic
+    PPS.
+  tags:
+    - {label: "R", kind: r}
+    - {label: "PPS Sampling", kind: survey}
+    - {label: "Multi-Stage Design", kind: survey}
+    - {label: "Composite MOS", kind: survey}
+    - {label: "Quarto", kind: quarto}
+  badge: {text: "Detroit Transportation · Multi-Stage Survey Design", color: "1a3255", order: 3}
+
+- group: design
+  title: "Michigan Teen Smoking & Drug Use Survey Design"
+  repo: https://github.com/klinares/michigan-teen-survey-design
+  summary: >-
+    A two-stage stratified cluster design for the Michigan Department of Education that
+    meets CV ≤ 0.05 on three outcomes within a $500K budget.
+  facts: "88 schools · ~4,721 students  ·  frame of 830,138  ·  9 regional strata"
+  detail: >-
+    Schools are selected with probability proportional to estimated size and students
+    systematically within school. Optimal cluster size comes from pilot-study DEFFs,
+    three candidate clustering options are evaluated, and the design adjusts for 30%
+    school and 70% student response rates.
+  tags:
+    - {label: "R", kind: r}
+    - {label: "Stratified PPeS", kind: survey}
+    - {label: "DEFF / roh", kind: survey}
+    - {label: "Optimal Allocation", kind: survey}
+    - {label: "Quarto", kind: quarto}
+
+- group: design
+  title: "RCAA 2026 Membership Survey Pipeline"
+  repo: https://github.com/klinares/ask-the-rotarians
+  summary: >-
+    A reproducible end-to-end pipeline for a club membership survey: labelled SPSS in,
+    a Word briefing and a self-contained interactive HTML dashboard out, with no live
+    server runtime.
+  facts: "haven → tidyverse → Word briefing + static dashboard"
+  detail: >-
+    Derives demographic groupings (age, tenure, retirement status) and assembles the
+    full deliverable chain (cleaning, codebook, briefing, dashboard) into one Quarto
+    project a client organization can host on any static server.
+  tags:
+    - {label: "R / tidyverse", kind: r}
+    - {label: "Survey Processing", kind: survey}
+    - {label: "Quarto Dashboard", kind: quarto}
+
+# ---- Found data & language models -----------------------------------------
+
+- group: found
+  title: "DOGE Days on Reddit: Public Sentiment in a Federal Shakeup"
+  repo: https://github.com/klinares/DOGE_Days_R_Over
+  summary: >-
+    A two-paper pipeline on public discourse about federal workforce reductions, read
+    through the Total Error Framework: hand-coded stance, then supervised ML against
+    zero-shot LLM classification.
+  facts: "557 posts · 12,553 comments · 19 subreddits  ·  400 hand-coded by 4 raters"
+  detail: >-
+    Hand coding found 54% opposed, 28% in favor and 18% neutral. The companion paper
+    compares SVM and KNN with zero-shot LLaMA 3.2B and Gemma 3.12B for stance
+    detection, asking how non-probability digital trace data can complement
+    probability surveys.
+  tags:
+    - {label: "R", kind: r}
+    - {label: "NLP / Sentiment", kind: ml}
+    - {label: "LLM Zero-Shot", kind: ai}
+    - {label: "SVM / KNN", kind: ml}
+    - {label: "Quarto", kind: quarto}
+  badge: {text: "DOGE Days on Reddit · Sentiment & LLM Classification", color: "c94f2a", order: 2}
+
+- group: found
+  title: "Hot Topic: Topic Trends and Stance in Large Text"
+  repo: https://github.com/klinares/hot_topic
+  summary: >-
+    Structural topic models estimate what a corpus is about and how each subject's
+    share moved over time, with intervals; a separate stance step codes every passage
+    for or against one claim.
+  facts: "STM with year as a natural spline  ·  P(favor) = P(addresses) × P(favor | addresses)"
+  detail: >-
+    The unit is the paragraph, not the document. A language model drafts names for the
+    topics the statistical model found and codes stance, but never decides what the
+    topics are. Stance estimates separate salience from direction, use intervals
+    clustered by document, and come with a hand-coded agreement check (Cohen's kappa).
+  tags:
+    - {label: "R", kind: r}
+    - {label: "Topic Models (STM)", kind: ml}
+    - {label: "Stance Detection", kind: ai}
+    - {label: "Quarto", kind: quarto}
+
+- group: found
+  title: "RAG Time: An AI Survey Methodologist"
+  repo: https://github.com/klinares/SurvAI_Expert
+  summary: >-
+    A retrieval-augmented Shiny assistant that answers survey-methodology questions
+    only over indexed JPSM coursework and two open survey textbooks, citing its sources
+    and auditing every formula and citation against them.
+  facts: "108-question check  ·  right source file in top 5: 88%  ·  right course in top 5: 93%"
+  detail: >-
+    Vector and keyword search in DuckDB with rank fusion; answers render LaTeX and end
+    with an audit line that flags anything not found in the retrieved sources. The
+    weakest spot it reports is R-code questions, where models substitute a package for
+    the course's own code.
+  tags:
+    - {label: "R / Shiny", kind: r}
+    - {label: "RAG", kind: ai}
+    - {label: "DuckDB", kind: stat}
+
+- group: found
+  title: "Open-Source Data Analysis of Civilian Impact in Gaza"
+  repo: https://github.com/klinares/airwars_scraping_project
+  summary: >-
+    Web scraping and visualization of the Airwars open-source incident archive: open
+    data standing in where probability sampling of an affected population is
+    infeasible, with the coverage and reporting-bias questions that follow.
+  facts: "incident-level extraction  ·  frame construction  ·  JPSM data-visualization course"
+  tags:
+    - {label: "R", kind: r}
+    - {label: "Web Scraping", kind: stat}
+    - {label: "Data Visualization", kind: stat}
+    - {label: "Quarto", kind: quarto}
+
+# ---- Modeling, ML & visualization -----------------------------------------
+
+- group: modeling
+  title: "Predicting MMR Vaccine Dropout in Afghan Children"
+  repo: https://github.com/klinares/MMR_dropout_XGBoost
+  summary: >-
+    Supervised classification on the 2023 UNICEF MICS to predict measles vaccination
+    dropout, enriching complex-survey microdata with administrative indicators.
+  facts: "5 algorithms · 10-fold CV  ·  best F1 = 0.722, AUC = 0.633 (neural network)"
+  detail: >-
+    Benchmarks logistic regression, bagging, random forest, a neural network and XGBoost
+    in a tidymodels pipeline with an 80/20 split and F1-optimized tuning. Provincial
+    population density and household characteristics emerge as key predictors.
+  tags:
+    - {label: "R / tidymodels", kind: r}
+    - {label: "XGBoost", kind: ml}
+    - {label: "MICS Cluster Survey", kind: survey}
+    - {label: "Classification", kind: stat}
+    - {label: "Quarto", kind: quarto}
+
+- group: modeling
+  title: "Player Market Value in Elite European Football"
+  repo: https://github.com/klinares/Moneyball_FC
+  summary: >-
+    A cross-classified multilevel model treating players and clubs as crossed random
+    effects, the same structure as respondents who move between clusters in a panel.
+  facts: "7,023 player-seasons · 2,159 players · 21 clubs · 2013–2024"
+  detail: >-
+    Cubic time terms centered on 2020 isolate the COVID-era correction; fit in lme4 via
+    REML (BOBYQA) with Satterthwaite tests. Valuation peaks around age 27, with a 42%
+    premium per SD of within-club playing time and a 17% domestic-citizenship discount.
+  tags:
+    - {label: "R / lme4", kind: r}
+    - {label: "Cross-Classified MLM", kind: stat}
+    - {label: "Crossed Random Effects", kind: stat}
+    - {label: "Quarto", kind: quarto}
+  badge: {text: "Moneyball FC · Cross-Classified Multilevel Model", color: "2d4a6e", order: 4}
+
+- group: modeling
+  title: "Dog Breed Explorer: A Data-Visualization Dashboard"
+  repo: https://github.com/klinares/Who_let_the_dogs_stat
+  summary: >-
+    An interactive Quarto dashboard comparing AKC breeds with mosaic plots, small
+    multiples and a 2-to-4-breed comparison tool, framed as a presentation to a
+    non-technical audience.
+  facts: "391 AKC breeds  ·  Tufte data-ink, small multiples"
+  tags:
+    - {label: "R / ggplot2", kind: r}
+    - {label: "Web Scraping", kind: stat}
+    - {label: "Data Visualization", kind: stat}
+    - {label: "Quarto Dashboard", kind: quarto}

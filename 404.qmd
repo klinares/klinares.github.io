@@ -1,0 +1,16 @@
+---
+pagetitle: "Not found · Kevin Linares"
+---
+
+```{=html}
+<header class="hero hero-sm">
+  <p class="eyebrow">404 · nonresponse</p>
+  <h1>Page <em>not found</em></h1>
+  <p class="tagline">This unit is not on the frame.</p>
+  <nav class="hero-links" aria-label="Sections">
+    <a href="/">Portfolio</a>
+    <a href="/methods.html">Methods</a>
+    <a href="/coursework.html">Coursework</a>
+  </nav>
+</header>
+```

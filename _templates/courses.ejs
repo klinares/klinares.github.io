@@ -1,0 +1,20 @@
+```{=html}
+<%
+const esc = s => String(s ?? "").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+%>
+<ul class="course-list">
+<% for (const item of items) { %>
+  <li class="course">
+    <div class="course-code"><%= esc(item.code) %></div>
+    <div class="course-body">
+      <h3 class="course-title"><a href="<%= item.reference %>"><%= esc(item.title) %></a></h3>
+      <p class="course-summary"><%= item.summary %></p>
+      <div class="course-links">
+        <a href="<%= item.reference %>">Reference summary</a>
+        <a href="<%= item.syllabus %>" target="_blank" rel="noopener">Syllabus ↗</a>
+      </div>
+    </div>
+  </li>
+<% } %>
+</ul>
+```
