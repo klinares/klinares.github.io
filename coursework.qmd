@@ -1,0 +1,76 @@
+---
+pagetitle: "Coursework · Kevin Linares · UMD JPSM"
+description: "Graduate coursework and per-course reference summaries for Kevin Linares' MS in Survey and Data Science at the University of Maryland Joint Program in Survey Methodology."
+listing:
+  - id: fall-2024
+    contents: data/courses.yml
+    template: _templates/courses.ejs
+    include: {semester: "Fall 2024"}
+    sort: false
+  - id: spring-2025
+    contents: data/courses.yml
+    template: _templates/courses.ejs
+    include: {semester: "Spring 2025"}
+    sort: false
+  - id: fall-2025
+    contents: data/courses.yml
+    template: _templates/courses.ejs
+    include: {semester: "Fall 2025"}
+    sort: false
+  - id: spring-2026
+    contents: data/courses.yml
+    template: _templates/courses.ejs
+    include: {semester: "Spring 2026"}
+    sort: false
+---
+
+```{=html}
+<header class="hero hero-sm">
+  <p class="eyebrow">Kevin Linares · Coursework</p>
+  <h1>Graduate <em>Coursework</em></h1>
+  <p class="tagline">University of Maryland Joint Program in Survey Methodology</p>
+</header>
+```
+
+::: {.lede}
+This page documents the graduate training behind the work in my portfolio. Across four semesters I completed a probability-sampling core, a three-term statistics and machine-learning sequence, the cognitive and communicative foundations of survey measurement, two semesters of Total Survey Error, and applied training in data visualization, computing, and consulting for real-world clients. The result is the ability to design a probability sample under realistic precision and cost constraints, analyze complex survey data with appropriate variance estimation, integrate Big Data and machine-learning methods responsibly into a survey workflow, and reason coherently about data quality across both designed and found data. Each course below links to a reference summary and its syllabus; courses are listed in the order taken.
+:::
+
+```{=html}
+<div class="stat-card">
+  <div class="stat"><p class="stat-num">3.96</p><p class="stat-label">Cumulative<br>GPA</p></div>
+  <div class="stat"><p class="stat-num">18</p><p class="stat-label">SURV<br>Courses</p></div>
+</div>
+```
+
+::: {.semester}
+<h2 class="semester-name">Fall 2024</h2>
+::: {#fall-2024}
+:::
+:::
+
+::: {.semester}
+<h2 class="semester-name">Spring 2025</h2>
+::: {#spring-2025}
+:::
+:::
+
+::: {.semester}
+<h2 class="semester-name">Fall 2025</h2>
+::: {#fall-2025}
+:::
+:::
+
+::: {.semester}
+<h2 class="semester-name">Spring 2026</h2>
+::: {#spring-2026}
+:::
+:::
+
+::: {.program-block}
+[Program]{.program-label}
+
+<h3 class="program-title">MS, Survey and Data Science</h3>
+
+Joint Program in Survey Methodology, University of Maryland, in partnership with the Program in Survey and Data Science at the University of Michigan Survey Research Center. Program details and course catalog at [jpsm.umd.edu](https://jpsm.umd.edu/). Syllabi and reference summaries are in this site's [courses folder on GitHub](https://github.com/klinares/klinares.github.io/tree/main/courses).
+:::
